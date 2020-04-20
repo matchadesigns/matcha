@@ -19,7 +19,6 @@
 }
 
 .branding {
-  font-weight: 600;
   flex: 1;
 
   @nest & a {
@@ -27,6 +26,11 @@
     padding: 0.5em;
     color: inherit;
     text-decoration: none;
+    width: 10em;
+
+    @nest & svg {
+      width: 100%;
+    }
 
     @media (hover: hover) {
       @nest &:hover {
@@ -46,7 +50,7 @@
   outline: none;
   color: inherit;
 
-  & svg {
+  @nest & svg {
     display: block;
     fill: inherit;
   }

@@ -20,6 +20,15 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd && token
       }
+    },
+    "gatsby-plugin-theme-ui",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svgs/
+        }
+      }
     }
-  ]
+  ],
 }

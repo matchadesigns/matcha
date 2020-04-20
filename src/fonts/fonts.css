@@ -1,0 +1,23 @@
+@font-face {
+    font-family: ChampagneLimousines;
+    font-weight: 400;
+    font-style: normal;
+    src: url("ChampagneLimousines.woff2") format("woff2");
+    font-display: swap;
+}
+/*
+@font-face {
+  font-family: Rubik;
+  font-weight: 400;
+  font-style: italic;
+  src: url("Rubik-Italic.woff2") format("woff2");
+  font-display: swap;
+}
+*/
+@font-face {
+  font-family: SimplePrint;
+  font-weight: 700;
+  font-style: normal;
+  src: url("SimplePrint.woff2") format("woff2");
+  font-display: swap;
+}
