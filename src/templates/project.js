@@ -1,9 +1,9 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
+import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import Project from '../components/project'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import Layout from '../containers/layout'
 
 export const query = graphql`
@@ -81,8 +81,7 @@ export const query = graphql`
   }
 `
 
-const ProjectTemplate = props => {
-  const {data, errors} = props
+const ProjectTemplate = ({data, errors}) => {
   const project = data && data.sampleProject
   return (
     <Layout>

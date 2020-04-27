@@ -21,14 +21,22 @@ module.exports = {
         overlayDrafts: !isProd && token
       }
     },
-    "gatsby-plugin-theme-ui",
+    'gatsby-plugin-theme-ui',
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /svgs/
+          include: /svg/
         }
       }
+    },
+    {
+      resolve: 'gatsby-plugin-snipcartv3',
+      options: {
+        apiKey: process.env.SNIPCART_APIKEY,
+        js: '/snipcart.3.0.11.js',
+        styles: '/snipcart.3.0.11.css'
+      }
     }
-  ],
+  ]
 }

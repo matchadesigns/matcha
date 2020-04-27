@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GraphQLErrorList = ({errors}) => (
+export const GraphQLErrorList = ({errors}) => (
   <div>
     <h1>GraphQL Error</h1>
     {errors.map(error => (
@@ -8,5 +8,3 @@ const GraphQLErrorList = ({errors}) => (
     ))}
   </div>
 )
-
-export default GraphQLErrorList

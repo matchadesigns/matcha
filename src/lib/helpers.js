@@ -1,4 +1,4 @@
-import {format, isFuture} from 'date-fns'
+import {format, parseISO, isFuture} from 'date-fns'
 
 export function cn (...args) {
   return args.filter(Boolean).join(' ')
@@ -18,7 +18,7 @@ export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
 }
 
 export function getBlogUrl (publishedAt, slug) {
-  return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`
+  return `/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
 }
 
 export function buildImageObj (source) {
@@ -30,4 +30,18 @@ export function buildImageObj (source) {
   if (source.hotspot) imageObj.hotspot = source.hotspot
 
   return imageObj
+}
+
+export function toPlainText (blocks) {
+  if (!blocks) {
+    return ''
+  }
+  return blocks
+    .map(block => {
+      if (block._type !== 'block' || !block.children) {
+        return ''
+      }
+      return block.children.map(child => child.text).join('')
+    })
+    .join('\n\n')
 }

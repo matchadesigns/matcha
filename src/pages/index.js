@@ -6,9 +6,9 @@ import {
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
 import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
+import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import ProjectPreviewGrid from '../components/project-preview-grid'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import Layout from '../containers/layout'
 
 export const query = graphql`
