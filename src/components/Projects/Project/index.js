@@ -1,0 +1,47 @@
+/** @jsx jsx */
+import {graphql} from 'gatsby'
+import {Box, Grid, jsx, Text} from 'theme-ui'
+import {getCategoryPath} from '../helpers'
+import {Body} from './Body'
+import {Images} from './Images'
+import {Title} from './Title'
+import {format, parseISO} from 'date-fns'
+
+export const Project = project => {
+  graphql`
+    fragment projectFields on SanityProject {
+      ...projectCardFields
+      images {
+        asset {
+          ...projectImageFields
+        }
+      }
+      _rawBody
+      publishedAt
+    }
+  `
+  const {title, subtitle, category, images, _rawBody, publishedAt} = project
+  const categoryPath = getCategoryPath({category: category.slug})
+  return (
+    <article>
+      <Grid gap={2} columns={[1, 2, '4fr 6fr 4fr', '4fr 6fr 3fr']}>
+        <Box sx={{order: 0}}>
+          <Images images={images} />
+        </Box>
+        <Box
+          sx={{
+            p: 4,
+            mb: 2,
+            order: [1, 2, 1],
+            gridColumnStart: ['auto', 1, 'auto'],
+            gridColumnEnd: ['auto', 4, 'auto']
+          }}
+        >
+          <Title title={title} subtitle={subtitle} category={{title: category.title, link: categoryPath}} />
+          <Body raw={_rawBody} />
+          <Text>Publié le {format(parseISO(publishedAt), 'dd/MM/yyyy')}</Text>
+        </Box>
+      </Grid>
+    </article>
+  )
+}

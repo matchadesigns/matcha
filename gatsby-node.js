@@ -1,7 +1,24 @@
+const pth = require('path')
 const {isFuture, parseISO} = require('date-fns')
 const currency = require('currency.js')
 
-async function createProjectPages (graphql, actions, reporter) {
+/* TEMPLATES */
+const templates = {
+  baseDir: 'src/templates',
+  project: 'project.js', // example app
+  projects: {
+    // index: 'projects/index.js', added as a gatsby page
+    project: 'projects/project.js',
+    category: 'projects/category.js'
+  },
+  shop: {
+    // index: 'shop/index.js', added as a gatsby page
+    product: 'shop/product.js',
+    category: 'shop/category.js'
+  }
+}
+
+async function createExampleProjectPages (graphql, actions, reporter) {
   const {createPage} = actions
   const result = await graphql(`
     {
@@ -31,8 +48,63 @@ async function createProjectPages (graphql, actions, reporter) {
 
       createPage({
         path,
-        component: require.resolve('./src/templates/project.js'),
+        component: pth.resolve(pth.join(templates.baseDir, templates.project)),
         context: {id}
+      })
+    })
+}
+
+/*
+    PROJECTS / PROJECT
+*/
+
+async function createProjectPages (graphql, actions, reporter) {
+  const {createPage} = actions
+  const result = await graphql(`
+    {
+      query: allSanityProject(filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}) {
+        edges {
+          node {
+            id
+            publishedAt
+            category {
+              id
+              slug {
+                current
+              }
+            }
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) throw result.errors
+  const edges = (result.data.query || {}).edges || []
+  edges
+    .filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
+    .forEach(edge => {
+      const {
+        node: {
+          id: project,
+          slug: {current: slug},
+          category: {
+            id: category,
+            slug: {current: categorySlug}
+          }
+        }
+      } = edge
+      const path = `/${categorySlug}/${slug}/`
+      reporter.info(`Creating project page: ${path}`)
+      createPage({
+        path,
+        component: pth.resolve(pth.join(templates.baseDir, templates.projects.project)),
+        context: {
+          project,
+          category
+        }
       })
     })
 }
@@ -57,6 +129,11 @@ async function createShopProductPages (graphql, actions, reporter) {
                 current
               }
             }
+            variants {
+              variantGroup {
+                id
+              }
+            }
           }
         }
       }
@@ -74,17 +151,22 @@ async function createShopProductPages (graphql, actions, reporter) {
           category: {
             id: category,
             slug: {current: categorySlug}
-          }
+          },
+          variants
         }
       } = edge
+      const variantGroupsIds = variants.reduce((acc, el) => {
+        return acc === null ? [el.variantGroup.id] : [...acc, el.variantGroup.id]
+      }, null)
       const path = `/${categorySlug}/${slug}/`
       reporter.info(`Creating product page: ${path}`)
       createPage({
         path,
-        component: require.resolve('./src/templates/shop/product.js'),
+        component: pth.resolve(pth.join(templates.baseDir, templates.shop.product)),
         context: {
           product,
-          category
+          category,
+          variantGroupsIds
         }
       })
     })
@@ -122,7 +204,7 @@ async function createShopCategoryPages (graphql, actions, reporter) {
     reporter.info(`Creating category page: ${path}`)
     createPage({
       path,
-      component: require.resolve('./src/templates/shop/category.js'),
+      component: pth.resolve(pth.join(templates.baseDir, templates.shop.category)),
       context: {
         category
       }
@@ -131,6 +213,7 @@ async function createShopCategoryPages (graphql, actions, reporter) {
 }
 
 exports.createPages = async ({graphql, actions, reporter}) => {
+  await createExampleProjectPages(graphql, actions, reporter)
   await createProjectPages(graphql, actions, reporter)
   await createShopProductPages(graphql, actions, reporter)
   await createShopCategoryPages(graphql, actions, reporter)

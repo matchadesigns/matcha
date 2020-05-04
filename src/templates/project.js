@@ -1,10 +1,10 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import Container from '../components/container'
+import {Main} from '../components/Layout/Main'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import Project from '../components/project'
 import SEO from '../components/SEO'
-import Layout from '../containers/layout'
+import {Layout} from '../components/Layout'
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
@@ -89,9 +89,9 @@ const ProjectTemplate = ({data, errors}) => {
       {project && <SEO title={project.title || 'Untitled'} />}
 
       {errors && (
-        <Container>
+        <Main>
           <GraphQLErrorList errors={errors} />
-        </Container>
+        </Main>
       )}
       {project && <Project {...project} />}
     </Layout>

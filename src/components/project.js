@@ -1,23 +1,14 @@
-import {format, parseISO, formatDistance, differenceInDays} from 'date-fns'
-import React from 'react'
+import {differenceInDays, format, formatDistance, parseISO} from 'date-fns'
 import {Link} from 'gatsby'
+import React from 'react'
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
-import BlockContent from './block-content'
-import Container from './container'
+import {BlockContent} from './BlockContent'
+import {Main} from './Layout/Main'
+import styles from './project.module.css'
 import RoleList from './role-list'
 
-import styles from './project.module.css'
-
-const Project = ({
-  _rawBody,
-  title,
-  categories,
-  mainImage,
-  members,
-  publishedAt,
-  relatedProjects
-}) => (
+const Project = ({_rawBody, title, categories, mainImage, members, publishedAt, relatedProjects}) => (
   <article className={styles.root}>
     {mainImage && mainImage.asset && (
       <div className={styles.mainImage}>
@@ -31,7 +22,7 @@ const Project = ({
         />
       </div>
     )}
-    <Container>
+    <Main>
       <div className={styles.grid}>
         <div className={styles.mainContent}>
           <h1 className={styles.title}>{title}</h1>
@@ -74,7 +65,7 @@ const Project = ({
           )}
         </aside>
       </div>
-    </Container>
+    </Main>
   </article>
 )
 

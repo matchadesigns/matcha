@@ -17,7 +17,7 @@ export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
   return !isFuture(publishedAt)
 }
 
-export function getBlogUrl (publishedAt, slug) {
+export function getBlogPath (publishedAt, slug) {
   return `/blog/${format(parseISO(publishedAt), 'yyyy/MM')}/${slug.current || slug}/`
 }
 

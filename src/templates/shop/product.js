@@ -1,67 +1,47 @@
 /** @jsx jsx */
 import {jsx, Box, Styled} from 'theme-ui'
-import Layout from '../../containers/layout'
+import {Layout} from '../../components/Layout'
 import SEO from '../../components/SEO'
 import {graphql} from 'gatsby'
 import {GraphQLErrorList} from '../../components/GraphQLErrorList'
 import {Product} from '../../components/Shop/Product'
-import {Products} from '../../components/Shop/Products'
+import {ProductList} from '../../components/Shop/ProductList'
 import {mapEdgesToNodes, toPlainText} from '../../lib/helpers'
-import {JsonLd} from 'react-schemaorg'
-import {add, format} from 'date-fns'
+import {getProductPath} from '../../components/Shop/helpers'
+import {ProductRichSnippet} from '../../components/Shop/ProductRichSnippet'
 
 const ProductPage = ({data, errors, ...props}) => {
-  const {
-    product,
-    sameCategoryProducts,
-    site: {siteTitle, siteUrl}
-  } = data
+  const {product, sameVariantGroupsProducts, sameCategoryProducts} = data
   const {title, slug, category, images, description, price, sku, barcode, publishedAt} = product
   const sameCategoryProductsNodes = mapEdgesToNodes(sameCategoryProducts)
+  const sameVariantGroupsProductsNodes = mapEdgesToNodes(sameVariantGroupsProducts)
   const image = images && images.images && images.images[0] && images.images[0].asset.fluid.src
   const excerpt = description && toPlainText(description)
-  const productPath = `/${category.slug.current}/${slug.current}`
-  const inStock = sku > 0
+  const productPath = getProductPath({category: category.slug.current, product: slug.current})
   return (
     <Layout {...props}>
-      {errors && <SEO title="GraphQL Error" />}
+      {errors && <SEO title='GraphQL Error' />}
       {product && <SEO title={title} description={excerpt} image={image} product />}
       {product && (
-        <JsonLd
-          item={{
-            '@context': 'https://schema.org',
-            '@type': 'Product',
-            name: title,
-            url: siteUrl + productPath,
-            image,
-            description,
-            mpn: barcode && barcode.barcode,
-            category: category && category.title,
-            publishedAt,
-            offers: {
-              '@type': 'Offer',
-              priceCurrency: 'EUR',
-              priceValidUntil: format(add(new Date(), {years: 1}), 'yyyy-MM-dd'),
-              price: price.value,
-              itemCondition: 'https://schema.org/NewCondition',
-              availability: inStock ? 'http://schema.org/InStock' : 'https://schema.org/OutOfStock',
-              url: siteUrl + productPath
-            },
-            brand: {
-              '@type': 'Brand',
-              name: siteTitle
-            },
-            sku
-          }}
+        <ProductRichSnippet
+          title={title}
+          path={productPath}
+          image={image}
+          description={excerpt}
+          barcode={barcode && barcode.barcode}
+          category={category && category.title}
+          publishedAt={publishedAt}
+          price={price.value}
+          sku={sku}
         />
       )}
       {errors && <GraphQLErrorList errors={errors} />}
 
-      {product && <Product {...product} />}
-      {sameCategoryProducts && sameCategoryProducts.length > 0 && (
+      {product && <Product {...product} sameVariantGroupsProductsNodes={sameVariantGroupsProductsNodes} />}
+      {sameCategoryProductsNodes && sameCategoryProductsNodes.length > 0 && (
         <Box mt={3}>
-          <Styled.h4>Dans la catégorie {category.title})}</Styled.h4>
-          <Products nodes={sameCategoryProductsNodes} />
+          <Styled.h2>Dans la même catégorie</Styled.h2>
+          <ProductList nodes={sameCategoryProductsNodes} />
         </Box>
       )}
     </Layout>
@@ -69,9 +49,39 @@ const ProductPage = ({data, errors, ...props}) => {
 }
 
 export const query = graphql`
-  query ProductPage($product: String, $category: String) {
+  query ProductPage($product: String, $variantGroupsIds: [String], $category: String) {
     product: sanityProduct(id: {eq: $product}) {
       ...productFields
+      variants {
+        variantGroup {
+          id
+          option
+        }
+      }
+    }
+    sameVariantGroupsProducts: allSanityProduct(
+      filter: {variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}}
+      sort: {order: [ASC], fields: [title]}
+    ) {
+      edges {
+        node {
+          title
+          slug {
+            current
+          }
+          category {
+            slug {
+              current
+            }
+          }
+          variants {
+            variantGroup {
+              id
+            }
+            value
+          }
+        }
+      }
     }
     sameCategoryProducts: allSanityProduct(
       filter: {id: {ne: $product}, category: {id: {eq: $category}}}
@@ -83,10 +93,6 @@ export const query = graphql`
           ...productPreviewFields
         }
       }
-    }
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
-      siteTitle: title
-      siteUrl: url
     }
   }
 `

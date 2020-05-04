@@ -1,10 +1,10 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import Container from '../components/container'
+import {Main} from '../components/Layout/Main'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import ProjectPreviewGrid from '../components/project-preview-grid'
-import SEO from '../components/SEO'
-import Layout from '../containers/layout'
+import Seo from '../components/SEO'
+import {Layout} from '../components/Layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 
 import {responsiveTitle1} from '../components/typography.module.css'
@@ -45,15 +45,14 @@ const ArchivePage = props => {
       </Layout>
     )
   }
-  const projectNodes =
-    data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+  const projectNodes = data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout>
-      <SEO title='Archive' />
-      <Container>
+      <Seo title='Archive' />
+      <Main>
         <h1 className={responsiveTitle1}>Projects</h1>
         {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
-      </Container>
+      </Main>
     </Layout>
   )
 }
