@@ -20,7 +20,7 @@ const item = {
 
 export const ProductList = ({nodes, ...props}) => (
   <motion.div variants={container} initial='hidden' animate='show'>
-    <Grid columns={[2, 3, 4, 6]} {...props}>
+    <Grid columns={[2, 3, 4, 4, 4, 6]} {...props}>
       {nodes &&
         nodes.map(product => (
           <motion.div variants={item} key={product.id}>

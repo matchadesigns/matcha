@@ -8,9 +8,8 @@ import {Grid, jsx} from 'theme-ui'
 import {BlockContent} from '../../BlockContent'
 import {getProductPath} from '../helpers'
 import {Buy} from './Buy'
-import {Image} from './Image'
+import {Images} from './Images'
 import {Tags} from './Tags'
-import {Thumbs} from './Thumbs'
 import {Title} from './Title'
 import {Variants} from './Variants'
 import {Social} from './Social'
@@ -113,24 +112,20 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
   }
 
   const isThumb = thumbs.length > 0
-  const large = isThumb ? '2fr 5fr 5fr' : '1fr 1fr'
-  const columns = [1, 2, '4fr 6fr 4fr', large]
-
+  const columns = []
+  columns.push(1) // phones
+  columns.push(1) // tablets
+  columns.push(isThumb ? 2 : 2) // desktop
+  columns.push(isThumb ? 2 : 2) // wide
+  columns.push(isThumb ? 2 : 2) // extrawide
   return (
     <motion.div variants={container} initial='hidden' animate='show'>
       <Grid gap={2} columns={columns} sx={{p: 4}}>
-        {isThumb && (
-          <motion.div variants={item} sx={{order: 0}}>
-            <Thumbs thumbs={thumbs} />
-          </motion.div>
-        )}
-        <motion.div variants={item} sx={{order: 1}}>
-          {image && <Image image={image} />}
-        </motion.div>
+        <Images item={item} image={image} thumbs={thumbs} />
         <motion.div
           variants={item}
           sx={{
-            px: 4,
+            pl: [0, 0, 4],
             mb: 2,
             gridColumnStart: ['auto', 1, 'auto'],
             gridColumnEnd: ['auto', 4, 'auto'],

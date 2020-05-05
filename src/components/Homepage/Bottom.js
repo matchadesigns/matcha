@@ -36,9 +36,13 @@ export const Bottom = ({height}) => (
         zIndex: 'inherit'
       }}
     >
-      <Text sx={{pr: 3, display: ['none', 'none', 'flex']}}>Suivez notre actualitésur les réseaux sociaux :</Text>
-      <Facebook sx={{width: '32px', mr: 1}} />
-      <Instagram sx={{width: '32px'}} />
+      <Text sx={{pr: 3, display: ['none', 'none', 'flex']}}>Suivez nous sur les réseaux sociaux :</Text>
+      <a href=''>
+        <Facebook sx={{width: '32px', mr: 1}} />
+      </a>
+      <a href=''>
+        <Instagram sx={{width: '32px'}} />
+      </a>
     </Flex>
   </footer>
 )

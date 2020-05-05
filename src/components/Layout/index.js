@@ -17,9 +17,12 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
     setShowNav(false)
   }
   return (
-    <motion.main
+    <motion.div
       sx={{
-        bg: 'brownWhite'
+        bg: 'brownWhite',
+        minHeight: 'full',
+        display: 'grid',
+        gridTemplateRows: 'auto auto auto'
       }}
     >
       <Header
@@ -30,13 +33,13 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
         hasBranding={hasBranding}
       />
 
-      <motion.div sx={{variant: 'layout.content', bg: transparentHeader ? 'brownWhite' : 'white'}} layoutId='layout'>
+      <motion.main sx={{variant: 'layout.content', bg: transparentHeader ? 'brownWhite' : 'white'}} layoutId='layout'>
         {/* exit={{opacity: 0}}
       initial='initial'
   animate */}
         {children}
-      </motion.div>
+      </motion.main>
       <Footer />
-    </motion.main>
+    </motion.div>
   )
 }

@@ -18,7 +18,7 @@ const SEO = ({title, description, image, product, article, noIndex = false}) => 
 
   const seo = {
     title: title && (title.length <= 60 ? (title.includes(site.title) ? title : `${title} — ${site.title}`) : title),
-    description: truncateString(description || siteMetadata.description, 147),
+    description: truncateString(description || site.description, 147),
     image: image ? image : `${site.url}/bannouheol.png`,
     url: pathname && `${site.url}${pathname}`
   }

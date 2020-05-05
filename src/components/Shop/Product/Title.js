@@ -12,7 +12,7 @@ export const Title = ({title, category}) => {
           <h2 sx={{display: 'inline-block', fontSize: 3, lineHeight: 1, m: 0}}>{category.title}</h2>
         </Link>
       </Box>
-      <Styled.h1 sx={{m: 0}}>{title}</Styled.h1>
+      <Styled.h1 sx={{m: 0, fontSize: [5, 6, 5, 6]}}>{title}</Styled.h1>
     </Fragment>
   )
 }

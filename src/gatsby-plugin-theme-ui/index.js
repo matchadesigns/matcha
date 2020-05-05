@@ -32,7 +32,21 @@ export default {
       borderRadius: 20,
       bg: 'secondary',
       color: 'text',
+      transition: 'background-color 0.5s ease',
       ':hover': {
+        cursor: 'pointer',
+        bg: 'primary',
+        color: 'white'
+      }
+    },
+    discrete: {
+      borderRadius: 4,
+      px: 2,
+      py: 1,
+      bg: 'secondary',
+      color: 'text',
+      ':hover': {
+        cursor: 'pointer',
         bg: 'primary',
         color: 'white'
       }
@@ -51,8 +65,9 @@ export default {
     },
     root: {
       ...tailwind.styles.root,
+      minHeight: 'full',
+      height: 'full',
       bg: 'brownWhite',
-      // uses the theme values provided above
       fontFamily: 'body',
       fontWeight: 'body',
       letterSpacing: '1px',
@@ -94,12 +109,22 @@ export default {
   layout: {
     header: {},
     content: {
-      bg: 'white'
+      bg: 'white',
+      minHeight: '60vh'
     },
     main: {
       bg: 'white',
       position: 'relative',
       zIndex: 1
+    },
+    footer: {
+      gridRowStart: 3,
+      gridRowEnd: 4,
+      bg: 'black',
+      color: 'white',
+      a: {color: 'white'},
+      p: 4,
+      textAlign: 'center'
     }
   }
 }

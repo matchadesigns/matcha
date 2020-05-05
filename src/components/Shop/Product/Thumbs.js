@@ -6,7 +6,7 @@ import {Fragment} from 'react'
 export const Thumbs = ({thumbs}) => (
   <Fragment>
     {thumbs && (
-      <Grid sx={{mb: 2, mr: 2}}>
+      <Grid sx={{mb: 2, mr: 2}} columns={[3, 3, 2, 2, 1]}>
         {thumbs.map(i => (
           <Img
             key={i.asset.fluid.src}

@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import {jsx, Flex, Box, Divider} from 'theme-ui'
-import {Stock} from './Stock'
+import {Box, jsx} from 'theme-ui'
 import {AddToCart} from '../../AddToCart'
 import {Shipping} from './Shipping'
+import {Stock} from './Stock'
 
 export const Buy = ({id, title, path, price, category, cartImage, inStock}) => (
   <Box>
@@ -14,6 +14,5 @@ export const Buy = ({id, title, path, price, category, cartImage, inStock}) => (
       )}
     </div>
     <Shipping />
-    <Divider sx={{my: 3}} />
   </Box>
 )

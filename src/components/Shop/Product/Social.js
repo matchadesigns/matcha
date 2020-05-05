@@ -19,7 +19,7 @@ export const Social = ({path}) => {
     </a>
   )
   return (
-    <Flex sx={{alignItems: 'center', color: 'textMuted'}}>
+    <Flex sx={{alignItems: 'center', color: 'textMuted', mt: 3}}>
       Partager :{' '}
       <Link to={`https://www.facebook.com/sharer/sharer.php?u=${siteUrl}${path}`}>
         <FaFacebookSquare size={24} sx={{ml: 1, color: 'textMuted'}} />

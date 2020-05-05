@@ -39,7 +39,7 @@ const ProductPage = ({data, errors, ...props}) => {
 
       {product && <Product {...product} sameVariantGroupsProductsNodes={sameVariantGroupsProductsNodes} />}
       {sameCategoryProductsNodes && sameCategoryProductsNodes.length > 0 && (
-        <Box mt={3} p={5} sx={{bg: '#f9f9f9'}}>
+        <Box mt={3} p={[4, 4, 4, 5]} sx={{bg: '#f9f9f9'}}>
           <Styled.h2>Dans la même catégorie</Styled.h2>
           <ProductList nodes={sameCategoryProductsNodes} />
         </Box>

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Styled, Box} from 'theme-ui'
+import {jsx, Styled, Box, Grid} from 'theme-ui'
 import {Layout} from '../components/Layout'
 import Seo from '../components/SEO'
 import {graphql, Link} from 'gatsby'
@@ -26,16 +26,19 @@ const ShopPage = ({data, errors, ...props}) => {
       />
       {errors && <GraphQLErrorList errors={errors} />}
       <Box p={4}>
-        {title && <Styled.h1>{title}</Styled.h1>}
+        <Grid columns={['auto 1fr']}>
+          {title && <Styled.h1 sx={{p: 0, mr: 3, lineHeight: 1.35}}>{title}</Styled.h1>}
+          <Box>
+            {categoriesNodes &&
+              categoriesNodes.length > 0 &&
+              categoriesNodes.map(category => (
+                <Link key={category.slug.current} to={`/${category.slug.current}/`}>
+                  <Styled.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>{category.title}</Styled.h3>
+                </Link>
+              ))}
+          </Box>
+        </Grid>
         {body && <BlockContent blocks={body} />}
-
-        {categoriesNodes &&
-          categoriesNodes.length > 0 &&
-          categoriesNodes.map(category => (
-            <Link key={category.slug.current} to={`/${category.slug.current}/`}>
-              <Styled.h3 sx={{display: 'inline-block', mr: 4}}>{category.title}</Styled.h3>
-            </Link>
-          ))}
 
         {productNodes && productNodes.length > 0 && <ProductList nodes={productNodes} sx={{mt: 3}} />}
       </Box>

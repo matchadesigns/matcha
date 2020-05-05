@@ -28,7 +28,7 @@ const Link = ({active, children, ...props}) => (
   <GatsbyLink
     {...props}
     sx={{
-      px: 1,
+      px: 2,
       mr: 2,
       mb: 2,
       bg: active ? 'black' : 'white',
