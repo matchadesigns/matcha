@@ -66,6 +66,12 @@ module.exports = {
         showSpinner: false
       }
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-source-instagram',
+      options: {
+        username: 'matchadesigns_'
+      }
+    }
   ]
 }

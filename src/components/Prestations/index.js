@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import {Link, useStaticQuery} from 'gatsby'
+import {graphql, Link, useStaticQuery} from 'gatsby'
 import {Button as ThemeUiButton, Grid, jsx} from 'theme-ui'
 import Crayon from '../../assets/svg/PrestationsCrayon.svg'
-// import {motion} from 'framer-motion'
 import Lampe from '../../assets/svg/PrestationsLampe.svg'
 import Nuancier from '../../assets/svg/PrestationsNuancier.svg'
 import {BlockContent} from '../BlockContent'

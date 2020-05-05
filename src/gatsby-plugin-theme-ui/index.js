@@ -107,7 +107,25 @@ export default {
     }
   },
   layout: {
-    header: {},
+    header: {
+      top: 0,
+      zIndex: 10,
+      p: 2,
+      flexWrap: 'wrap',
+      alignItems: 'stretch',
+      '#logo': {
+        flexGrow: 1,
+        flexBasis: 'sidebar'
+      },
+      nav: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        flexGrow: 99999,
+        flexBasis: 0,
+        minWidth: '50%'
+      }
+    },
     content: {
       bg: 'white',
       minHeight: '60vh'

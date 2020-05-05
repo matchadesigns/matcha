@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import {Link} from 'gatsby'
-import {Grid, jsx} from 'theme-ui'
+import {Flex, jsx} from 'theme-ui'
 import Logo from '../../assets/svg/logo.svg'
 import MatchaCurved from '../../assets/svg/matcha_curved.svg'
 import {useSiteMetadata} from '../../lib/useSiteMetadata'
@@ -11,29 +11,23 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
   const {title} = useSiteMetadata()
 
   return (
-    <Grid
+    <Flex
       as='header'
       sx={{
+        variant: 'layout.header',
         bg: isTransparent ? 'transparent' : 'brownWhite',
         position: isTransparent ? 'fixed' : 'sticky',
-        top: 0,
-        zIndex: 10,
         boxShadow: !isTransparent && '0 5px 8px rgba(0,0,0,.05)',
-        variant: 'layout.header',
-        alignItems: 'center',
-        p: 3,
-        gridTemplateColumns: ['auto', 'auto auto'],
-        width: 'full',
-        display: ['none', 'none', 'none', 'grid']
+        width: 'full'
       }}
     >
       {hasBranding && (
         <Link to='/'>
-          <div sx={{display: 'flex', flexDirection: 'column', mr: 5}}>
+          <Flex id='logo' sx={{flexDirection: 'column', px: 3, py: 0}}>
             <h1 hidden>{title}</h1>
             <MatchaCurved sx={{width: '96px', mx: 'auto'}} />
-            <Logo size={24} sx={{width: '48px', mx: 'auto'}} />
-          </div>
+            <Logo sx={{width: '48px', mx: 'auto', mt: '-10px'}} />
+          </Flex>
         </Link>
       )}
 
@@ -43,8 +37,8 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
         </button>
       )}
 
-      <nav sx={{width: 'full'}}>
-        <ul sx={{display: 'flex'}}>
+      <nav>
+        <Flex as='ul'>
           <MenuLink to='/boutique/' activeClassName='active'>
             <Li>Boutique</Li>
           </MenuLink>
@@ -63,14 +57,15 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
           <MenuLink to='/contact/' activeClassName='active'>
             <Li>Contact</Li>
           </MenuLink>
-        </ul>
+        </Flex>
       </nav>
-    </Grid>
+    </Flex>
   )
 }
 
 const MenuLink = styled(Link)`
   padding-right: 0.5em;
+
   &.active {
     li:before {
       background-image: url(/svg/li_bullet_hover.svg);
@@ -87,8 +82,9 @@ const Li = styled.li`
     height: 1em;
     width: 1em;
     background-image: url(/svg/li_bullet.svg);
-    background-size: contain;
+    background-size: 0.75em 0.75em;
     background-repeat: no-repeat;
+    background-position: center;
     margin-right: 0.5em;
   }
   &:hover:before {

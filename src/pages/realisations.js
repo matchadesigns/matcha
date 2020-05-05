@@ -4,7 +4,14 @@ import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
 import {Main} from '../components/Layout/Main'
 import {ProjectList} from '../components/Projects/ProjectList'
-import {filterOutDocsPublishedInTheFuture, filterOutDocsWithoutSlugs, mapEdgesToNodes} from '../lib/helpers'
+import {
+  filterOutDocsPublishedInTheFuture,
+  filterOutDocsWithoutSlugs,
+  mapEdgesToNodes,
+  toPlainText
+} from '../lib/helpers'
+import Seo from '../components/SEO'
+import {BlockContent} from '../components/BlockContent'
 
 const ProjectsPage = ({data, errors}) => {
   if (errors) {
@@ -20,11 +27,15 @@ const ProjectsPage = ({data, errors}) => {
       .filter(filterOutDocsPublishedInTheFuture)
     : []
 
+  const {
+    page: {title, _rawBody}
+  } = data
+
   return (
     <Layout>
-      <Main>
-        {projectNodes && <ProjectList title='Latest projects' nodes={projectNodes} browseMoreHref='/archive/' />}
-      </Main>
+      <Seo title={title} description={toPlainText(_rawBody)} />
+      {_rawBody && <BlockContent blocks={_rawBody} />}
+      <Main>{projectNodes && <ProjectList nodes={projectNodes} />}</Main>
     </Layout>
   )
 }
@@ -40,6 +51,10 @@ export const query = graphql`
           ...projectCardFields
         }
       }
+    }
+    page: sanityPage(slug: {current: {eq: "realisations"}}) {
+      title
+      _rawBody
     }
   }
 `

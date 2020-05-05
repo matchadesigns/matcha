@@ -19,12 +19,13 @@ const SEO = ({title, description, image, product, article, noIndex = false}) => 
   const seo = {
     title: title && (title.length <= 60 ? (title.includes(site.title) ? title : `${title} — ${site.title}`) : title),
     description: truncateString(description || site.description, 147),
-    image: image ? image : `${site.url}/bannouheol.png`,
+    image: image ? image : `${site.url}/matcha.jpg`,
     url: pathname && `${site.url}${pathname}`
   }
 
   return (
     <Helmet>
+      <html lang="fr-FR" amp />
       {seo.title && (
         <title itemProp="name" lang={`fr-FR`}>
           {seo.title}
