@@ -1,14 +1,27 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
+import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Homepage} from '../components/Homepage'
 import {Layout} from '../components/Layout'
 import {Main} from '../components/Layout/Main'
-import {Prestations} from '../components/Prestations'
 import Seo from '../components/SEO'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
+import {Prestations} from '../components/Prestations'
 
-const IndexPage = () => {
+const IndexPage = props => {
+  const {
+    // data,
+    errors
+  } = props
   const site = useSiteMetadata()
+
+  if (errors) {
+    return (
+      <Layout>
+        <GraphQLErrorList errors={errors} />
+      </Layout>
+    )
+  }
 
   if (!site) {
     throw new Error(
@@ -27,4 +40,10 @@ const IndexPage = () => {
     </Layout>
   )
 }
+/*
+export const query = graphql`
+  query IndexPageQuery {
+  }
+`
+*/
 export default IndexPage

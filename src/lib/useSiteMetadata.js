@@ -9,6 +9,8 @@ export const useSiteMetadata = () => {
           url
           description
           keywords
+          instagram
+          facebook
         }
       }
     `

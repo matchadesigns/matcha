@@ -19,34 +19,35 @@ const SEO = ({title, description, image, product, article, noIndex = false}) => 
   const seo = {
     title: title && (title.length <= 60 ? (title.includes(site.title) ? title : `${title} — ${site.title}`) : title),
     description: truncateString(description || site.description, 147),
-    image: image ? image : `${site.url}/matcha.jpg`,
+    image: image || `${site.url}/matcha.jpg`,
     url: pathname && `${site.url}${pathname}`
   }
 
   return (
     <Helmet>
-      <html lang="fr-FR" amp />
+      <html lang='fr-FR' amp />
+      <link rel='dns-prefetch' href='//cdn.sanity.io/' />
       {seo.title && (
-        <title itemProp="name" lang={`fr-FR`}>
+        <title itemProp='name' lang='fr-FR'>
           {seo.title}
         </title>
       )}
-      {seo.title && <meta property="og:title" content={seo.title} />}
-      {seo.title && <meta name="twitter:title" content={seo.title} />}
-      {seo.description && <meta name="description" content={seo.description} />}
-      {seo.description && <meta property="og:description" content={seo.description} />}
-      {seo.description && <meta name="twitter:description" content={seo.description} />}
-      {seo.image && <meta name="image" content={seo.image} />}
-      {seo.image && <meta property="og:image" content={seo.image} />}
-      {seo.image && <meta name="twitter:image" content={seo.image} />}
-      )}
-      <meta name="twitter:card" content="summary_large_image" />
-      {seo.url && <meta property="og:url" content={seo.url} />}
-      {(article ? true : null) && <meta property="og:type" content="article" />}
-      {(product ? true : null) && <meta property="og:type" content="product" />}
-      {!product && !article && <meta property="og:type" content="website" />}
-      {site.author && <meta name="twitter:creator" content={site.author} />}
-      {noIndex && <meta name="robots" content="noindex" />}
+      {seo.title && <meta property='og:title' content={seo.title} />}
+      {seo.title && <meta name='twitter:title' content={seo.title} />}
+      {seo.description && <meta name='description' content={seo.description} />}
+      {seo.description && <meta property='og:description' content={seo.description} />}
+      {seo.description && <meta name='twitter:description' content={seo.description} />}
+      {seo.image && <meta name='image' content={seo.image} />}
+      {seo.image && <meta property='og:image' content={seo.image} />}
+      {seo.image && <meta name='twitter:image' content={seo.image} />}
+      <meta name='twitter:card' content='summary_large_image' />
+      {seo.url && <meta property='og:url' content={seo.url} />}
+      {seo.url && <link rel='canonical' href={seo.url} />}
+      {(article ? true : null) && <meta property='og:type' content='article' />}
+      {(product ? true : null) && <meta property='og:type' content='product' />}
+      {!product && !article && <meta property='og:type' content='website' />}
+      {site.author && <meta name='twitter:creator' content={site.author} />}
+      {noIndex && <meta name='robots' content='noindex' />}
     </Helmet>
   )
 }
