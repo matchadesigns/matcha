@@ -1,96 +1,70 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {Helmet} from 'react-helmet'
-import {StaticQuery, graphql} from 'gatsby'
+/**
+ * SEO component that queries for data with
+ *  Gatsby's useStaticQuery React hook
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
 
-function SEO ({description, lang, meta, keywords, title}) {
+import {useLocation} from '@reach/router'
+import PropTypes from 'prop-types'
+import React from 'react'
+import {Helmet} from 'react-helmet'
+import {truncateString} from '../lib/helpers'
+import {useSiteMetadata} from '../lib/useSiteMetadata'
+
+const SEO = ({title, description, image, product, article, noIndex = false}) => {
+  const site = useSiteMetadata()
+  const {pathname} = useLocation()
+
+  const seo = {
+    title: title && (title.length <= 60 ? (title.includes(site.title) ? title : `${title} — ${site.title}`) : title),
+    description: truncateString(description || siteMetadata.description, 147),
+    image: image ? image : `${site.url}/bannouheol.png`,
+    url: pathname && `${site.url}${pathname}`
+  }
+
   return (
-    <StaticQuery
-      query={detailsQuery}
-      render={data => {
-        const metaDescription = description || (data.site && data.site.description) || ''
-        const siteTitle = (data.site && data.site.title) || ''
-        const siteAuthor = (data.site && data.site.author && data.site.author.name) || ''
-        return (
-          <Helmet
-            htmlAttributes={{lang}}
-            title={title}
-            titleTemplate={title === siteTitle ? '%s' : `%s | ${siteTitle}`}
-            meta={[
-              {
-                name: 'description',
-                content: metaDescription
-              },
-              {
-                property: 'og:title',
-                content: title
-              },
-              {
-                property: 'og:description',
-                content: metaDescription
-              },
-              {
-                property: 'og:type',
-                content: 'website'
-              },
-              {
-                name: 'twitter:card',
-                content: 'summary'
-              },
-              {
-                name: 'twitter:creator',
-                content: siteAuthor
-              },
-              {
-                name: 'twitter:title',
-                content: title
-              },
-              {
-                name: 'twitter:description',
-                content: metaDescription
-              }
-            ]
-              .concat(
-                keywords && keywords.length > 0
-                  ? {
-                    name: 'keywords',
-                    content: keywords.join(', ')
-                  }
-                  : []
-              )
-              .concat(meta)}
-          />
-        )
-      }}
-    />
+    <Helmet>
+      {seo.title && (
+        <title itemProp="name" lang={`fr-FR`}>
+          {seo.title}
+        </title>
+      )}
+      {seo.title && <meta property="og:title" content={seo.title} />}
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+      {seo.description && <meta name="description" content={seo.description} />}
+      {seo.description && <meta property="og:description" content={seo.description} />}
+      {seo.description && <meta name="twitter:description" content={seo.description} />}
+      {seo.image && <meta name="image" content={seo.image} />}
+      {seo.image && <meta property="og:image" content={seo.image} />}
+      {seo.image && <meta name="twitter:image" content={seo.image} />}
+      )}
+      <meta name="twitter:card" content="summary_large_image" />
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      {(article ? true : null) && <meta property="og:type" content="article" />}
+      {(product ? true : null) && <meta property="og:type" content="product" />}
+      {!product && !article && <meta property="og:type" content="website" />}
+      {site.author && <meta name="twitter:creator" content={site.author} />}
+      {noIndex && <meta name="robots" content="noindex" />}
+    </Helmet>
   )
 }
 
 SEO.defaultProps = {
-  lang: 'fr-FR',
-  meta: [],
-  keywords: []
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+  product: false
 }
 
 SEO.propTypes = {
+  title: PropTypes.string.isRequired,
   description: PropTypes.string,
+  image: PropTypes.string,
   lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
+  article: PropTypes.bool,
+  product: PropTypes.bool
 }
 
 export default SEO
-
-const detailsQuery = graphql`
-  query DefaultSEOQuery {
-    site: sanitySiteSettings(_id: {eq: "siteSettings"}) {
-      title
-      description
-      keywords
-      author {
-        name
-      }
-    }
-  }
-`

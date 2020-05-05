@@ -23,8 +23,8 @@ const ProjectPage = ({data, errors, ...props}) => {
 
       {project && <Project {...project} />}
       {sameCategoryProjectsNodes && sameCategoryProjectsNodes.length > 0 && (
-        <Box mt={3}>
-          <Styled.h4>Dans la catégorie {category.title}</Styled.h4>
+        <Box p={5}>
+          <Styled.h3>Dans la catégorie {category.title}</Styled.h3>
           <ProjectList nodes={sameCategoryProjectsNodes} />
         </Box>
       )}

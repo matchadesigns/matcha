@@ -13,7 +13,7 @@ export const AnimBottomLeft = ({position = 'absolute', height, bottom, left}) =>
       }}
       transition={{
         duration: 23,
-        ease: 'easeInOut',
+        ease: 'linear',
         times: [0, 0.25, 0.5, 0.75, 1],
         loop: Infinity
       }}

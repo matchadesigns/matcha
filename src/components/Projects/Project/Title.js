@@ -9,7 +9,7 @@ export const Title = ({title, subtitle, category}) => {
       <Link to={category.link}>
         <h4 sx={{color: 'textMuted'}}>{category.title}</h4>
       </Link>
-      <h2>{title}</h2>
+      <h2 sx={{fontSize: [7, 8, 6, 8]}}>{title}</h2>
       <h3>{subtitle}</h3>
     </Fragment>
   )

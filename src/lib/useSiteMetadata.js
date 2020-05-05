@@ -7,6 +7,8 @@ export const useSiteMetadata = () => {
         site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
           title
           url
+          description
+          keywords
         }
       }
     `

@@ -15,7 +15,7 @@ const ProductPage = ({data, errors, ...props}) => {
   const {title, slug, category, images, description, price, sku, barcode, publishedAt} = product
   const sameCategoryProductsNodes = mapEdgesToNodes(sameCategoryProducts)
   const sameVariantGroupsProductsNodes = mapEdgesToNodes(sameVariantGroupsProducts)
-  const image = images && images.images && images.images[0] && images.images[0].asset.fluid.src
+  const image = images && images[0] && images[0].asset.fluid.src
   const excerpt = description && toPlainText(description)
   const productPath = getProductPath({category: category.slug.current, product: slug.current})
   return (
@@ -39,7 +39,7 @@ const ProductPage = ({data, errors, ...props}) => {
 
       {product && <Product {...product} sameVariantGroupsProductsNodes={sameVariantGroupsProductsNodes} />}
       {sameCategoryProductsNodes && sameCategoryProductsNodes.length > 0 && (
-        <Box mt={3}>
+        <Box mt={3} p={5} sx={{bg: '#f9f9f9'}}>
           <Styled.h2>Dans la même catégorie</Styled.h2>
           <ProductList nodes={sameCategoryProductsNodes} />
         </Box>

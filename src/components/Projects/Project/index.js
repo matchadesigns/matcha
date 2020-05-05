@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import {graphql} from 'gatsby'
-import {Box, Grid, jsx, Text} from 'theme-ui'
+import {Box, Grid, jsx} from 'theme-ui'
 import {getCategoryPath} from '../helpers'
 import {Body} from './Body'
 import {Images} from './Images'
 import {Title} from './Title'
-import {format, parseISO} from 'date-fns'
+import {Date} from './Date'
 
 export const Project = project => {
   graphql`
@@ -24,7 +24,7 @@ export const Project = project => {
   const categoryPath = getCategoryPath({category: category.slug})
   return (
     <article>
-      <Grid gap={2} columns={[1, 2, '4fr 6fr 4fr', '4fr 6fr 3fr']}>
+      <Grid gap={2} columns={[1, 1, 2]}>
         <Box sx={{order: 0}}>
           <Images images={images} />
         </Box>
@@ -39,7 +39,7 @@ export const Project = project => {
         >
           <Title title={title} subtitle={subtitle} category={{title: category.title, link: categoryPath}} />
           <Body raw={_rawBody} />
-          <Text>Publié le {format(parseISO(publishedAt), 'dd/MM/yyyy')}</Text>
+          <Date date={publishedAt} />
         </Box>
       </Grid>
     </article>

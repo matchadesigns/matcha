@@ -22,13 +22,13 @@ export const Social = ({path}) => {
     <Flex sx={{alignItems: 'center', color: 'textMuted'}}>
       Partager :{' '}
       <Link to={`https://www.facebook.com/sharer/sharer.php?u=${siteUrl}${path}`}>
-        <FaFacebookSquare size={24} sx={{ml: 1, color: 'light'}} />
+        <FaFacebookSquare size={24} sx={{ml: 1, color: 'textMuted'}} />
       </Link>
       <Link to={`https://twitter.com/intent/tweet?text=${siteUrl}${path}`}>
-        <FaTwitterSquare size={24} sx={{ml: 1, color: 'light'}} />
+        <FaTwitterSquare size={24} sx={{ml: 1, color: 'textMuted'}} />
       </Link>
       <Link to={`https://pinterest.com/pin/create/button/?url=${siteUrl}${path}`}>
-        <FaPinterestSquare size={24} sx={{ml: 1, color: 'light'}} />
+        <FaPinterestSquare size={24} sx={{ml: 1, color: 'textMuted'}} />
       </Link>
     </Flex>
   )

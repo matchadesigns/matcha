@@ -24,7 +24,7 @@ export const Bottom = ({height}) => (
       }}
     >
       <IoIosMail size={32} sx={{color: 'gray'}} />
-      contact.studiomatcha@gmail.com
+      contact@matchadesigns.com
     </Flex>
     <Flex sx={{justifyContent: ['center'], zIndex: 'inherit'}}>
       <a href='https://matchadesigns.com'>matchadesigns.com</a>

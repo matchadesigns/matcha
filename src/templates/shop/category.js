@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Styled} from 'theme-ui'
+import {jsx, Styled, Box} from 'theme-ui'
 import {Layout} from '../../components/Layout'
 import Seo from '../../components/SEO'
 import {graphql} from 'gatsby'
@@ -22,11 +22,12 @@ const CategoryPage = ({data, errors, ...props}) => {
         />
       )}
       {errors && <GraphQLErrorList errors={errors} />}
+      <Box p={4}>
+        {category && <Styled.h1>{category.title}</Styled.h1>}
+        {category && category.description && <BlockContent blocks={category.description} />}
 
-      {category && <Styled.h1>{category.title}</Styled.h1>}
-      {category && category.description && <BlockContent blocks={category.description} />}
-
-      {productNodes && productNodes.length > 0 && <ProductList nodes={productNodes} sx={{mt: 3}} />}
+        {productNodes && productNodes.length > 0 && <ProductList nodes={productNodes} sx={{mt: 3}} />}
+      </Box>
     </Layout>
   )
 }

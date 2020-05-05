@@ -9,12 +9,12 @@ export const AnimBottomRight = ({position = 'absolute', height, bottom, right}) 
   <Fragment>
     <motion.div
       animate={{
-        rotate: [0, 5, 10, 5, 0, -5, -10, -5, 0]
+        rotate: [0, 10, -10, 3, 0]
       }}
       transition={{
         duration: 20,
-        ease: 'easeInOut',
-        times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1],
+        ease: 'linear',
+        times: [0, 0.25, 0.5, 0.75, 1],
         loop: Infinity
       }}
       sx={{bottom, right, position}}

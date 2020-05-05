@@ -5,7 +5,6 @@ const currency = require('currency.js')
 /* TEMPLATES */
 const templates = {
   baseDir: 'src/templates',
-  project: 'project.js', // example app
   projects: {
     // index: 'projects/index.js', added as a gatsby page
     project: 'projects/project.js',
@@ -16,42 +15,6 @@ const templates = {
     product: 'shop/product.js',
     category: 'shop/category.js'
   }
-}
-
-async function createExampleProjectPages (graphql, actions, reporter) {
-  const {createPage} = actions
-  const result = await graphql(`
-    {
-      allSanitySampleProject(filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}) {
-        edges {
-          node {
-            id
-            publishedAt
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
-  if (result.errors) throw result.errors
-  const projectEdges = (result.data.allSanitySampleProject || {}).edges || []
-  projectEdges
-    .filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
-    .forEach(edge => {
-      const id = edge.node.id
-      const slug = edge.node.slug.current
-      const path = `/project/${slug}/`
-
-      reporter.info(`Creating project page: ${path}`)
-
-      createPage({
-        path,
-        component: pth.resolve(pth.join(templates.baseDir, templates.project)),
-        context: {id}
-      })
-    })
 }
 
 /*
@@ -213,7 +176,6 @@ async function createShopCategoryPages (graphql, actions, reporter) {
 }
 
 exports.createPages = async ({graphql, actions, reporter}) => {
-  await createExampleProjectPages(graphql, actions, reporter)
   await createProjectPages(graphql, actions, reporter)
   await createShopProductPages(graphql, actions, reporter)
   await createShopCategoryPages(graphql, actions, reporter)

@@ -47,7 +47,7 @@ export const ProductCard = ({id, title, slug, category, images, price, sku}) => 
         }}
       >
         <div>
-          <div>
+          <div sx={{boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)'}}>
             {images && images[0] && images[0].asset && <Image fluid={images[0].asset.fluid} link={productPath} />}
           </div>
           <Box p={1}>

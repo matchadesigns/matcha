@@ -2,16 +2,7 @@
 import {jsx, Button} from 'theme-ui'
 import {IoIosCart} from 'react-icons/io'
 
-export const AddToCart = ({
-  id,
-  title,
-  price,
-  url,
-  description,
-  image,
-  discrete = false,
-  ...props
-}) => {
+export const AddToCart = ({id, title, price, url, description, image, discrete = false, ...props}) => {
   return (
     <Button
       className='snipcart-add-item'
@@ -24,7 +15,7 @@ export const AddToCart = ({
       variant={discrete ? 'discrete' : 'primary'}
       {...props}
     >
-      {!discrete && <IoIosCart />}
+      {!discrete && <IoIosCart sx={{mr: 1}} />}
       {discrete ? 'Acheter' : 'Ajouter au panier'}
     </Button>
   )

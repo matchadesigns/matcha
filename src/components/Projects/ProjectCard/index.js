@@ -5,6 +5,7 @@ import {Box, Grid, jsx} from 'theme-ui'
 import {Image} from './Image'
 import {Title} from './Title'
 import {getProjectPath} from '../helpers'
+import ProjectPlus from '../../../assets/svg/ProjectPlus.svg'
 
 export const ProjectCard = ({title, subtitle, slug, category, previewImages, cardBgColor, width = 300}) => {
   graphql`
@@ -46,7 +47,8 @@ export const ProjectCard = ({title, subtitle, slug, category, previewImages, car
         gridTemplateColumns: `minmax(150px, ${width}px) minmax(150px, ${width}px)`
       }}
     >
-      <Box p={4} sx={{display: 'grid', background, height: '300px'}}>
+      <Box p={4} sx={{display: 'grid', background, height: '300px', alignItems: 'center'}}>
+        <ProjectPlus sx={{width: '32px'}} />
         <Title title={title} subtitle={subtitle} category={category.title} link={projectPath} />
       </Box>
       <Grid>

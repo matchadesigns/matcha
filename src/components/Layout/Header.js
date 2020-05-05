@@ -27,13 +27,15 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
         display: ['none', 'none', 'none', 'grid']
       }}
     >
-      <Link to='/'>
-        <div sx={{display: 'flex', flexDirection: 'column', mr: 5}}>
-          <h1 hidden>{title}</h1>
-          <MatchaCurved sx={{width: '96px', mx: 'auto'}} />
-          <Logo size={24} sx={{width: '48px', mx: 'auto'}} />
-        </div>
-      </Link>
+      {hasBranding && (
+        <Link to='/'>
+          <div sx={{display: 'flex', flexDirection: 'column', mr: 5}}>
+            <h1 hidden>{title}</h1>
+            <MatchaCurved sx={{width: '96px', mx: 'auto'}} />
+            <Logo size={24} sx={{width: '48px', mx: 'auto'}} />
+          </div>
+        </Link>
+      )}
 
       {showNav && (
         <button>
