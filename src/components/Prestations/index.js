@@ -71,8 +71,8 @@ export const Prestations = props => {
 
 const Button = ({to, color, children, ...props}) => (
   <ThemeUiButton
-    as={Link}
-    to={to}
+    as='a'
+    href={to}
     sx={{
       display: 'inline',
       width: 'auto',
@@ -81,6 +81,9 @@ const Button = ({to, color, children, ...props}) => (
       mt: 3,
       ':hover': {textDecoration: 'none'}
     }}
+    target='_blank'
+    noopener='true'
+    noreferrer='true'
     {...props}
   >
     {children}

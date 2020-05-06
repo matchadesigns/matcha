@@ -52,9 +52,10 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
           <MenuLink to='/actualites/' activeClassName='active'>
             <Li>Actualités</Li>
           </MenuLink>
+          {/*
           <MenuLink to='/qui-sommes-nous/' activeClassName='active'>
             <Li>Qui sommes nous</Li>
-          </MenuLink>
+          </MenuLink> */}
           <MenuLink to='/contact/' activeClassName='active'>
             <Li>Contact</Li>
           </MenuLink>

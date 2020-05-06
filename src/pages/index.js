@@ -7,6 +7,7 @@ import {Main} from '../components/Layout/Main'
 import Seo from '../components/Seo'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
 import {Prestations} from '../components/Prestations'
+import {Qui} from '../components/Qui'
 
 const IndexPage = props => {
   const {
@@ -36,7 +37,7 @@ const IndexPage = props => {
       <Main>
         <h1 hidden>{site.title}</h1>
         <p hidden>{site.description}</p>
-        <Prestations />
+        <Qui />
       </Main>
     </Layout>
   )
