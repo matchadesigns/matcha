@@ -2,13 +2,11 @@ import {tailwind} from '@theme-ui/presets'
 // import '../assets/styles/reset.css'
 import '../assets/styles/custom.css'
 import '../assets/styles/fonts.css'
-import {Styled} from 'theme-ui'
 
 export default {
   ...tailwind,
   breakpoints: ['640px', '768px', '1024px', '1216px', '1600px'],
   colors: {
-    black: '#1B171C',
     ...tailwind.colors,
     primary: '#B1834D',
     secondary: '#F2E9DF',
@@ -16,7 +14,8 @@ export default {
     white: '#ffffff',
     black: '#1B171C',
     text: '#000',
-    green: '#39B54A'
+    green: '#39B54A',
+    red: '#D48464'
   },
   fonts: {
     ...tailwind.fonts,
@@ -68,18 +67,14 @@ export default {
       pt: 2
     },
     root: {
+      maxWidth: '100vw',
       fontWeight: 300,
       ...tailwind.styles.root,
       minHeight: 'full',
       height: 'full',
       bg: 'brownWhite',
       fontFamily: 'body',
-      fontWeight: 'body',
       letterSpacing: '1px',
-      a: {
-        color: 'text',
-        textDecoration: 'none'
-      },
       h1: {
         variant: 'styles.h1'
       },
@@ -101,6 +96,7 @@ export default {
       a: {
         ...tailwind.styles.a,
         color: 'text',
+        textDecoration: 'none',
         fontWeight: 'bold',
         ':hover': {
           // textDecoration: 'underline'
@@ -142,6 +138,21 @@ export default {
       bg: 'white',
       position: 'relative',
       zIndex: 1
+    },
+    mobileMenu: {
+      bg: 'primary',
+      position: 'fixed',
+      height: '100%',
+      display: ['block', 'none'],
+      p: 4,
+      color: 'white',
+      a: {
+        color: 'white',
+        py: 3,
+        borderBottom: '1px solid',
+        borderColor: 'rgba(255,255,255,0.125)',
+        ':focus': {outline: 0}
+      }
     },
     footer: {
       gridRowStart: 3,

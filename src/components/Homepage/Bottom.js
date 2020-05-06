@@ -40,10 +40,22 @@ export const Bottom = ({height}) => {
         }}
       >
         <Text sx={{pr: 2, display: ['none', 'none', 'flex']}}>Suivez-nous sur les réseaux sociaux :</Text>
-        <a href={`https://facebook.com/${facebook}`} sx={{display: 'flex', pr: 1}}>
+        <a
+          href={`https://facebook.com/${facebook}`}
+          sx={{display: 'flex', pr: 1}}
+          target='_blank'
+          noopener='true'
+          noreferrer='true'
+        >
           <Facebook sx={{width: '32px', mr: 1}} />
         </a>
-        <a href={`https://instagram.com/${instagram}`} sx={{display: 'flex'}}>
+        <a
+          href={`https://instagram.com/${instagram}`}
+          sx={{display: 'flex'}}
+          target='_blank'
+          noopener='true'
+          noreferrer='true'
+        >
           <Instagram sx={{width: '32px'}} />
         </a>
       </Flex>

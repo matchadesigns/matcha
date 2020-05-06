@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import {motion} from 'framer-motion'
 import {jsx} from 'theme-ui'
-import {Fragment} from 'react'
 import Forme from '../../assets/svg/HomepageAnimBottomRight.svg'
 import Lacet from '../../assets/svg/HomepageAnimBottomRightLacet.svg'
 
 export const AnimBottomRight = ({position = 'absolute', height, bottom, right}) => (
-  <Fragment>
+  <div sx={{}}>
     <motion.div
       animate={{
         rotate: [0, 10, -10, 3, 0]
@@ -35,5 +34,5 @@ export const AnimBottomRight = ({position = 'absolute', height, bottom, right}) 
     >
       <Lacet sx={{height, position}} />
     </motion.div>
-  </Fragment>
+  </div>
 )

@@ -1,45 +1,49 @@
 /** @jsx jsx */
 import {motion} from 'framer-motion'
-import {useState} from 'react'
+import React, {useState} from 'react'
 import {jsx} from 'theme-ui'
 import '../../assets/styles/layout.css'
 import {Footer} from './Footer'
 import {Header} from './Header'
+import {Mobile as MobileMenu} from './Menu'
+
+export const MenuContext = React.createContext(false)
 
 export const Layout = ({children, transparentHeader = false, noBranding = false, ...props}) => {
-  const [showNav, setShowNav] = useState(false)
+  const [menuOpenState, setMenuOpenState] = useState(false)
   const [isTransparentHeader, setTransparentHeader] = useState(transparentHeader)
   const [hasBranding, setHasBranding] = useState(!noBranding)
-  function handleShowNav () {
-    setShowNav(true)
-  }
-  function handleHideNav () {
-    setShowNav(false)
-  }
   return (
-    <motion.div
-      sx={{
-        bg: 'brownWhite',
-        minHeight: 'full',
-        display: 'grid',
-        gridTemplateRows: 'auto auto auto'
+    <MenuContext.Provider
+      value={{
+        isMenuOpen: menuOpenState,
+        handleToggleMenu: () => setMenuOpenState(!menuOpenState),
+        stateChangeHandler: newState => setMenuOpenState(newState.isOpen)
       }}
     >
-      <Header
-        onHideNav={handleHideNav}
-        onShowNav={handleShowNav}
-        showNav={showNav}
-        isTransparent={isTransparentHeader}
-        hasBranding={hasBranding}
-      />
+      <MobileMenu />
+      <motion.div
+        id='app'
+        sx={{
+          bg: 'brownWhite',
+          minHeight: 'full',
+          display: 'grid',
+          gridTemplateRows: 'auto auto auto',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'wrap'
+        }}
+      >
+        <Header isTransparent={isTransparentHeader} hasBranding={hasBranding} />
 
-      <motion.main sx={{variant: 'layout.content', bg: transparentHeader ? 'brownWhite' : 'white'}} layoutId='layout'>
-        {/* exit={{opacity: 0}}
+        <motion.main sx={{variant: 'layout.content', bg: transparentHeader ? 'brownWhite' : 'white'}} layoutId='layout'>
+          {/* exit={{opacity: 0}}
       initial='initial'
   animate */}
-        {children}
-      </motion.main>
-      <Footer />
-    </motion.div>
+          {children}
+        </motion.main>
+        <Footer />
+      </motion.div>
+    </MenuContext.Provider>
   )
 }
