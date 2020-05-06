@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "matcha-web",
+  "name": "matcha",
   "version": "1.0.0",
   "author": "Mâtcha",
   "scripts": {
