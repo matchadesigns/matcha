@@ -18,7 +18,8 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
         bg: isTransparent ? 'transparent' : 'brownWhite',
         position: isTransparent ? 'fixed' : 'sticky',
         boxShadow: !isTransparent && '0 5px 8px rgba(0,0,0,.05)',
-        width: 'full'
+        width: 'full',
+        py: !hasBranding && 4
       }}
     >
       {hasBranding && (

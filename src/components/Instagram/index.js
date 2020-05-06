@@ -1,23 +1,20 @@
 /** @jsx jsx */
-import {Grid, jsx} from 'theme-ui'
 import {graphql, useStaticQuery} from 'gatsby'
+import {Fragment} from 'react'
+import {Button, Flex, Grid, jsx} from 'theme-ui'
 import {mapEdgesToNodes} from '../../lib/helpers'
 import {GraphQLErrorList} from '../GraphQLErrorList'
 import {Post} from './Post'
+import {useSiteMetadata} from '../../lib/useSiteMetadata'
 
 export const Instagram = props => {
+  const {instagram} = useSiteMetadata()
   const {insta, errors} = useStaticQuery(graphql`
     {
       insta: allInstaNode {
         edges {
           node {
-            id
-            caption
-            thumbnails {
-              src
-              config_width
-              config_height
-            }
+            ...InstagramPostFields
           }
         }
       }
@@ -28,8 +25,28 @@ export const Instagram = props => {
   }
   const nodes = mapEdgesToNodes(insta)
   return (
-    <Grid columns={[1, 1, 1, 2, 2, 7]} sx={{width: 'full'}} {...props}>
-      {nodes && nodes.map(post => <Post key={post.id} {...post} />)}
-    </Grid>
+    <Fragment>
+      <Flex sx={{alignContent: 'center', flexDirection: 'column'}}>
+        <Grid columns={[1, 2, 2, '320px 320px 320px']} sx={{width: 'auto', mx: 'auto'}} {...props}>
+          {nodes &&
+            nodes.map(post => {
+              console.log(post)
+              return <Post key={post.id} {...post} />
+            })}
+        </Grid>
+        <div sx={{textAlign: 'center', pt: 5}}>
+          <Button
+            as='a'
+            href={`https://instagram.com/${instagram}`}
+            sx={{display: 'inline'}}
+            target='_blank'
+            noopener='true'
+            noreferrer='true'
+          >
+            Voir plus de posts
+          </Button>
+        </div>
+      </Flex>
+    </Fragment>
   )
 }

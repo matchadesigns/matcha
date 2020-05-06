@@ -1,5 +1,5 @@
 import {tailwind} from '@theme-ui/presets'
-import '../assets/styles/reset.css'
+// import '../assets/styles/reset.css'
 import '../assets/styles/custom.css'
 import '../assets/styles/fonts.css'
 import {Styled} from 'theme-ui'
@@ -8,21 +8,25 @@ export default {
   ...tailwind,
   breakpoints: ['640px', '768px', '1024px', '1216px', '1600px'],
   colors: {
+    black: '#1B171C',
     ...tailwind.colors,
     primary: '#B1834D',
     secondary: '#F2E9DF',
     brownWhite: '#F2E9DF',
     white: '#ffffff',
     black: '#1B171C',
-    gray: '#464448',
     text: '#000',
     green: '#39B54A'
   },
   fonts: {
     ...tailwind.fonts,
     body:
-      '"ChampagneLimousines", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+      '"Sulphur Point", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     heading: 'SimplePrint'
+  },
+  fontWeights: {
+    ...tailwind.fontWeights,
+    body: 300
   },
   buttons: {
     ...tailwind.buttons,
@@ -64,6 +68,7 @@ export default {
       pt: 2
     },
     root: {
+      fontWeight: 300,
       ...tailwind.styles.root,
       minHeight: 'full',
       height: 'full',
@@ -90,9 +95,6 @@ export default {
       h5: {
         variant: 'styles.h5'
       },
-      p: {
-        pb: 3
-      },
       strong: {
         fontWeight: 'bold'
       },
@@ -101,7 +103,8 @@ export default {
         color: 'text',
         fontWeight: 'bold',
         ':hover': {
-          textDecoration: 'underline'
+          // textDecoration: 'underline'
+          color: 'gray.7'
         }
       }
     }
@@ -115,7 +118,9 @@ export default {
       alignItems: 'stretch',
       '#logo': {
         flexGrow: 1,
-        flexBasis: 'sidebar'
+        flexBasis: 'sidebar',
+        pl: 3,
+        py: 2
       },
       nav: {
         display: 'flex',
@@ -123,7 +128,10 @@ export default {
         justifyContent: 'flex-end',
         flexGrow: 99999,
         flexBasis: 0,
-        minWidth: '50%'
+        minWidth: '50%',
+        a: {
+          fontWeight: 'light'
+        }
       }
     },
     content: {

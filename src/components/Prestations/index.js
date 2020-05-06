@@ -40,14 +40,14 @@ export const Prestations = props => {
           <div sx={{color: colors.design}}>
             <Nuancier sx={{width: '8vmin'}} />
             <Design />
-            <Button to='/prestations/' color={colors.design}>
+            <Button to='/presta_deco.pdf' color={colors.design}>
               Voir détails prestations
             </Button>
           </div>
           <div sx={{color: colors.graphisme, mt: 3}}>
             <Crayon sx={{width: '8vmin'}} />
             <Graphisme />
-            <Button to='/prestations/' color={colors.graphisme}>
+            <Button to='/presta_graphique.pdf' color={colors.graphisme}>
               Voir détails prestations
             </Button>
           </div>

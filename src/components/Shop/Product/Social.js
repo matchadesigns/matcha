@@ -19,16 +19,16 @@ export const Social = ({path}) => {
     </a>
   )
   return (
-    <Flex sx={{alignItems: 'center', color: 'textMuted', mt: 3}}>
+    <Flex sx={{alignItems: 'center', color: 'gray.6', mt: 3}}>
       Partager :{' '}
       <Link to={`https://www.facebook.com/sharer/sharer.php?u=${siteUrl}${path}`}>
-        <FaFacebookSquare size={24} sx={{ml: 1, color: 'textMuted'}} />
+        <FaFacebookSquare size={24} sx={{ml: 1, color: 'gray.6'}} />
       </Link>
       <Link to={`https://twitter.com/intent/tweet?text=${siteUrl}${path}`}>
-        <FaTwitterSquare size={24} sx={{ml: 1, color: 'textMuted'}} />
+        <FaTwitterSquare size={24} sx={{ml: 1, color: 'gray.6'}} />
       </Link>
       <Link to={`https://pinterest.com/pin/create/button/?url=${siteUrl}${path}`}>
-        <FaPinterestSquare size={24} sx={{ml: 1, color: 'textMuted'}} />
+        <FaPinterestSquare size={24} sx={{ml: 1, color: 'gray.6'}} />
       </Link>
     </Flex>
   )
