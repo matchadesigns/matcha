@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import {motion} from 'framer-motion'
 import {graphql} from 'gatsby'
-import {FcLike} from 'react-icons/fc'
+import Img from 'gatsby-image'
 import {FaComment} from 'react-icons/fa'
-import {Card, Link, Flex, Image, jsx, Text} from 'theme-ui'
+import {FcLike} from 'react-icons/fc'
+import {Card, Flex, jsx, Text} from 'theme-ui'
 import {truncateString} from '../../lib/helpers'
 
-export const Post = ({id, caption, thumbnails, likes, comments}) => {
+export const Post = ({id, caption, image, thumbnails, likes, comments}) => {
   graphql`
     fragment InstagramPostFields on InstaNode {
       id
@@ -17,6 +18,13 @@ export const Post = ({id, caption, thumbnails, likes, comments}) => {
         src
         config_width
         config_height
+      }
+      image: localFile {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   `
@@ -33,8 +41,7 @@ export const Post = ({id, caption, thumbnails, likes, comments}) => {
           }
         }}
         target='_blank'
-        noopener='true'
-        noreferrer='true'
+        rel='noopener noreferrer'
       >
         <Card
           as='article'
@@ -50,7 +57,7 @@ export const Post = ({id, caption, thumbnails, likes, comments}) => {
             maxWidth: thumbnails[2].config_width
           }}
         >
-          <Image src={thumbnails[2].src} />
+          <Img fluid={image.childImageSharp.fluid} />
           <Text p={3} pb={1}>
             {truncateString(caption, 140)}
           </Text>

@@ -40,7 +40,7 @@ export const Instagram = props => {
             href={`https://instagram.com/${instagram}`}
             sx={{display: 'inline'}}
             target='_blank'
-            noopener='true'
+            rel='noopener noreferrer'
             noreferrer='true'
           >
             Voir plus de posts

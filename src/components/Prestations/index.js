@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {graphql, Link, useStaticQuery} from 'gatsby'
+import {graphql, useStaticQuery} from 'gatsby'
 import {Button as ThemeUiButton, Grid, jsx} from 'theme-ui'
 import Crayon from '../../assets/svg/PrestationsCrayon.svg'
 import Lampe from '../../assets/svg/PrestationsLampe.svg'
@@ -43,20 +43,14 @@ export const Prestations = props => {
           <div sx={{color: colors.design}}>
             <Nuancier sx={{width: '8vmin'}} />
             <Design />
-            <Button to='/presta_deco.pdf' color={colors.design} target='_blank' noopener='true' noreferrer='true'>
+            <Button to='/presta_deco.pdf' color={colors.design} target='_blank' rel='noopener noreferrer'>
               Voir détails prestations
             </Button>
           </div>
           <div sx={{color: colors.graphisme, mt: 3}}>
             <Crayon sx={{width: '8vmin'}} />
             <Graphisme />
-            <Button
-              to='/presta_graphique.pdf'
-              color={colors.graphisme}
-              target='_blank'
-              noopener='true'
-              noreferrer='true'
-            >
+            <Button to='/presta_graphique.pdf' color={colors.graphisme} target='_blank' rel='noopener noreferrer'>
               Voir détails prestations
             </Button>
           </div>

@@ -3,6 +3,7 @@ export const links = [
   {url: '/prestations/', text: 'Prestations'},
   {url: '/realisations/', text: 'Réalisations'},
   {url: '/actualites/', text: 'Actualités'},
+  {url: '/#qui', text: 'Qui sommes-nous ?'},
   {url: '/contact/', text: 'Contact'}
 ]
 

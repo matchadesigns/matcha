@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import {graphql, useStaticQuery} from 'gatsby'
 import {AiOutlinePlus} from 'react-icons/ai'
-import {Grid, Image, jsx} from 'theme-ui'
+import {Grid, jsx} from 'theme-ui'
 import {BlockContent} from '../components/BlockContent'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
+import Img from 'gatsby-image'
 
 export const Qui = () => {
   const {
     page: {_rawBody: body, _rawSegments: segments},
+    image,
     errors
   } = useStaticQuery(graphql`
     {
@@ -15,6 +17,13 @@ export const Qui = () => {
         title
         _rawBody
         _rawSegments
+      }
+      image: file(relativePath: {eq: "quisommesnous.jpg"}) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   `)
@@ -26,7 +35,7 @@ export const Qui = () => {
   const Geoffrey = () => <BlockContent blocks={segments[1].body} />
 
   return (
-    <div sx={{position: 'relative', p: 4, maxWidth: '600px', margin: 'auto'}}>
+    <div sx={{position: 'relative', p: 4, maxWidth: ['full', 'full', '75vmin', '75vmin'], margin: 'auto'}}>
       <Grid
         sx={{
           textAlign: 'center',
@@ -45,7 +54,7 @@ export const Qui = () => {
           <Geoffrey />
         </div>
       </Grid>
-      <Image src='/matcha.jpg' />
+      {image && image.childImageSharp && <Img fluid={image.childImageSharp.fluid} />}
       <BlockContent blocks={body} />
     </div>
   )

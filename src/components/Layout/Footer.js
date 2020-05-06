@@ -13,11 +13,11 @@ export const Footer = () => {
       © {new Date().getFullYear()} <a href={url}>{title}</a>
       <div sx={{color: '#aaa'}}>
         Fabriqué avec ♥ à Nantes, avec{' '}
-        <a href='https://www.gatsbyjs.org' target='_blank' noopener='true' noreferrer='true'>
+        <a href='https://www.gatsbyjs.org' target='_blank' rel='noopener noreferrer'>
           Gatsby
         </a>{' '}
         &amp;{' '}
-        <a href='https://www.sanity.io' target='_blank' noopener='true' noreferrer='true'>
+        <a href='https://www.sanity.io' target='_blank' rel='noopener noreferrer'>
           Sanity
         </a>
       </div>
