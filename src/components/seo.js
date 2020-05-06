@@ -12,7 +12,7 @@ import {Helmet} from 'react-helmet'
 import {truncateString} from '../lib/helpers'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
 
-const SEO = ({title, description, image, product, article, noIndex = false}) => {
+const Seo = ({title, description, image, product, article, noIndex = false}) => {
   const site = useSiteMetadata()
   const {pathname} = useLocation()
 
@@ -52,7 +52,7 @@ const SEO = ({title, description, image, product, article, noIndex = false}) => 
   )
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   title: null,
   description: null,
   image: null,
@@ -60,7 +60,7 @@ SEO.defaultProps = {
   product: false
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,
@@ -69,4 +69,4 @@ SEO.propTypes = {
   product: PropTypes.bool
 }
 
-export default SEO
+export default Seo

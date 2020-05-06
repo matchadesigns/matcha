@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {jsx, Box, Styled} from 'theme-ui'
 import {Layout} from '../../components/Layout'
-import SEO from '../../components/SEO'
+import Seo from '../../components/Seo'
 import {graphql} from 'gatsby'
 import {GraphQLErrorList} from '../../components/GraphQLErrorList'
 import {Product} from '../../components/Shop/Product'
@@ -20,8 +20,8 @@ const ProductPage = ({data, errors, ...props}) => {
   const productPath = getProductPath({category: category.slug.current, product: slug.current})
   return (
     <Layout {...props}>
-      {errors && <SEO title='GraphQL Error' />}
-      {product && <SEO title={title} description={excerpt} image={image} product />}
+      {errors && <Seo title='GraphQL Error' />}
+      {product && <Seo title={title} description={excerpt} image={image} product />}
       {product && (
         <ProductRichSnippet
           title={title}

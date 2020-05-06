@@ -10,7 +10,7 @@ import {
   mapEdgesToNodes,
   toPlainText
 } from '../lib/helpers'
-import Seo from '../components/SEO'
+import Seo from '../components/Seo'
 import {BlockContent} from '../components/BlockContent'
 
 const ProjectsPage = ({data, errors}) => {

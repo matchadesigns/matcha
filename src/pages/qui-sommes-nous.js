@@ -4,7 +4,7 @@ import {jsx, Grid, Image, Flex} from 'theme-ui'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
 import {Main} from '../components/Layout/Main'
-import Seo from '../components/SEO'
+import Seo from '../components/Seo'
 import {BlockContent} from '../components/BlockContent'
 import {AiOutlinePlus} from 'react-icons/ai'
 

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {jsx, Styled, Box, Grid} from 'theme-ui'
 import {Layout} from '../components/Layout'
-import Seo from '../components/SEO'
+import Seo from '../components/Seo'
 import {graphql, Link} from 'gatsby'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {toPlainText, mapEdgesToNodes} from '../lib/helpers'

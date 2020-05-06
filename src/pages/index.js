@@ -4,7 +4,7 @@ import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Homepage} from '../components/Homepage'
 import {Layout} from '../components/Layout'
 import {Main} from '../components/Layout/Main'
-import Seo from '../components/SEO'
+import Seo from '../components/Seo'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
 import {Prestations} from '../components/Prestations'
 

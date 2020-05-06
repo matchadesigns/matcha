@@ -4,6 +4,7 @@
     "**/.yarn": true,
     "**/.cache": true,
     "**/node_modules": true,
-    "web/public": true
+    "web/public": true,
+    "**/.lock": true
   }
 }
