@@ -35,7 +35,7 @@ export const Qui = () => {
           'h2,h3': {lineHeight: 1, m: 0}
         }}
       >
-        <div sx={{color: '#8A8985'}}>
+        <div id='qui' sx={{color: '#8A8985'}}>
           <Melo />
         </div>
         <div sx={{pt: 2}}>

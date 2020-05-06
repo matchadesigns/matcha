@@ -11,7 +11,7 @@ export const Instagram = props => {
   const {instagram} = useSiteMetadata()
   const {insta, errors} = useStaticQuery(graphql`
     {
-      insta: allInstaNode {
+      insta: allInstaNode(sort: {order: DESC, fields: timestamp}) {
         edges {
           node {
             ...InstagramPostFields
