@@ -6,7 +6,7 @@ import {jsx} from 'theme-ui'
 export const Title = ({title, subtitle, category, link}) => {
   return (
     <Fragment>
-      <h4 sx={{color: 'light', m: 0, lineHeight: 1}}>{category}</h4>
+      <h4 sx={{color: 'light', m: 0}}>{category}</h4>
       <Link
         to={link}
         sx={{
@@ -14,7 +14,7 @@ export const Title = ({title, subtitle, category, link}) => {
           ':hover': {textDecoration: 'none', borderColor: 'rgba(0,0,0,0.08)'}
         }}
       >
-        <h2 sx={{m: 0, lineHeight: 1}}>{title}</h2>
+        <h2 sx={{m: 0}}>{title}</h2>
       </Link>
       <h3 sx={{m: 0, lineHeight: 1}}>{subtitle}</h3>
     </Fragment>

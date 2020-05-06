@@ -104,3 +104,8 @@ export const Images = ({images}) => {
     </div>
   )
 }
+
+const swipeConfidenceThreshold = 10000
+const swipePower = (offset, velocity) => {
+  return Math.abs(offset) * velocity
+}

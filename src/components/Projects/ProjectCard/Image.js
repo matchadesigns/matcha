@@ -7,14 +7,14 @@ import {Link, graphql} from 'gatsby'
 export const Image = ({image, link}) => {
   graphql`
     fragment projectCardImageFields on SanityImageAsset {
-      fixed(width: 300, height: 300) {
-        ...GatsbySanityImageFixed
+      fluid {
+        ...GatsbySanityImageFluid
       }
     }
   `
   const Image = () => (
     <Img
-      fixed={image.asset.fixed}
+      fluid={image.asset.fluid}
       sx={{
         variant: 'images.card',
         filter: 'grayscale(100%)',
@@ -23,7 +23,8 @@ export const Image = ({image, link}) => {
           filter: 'none',
           ':-webkit-filter': 'none'
         },
-        height: 'full'
+        height: 'full',
+        width: 'full'
       }}
     />
   )

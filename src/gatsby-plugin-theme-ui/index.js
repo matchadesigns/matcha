@@ -102,6 +102,9 @@ export default {
           // textDecoration: 'underline'
           color: 'gray.7'
         }
+      },
+      'a,button': {
+        ':focus': {outline: 0}
       }
     }
   },
@@ -143,15 +146,14 @@ export default {
       bg: 'primary',
       position: 'fixed',
       height: '100%',
-      display: ['block', 'none'],
+      display: ['block', 'block', 'none'],
       p: 4,
       color: 'white',
       a: {
         color: 'white',
         py: 3,
         borderBottom: '1px solid',
-        borderColor: 'rgba(255,255,255,0.125)',
-        ':focus': {outline: 0}
+        borderColor: 'rgba(255,255,255,0.125)'
       }
     },
     footer: {

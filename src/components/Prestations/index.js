@@ -35,7 +35,10 @@ export const Prestations = props => {
     <div sx={{position: 'relative', p: 4}} {...props}>
       <AnimTop height={['12vmin']} top={['0']} right={['20%']} />
       <AnimBottom height={['12vmin']} bottom={['12vmin']} left={['50%']} />
-      <Grid columns={[1, 3]} sx={{alignItems: 'center', justifyItems: ['start', 'center'], height: 'full'}}>
+      <Grid
+        columns={[1, 1, '2fr 1fr 2fr']}
+        sx={{alignItems: 'center', justifyItems: ['start', 'center'], height: 'full'}}
+      >
         <Grid sx={{order: [2, 1]}}>
           <div sx={{color: colors.design}}>
             <Nuancier sx={{width: '8vmin'}} />

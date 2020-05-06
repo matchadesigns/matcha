@@ -41,17 +41,15 @@ export const ProjectCard = ({title, subtitle, slug, category, previewImages, car
   const image = previewImages && previewImages[0]
   const background = cardBgColor && cardBgColor.rgb && parseRGBA(cardBgColor.rgb)
   return (
-    <Grid
-      gap={0}
-      sx={{
-        gridTemplateColumns: `minmax(150px, ${width}px) minmax(150px, ${width}px)`
-      }}
-    >
-      <Box p={4} sx={{display: 'grid', background, height: '300px', alignItems: 'center'}}>
-        <ProjectPlus sx={{width: '32px'}} />
+    <Grid gap={0} columns={[1, 2]} sx={{}}>
+      <Box
+        p={4}
+        sx={{display: 'grid', order: [1, 0], gap: 0, background, minHeight: ['200px', '300px'], alignItems: 'center'}}
+      >
+        <ProjectPlus sx={{width: '32px', mb: 3}} />
         <Title title={title} subtitle={subtitle} category={category.title} link={projectPath} />
       </Box>
-      <Grid>
+      <Grid sx={{order: [0, 1]}}>
         <Image image={image} link={projectPath} />
       </Grid>
     </Grid>
