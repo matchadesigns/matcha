@@ -28,6 +28,7 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
+
   return (
     <Layout transparentHeader noBranding>
       <Seo title={site.title} description={site.description} keywords={site.keywords} />
