@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import {Link} from 'gatsby'
 import {Flex, jsx} from 'theme-ui'
 import Logo from '../../assets/svg/logo.svg'
-import MatchaCurved from '../../assets/svg/matcha_curved.svg'
+// import MatchaCurved from '../../assets/svg/matcha_curved.svg'
 import {useSiteMetadata} from '../../lib/useSiteMetadata'
 import Icon from '../icon'
 
@@ -26,8 +26,8 @@ export const Header = ({isTransparent, hasBranding, onHideNav, onShowNav, showNa
         <Link to='/'>
           <Flex id='logo' sx={{flexDirection: 'column', px: 3, py: 0}}>
             <h1 hidden>{title}</h1>
-            <MatchaCurved sx={{width: '96px', mx: 'auto'}} />
-            <Logo sx={{width: '48px', mx: 'auto', mt: '-10px'}} />
+            {/* <MatchaCurved sx={{width: '96px', mx: 'auto'}} /> */}
+            <Logo sx={{height: '100px', mx: 'auto', mt: '-10px'}} />
           </Flex>
         </Link>
       )}
