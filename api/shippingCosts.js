@@ -23,14 +23,12 @@ module.exports = (req, res) => {
     shippingCosts = 0
   }
   res.status(200).json({
-    body: {
-      rates: [
-        {
-          cost: shippingCosts,
-          description:
-            'Frais de ports (1,5€ pour une commande <= à 10€, 6,95€ pour une commande de 10 à 100€, et gratuit pour les commandes de plus de 100€.'
-        }
-      ]
-    }
+    rates: [
+      {
+        cost: shippingCosts,
+        description:
+          'Frais de ports (1,5€ pour une commande <= à 10€, 6,95€ pour une commande de 10 à 100€, et gratuit pour les commandes de plus de 100€.'
+      }
+    ]
   })
 }
