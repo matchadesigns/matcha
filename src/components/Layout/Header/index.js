@@ -49,7 +49,7 @@ export const Header = ({isTransparent}) => {
             order: [2, 2, 2, 0],
             border: '1px solid',
             borderColor: 'brownWhite',
-            p: 3
+            pr: 2
           }}
         >
           <Cart />
