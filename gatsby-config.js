@@ -1,12 +1,14 @@
 // Load variables from `.env` as soon as possible
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`
+  path: '.env'
 })
 const path = require('path')
 const clientConfig = require('./client-config')
 const token = process.env.SANITY_READ_TOKEN
 
 const isProd = process.env.NODE_ENV === 'production'
+
+const queries = require('./src/lib/algolia')
 
 module.exports = {
   plugins: [
@@ -79,6 +81,15 @@ module.exports = {
       resolve: 'gatsby-source-instagram',
       options: {
         username: 'matchadesigns_'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        queries
+        // chunkSize: 1000, // default: 1000
       }
     }
   ]

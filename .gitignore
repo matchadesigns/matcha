@@ -69,5 +69,6 @@ yarn.lock
 
 # Secrets
 .env.*
+.env
 
 .now
