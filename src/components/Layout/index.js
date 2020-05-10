@@ -11,8 +11,6 @@ export const MenuContext = React.createContext(false)
 
 export const Layout = ({children, transparentHeader = false, noBranding = false, ...props}) => {
   const [menuOpenState, setMenuOpenState] = useState(false)
-  const [isTransparentHeader, setTransparentHeader] = useState(transparentHeader)
-  const [hasBranding, setHasBranding] = useState(!noBranding)
   return (
     <MenuContext.Provider
       value={{
@@ -34,7 +32,7 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
           whiteSpace: 'wrap'
         }}
       >
-        <Header isTransparent={isTransparentHeader} hasBranding={hasBranding} />
+        <Header isTransparent={transparentHeader} />
 
         <motion.main sx={{variant: 'layout.content', bg: transparentHeader ? 'brownWhite' : 'white'}} layoutId='layout'>
           {/* exit={{opacity: 0}}

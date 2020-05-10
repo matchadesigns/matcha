@@ -146,7 +146,7 @@ export default {
       bg: 'primary',
       position: 'fixed',
       height: '100%',
-      display: ['block', 'block', 'none'],
+      display: ['block', 'block', 'block', 'none'],
       p: 4,
       color: 'white',
       a: {

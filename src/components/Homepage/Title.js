@@ -7,7 +7,6 @@ import Logo from '../../assets/svg/logo.svg'
 
 export const Title = () => (
   <Fragment>
-    {/* <MatchaCurved sx={{width: '27vmin', mt: '70px', zIndex: 1}} /> */}
-    <Logo sx={{width: '35vmin', mb: 3, zIndex: 1}} />
+    <Logo sx={{width: '35vmin', mt: 3, mb: 3, zIndex: 1}} />
   </Fragment>
 )
