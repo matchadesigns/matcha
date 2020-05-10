@@ -11,6 +11,13 @@ const isProd = process.env.NODE_ENV === 'production'
 const queries = require('./src/lib/algolia')
 
 module.exports = {
+  siteMetadata: {
+    title: 'Mâtcha Designs',
+    siteUrl: 'https://matchadesigns.com',
+    description:
+      "Mâtcha Designs est un duo nantais proposant des services en décoration d'intérieur et graphisme. Retrouvez également leurs objets déco design sur la boutique en ligne.",
+    author: '@matchadesigns'
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {

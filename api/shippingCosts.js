@@ -1,6 +1,17 @@
 module.exports = (req, res) => {
+  if (!(req && req.body && req.body.content && req.body.content.items)) {
+    res.status(200).json({
+      errors: [
+        {
+          key: 'invalid_content',
+          message: 'The cart is invalid'
+        }
+      ]
+    })
+    return false
+  }
   const totalPrice =
-    req.body.content.items && req.body.content.items.length > 0
+    req.body.content.items.length > 0
       ? req.body.content.items.map(({totalPrice}) => totalPrice).reduce((pv, cv) => pv + cv, 0)
       : 0
   let shippingCosts = 0
