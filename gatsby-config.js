@@ -91,6 +91,14 @@ module.exports = {
         queries
         // chunkSize: 1000, // default: 1000
       }
+    },
+    'gatsby-plugin-zeit-now',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS
+      }
     }
   ]
 }

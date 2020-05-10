@@ -16,7 +16,7 @@ const Li = styled.li`
   flex-direction: row;
   display: flex;
   align-items: center;
-  padding-right: 1vw;
+  :padding-right: 1vw;
   &:before {
     content: '';
     height: 1em;
@@ -36,7 +36,7 @@ export const Desktop = props => (
   <Flex as='ul' {...props}>
     {links.map(({url, text}) => (
       <MenuLink key={url} to={url} activeClassName='active'>
-        <Li>{text}</Li>
+        <Li sx={{fontSize: [0, 0, 0, '0.8em', 1]}}>{text}</Li>
       </MenuLink>
     ))}
   </Flex>

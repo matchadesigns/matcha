@@ -38,18 +38,18 @@ export const Header = ({isTransparent}) => {
         </Flex>
       </Link>
       <nav>
-        <MobileMenuButton sx={{display: ['flex', 'flex', 'flex', 'none']}} />
-        <DesktopMenu sx={{display: ['none', 'none', 'none', 'flex']}} />
+        <MobileMenuButton sx={{display: ['flex', 'flex', 'flex', 'none'], order: [1, 1, 1, 0]}} />
+        <DesktopMenu sx={{display: ['none', 'none', 'none', 'flex'], order: [0, 0, 0, 1]}} />
 
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'start',
-            order: [2, 2, 2, 0],
+            order: [0, 0, 0, 1],
             border: '1px solid',
             borderColor: 'brownWhite',
-            pr: 2
+            px: 3
           }}
         >
           <Cart />
