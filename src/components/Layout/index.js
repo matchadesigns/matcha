@@ -6,6 +6,8 @@ import '../../assets/styles/layout.css'
 import {Footer} from './Footer'
 import {Header} from './Header'
 import {Mobile as MobileMenu} from './Menu'
+import {Cart} from './Header/Cart'
+import {Search} from './Header/Search'
 
 export const MenuContext = React.createContext(false)
 
@@ -20,6 +22,10 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
       }}
     >
       <MobileMenu />
+      <div sx={{display: ['flex', 'flex', 'flex', 'none'], bg: 'red', p: 1, zIndex: 20}}>
+        <Cart sx={{order: 0, pr: 3}} />
+        <Search />
+      </div>
       <motion.div
         id='app'
         sx={{

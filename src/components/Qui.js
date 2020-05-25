@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {graphql, useStaticQuery} from 'gatsby'
 import {AiOutlinePlus} from 'react-icons/ai'
-import {Grid, jsx} from 'theme-ui'
+import {Text, Grid, jsx} from 'theme-ui'
 import {BlockContent} from '../components/BlockContent'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import Img from 'gatsby-image'
@@ -36,6 +36,7 @@ export const Qui = () => {
 
   return (
     <div sx={{position: 'relative', p: 4, maxWidth: ['full', 'full', '75vmin', '75vmin'], margin: 'auto'}}>
+      <Text sx={{textAlign:'center'}}><h2>Qui sommes-nous ?</h2></Text>
       <Grid
         sx={{
           textAlign: 'center',
@@ -44,7 +45,7 @@ export const Qui = () => {
           'h2,h3': {lineHeight: 1, m: 0}
         }}
       >
-        <div id='qui' sx={{color: '#8A8985'}}>
+        <div id='qui' sx={{color: '#D0846A'}}>
           <Melo />
         </div>
         <div sx={{pt: 2}}>

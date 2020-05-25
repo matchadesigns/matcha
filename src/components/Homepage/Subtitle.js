@@ -36,7 +36,13 @@ export const Subtitle = () => {
 
 const H2 = ({children}) => (
   <Styled.h2
-    sx={{m: 0, letterSpacing: 5, lineHeight: ['7vmin', '6vmin', '4vmin'], fontSize: ['8vmin', '6vmin', '4vmin']}}
+    sx={{
+      m: 0,
+      letterSpacing: 5,
+      lineHeight: ['8vmin', '6vmin', '4vmin'],
+      fontWeight: '700',
+      fontSize: ['10vmin', '6vmin', '4vmin']
+    }}
   >
     {children}
   </Styled.h2>

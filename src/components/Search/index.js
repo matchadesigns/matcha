@@ -73,7 +73,7 @@ function Search ({indices, collapse}) {
             maxHeight: '80vh',
             overflow: 'scroll',
             overflowX: 'hidden',
-            zIndex: 2,
+            zIndex: 20,
             ':-webkit-overflow-scrolling': 'touch',
             boxShadow: '0px 10px 10px rgba(0, 0, 0, .225)',
             borderRadius: 3,

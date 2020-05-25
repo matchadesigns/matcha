@@ -1,20 +1,21 @@
 /** @jsx jsx */
 import {graphql, useStaticQuery} from 'gatsby'
-import {jsx} from 'theme-ui'
+import {Card, jsx} from 'theme-ui'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
 // import {Main} from '../components/Layout/Main'
-import {Qui} from '../components/Qui'
 import Seo from '../components/Seo'
+import {BlockContent} from '../components/BlockContent'
 
-const QuiPage = () => {
+const CgvPage = () => {
   const {
-    page: {title},
+    page: {title, _rawBody},
     errors
   } = useStaticQuery(graphql`
     {
-      page: sanityPage(slug: {current: {eq: "qui-sommes-nous"}}) {
+      page: sanityPage(slug: {current: {eq: "cgv"}}) {
         title
+        _rawBody
       }
     }
   `)
@@ -25,9 +26,11 @@ const QuiPage = () => {
   return (
     <Layout>
       <Seo title={title} />
-      <h1>{title}</h1>
-      <Qui />
+      <Card p={4}>
+        <h1>{title}</h1>
+        <BlockContent blocks={_rawBody} />
+      </Card>
     </Layout>
   )
 }
-export default QuiPage
+export default CgvPage

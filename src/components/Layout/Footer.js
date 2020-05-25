@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
 import {useSiteMetadata} from '../../lib/useSiteMetadata'
+import {Link} from 'gatsby'
 
 export const Footer = () => {
   const {title, url} = useSiteMetadata()
@@ -20,6 +21,9 @@ export const Footer = () => {
         <a href='https://www.sanity.io' target='_blank' rel='noopener noreferrer'>
           Sanity
         </a>
+      </div>
+      <div sx={{pt: 3}}>
+        <Link to='/mentions-legales'>Mentions légales</Link> | <Link to='/cgv'>CGV</Link>
       </div>
     </footer>
   )

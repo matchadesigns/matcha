@@ -31,9 +31,7 @@ const PrestationsPage = () => {
   return (
     <Layout>
       <Seo title={title} description={site.description} keywords={site.keywords} />
-      <Main>
-        <Prestations />
-      </Main>
+      <Prestations />
     </Layout>
   )
 }

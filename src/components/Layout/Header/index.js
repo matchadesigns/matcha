@@ -43,17 +43,17 @@ export const Header = ({isTransparent}) => {
 
         <Box
           sx={{
-            display: 'flex',
+            display: ['none', 'none', 'none', 'flex'],
             flexDirection: 'column',
             alignItems: 'start',
             order: [0, 0, 0, 1],
-            border: '1px solid',
-            borderColor: 'brownWhite',
+            border: '0',
+            // borderColor: 'brownWhite',
             px: 3
           }}
         >
-          <Cart />
           <Search />
+          <Cart />
         </Box>
       </nav>
     </Flex>

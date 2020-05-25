@@ -135,7 +135,8 @@ export default {
     },
     content: {
       bg: 'white',
-      minHeight: '60vh'
+      minHeight: '60vh',
+      position: 'relative'
     },
     main: {
       bg: 'white',
