@@ -46,9 +46,6 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
             sx={{variant: 'layout.content', bg: transparentHeader ? 'brownWhite' : 'white'}}
             layoutId='layout'
           >
-            {/* exit={{opacity: 0}}
-      initial='initial'
-  animate */}
             {children}
           </motion.main>
           <Footer />
