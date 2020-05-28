@@ -28,11 +28,7 @@ export const Instagram = props => {
     <Fragment>
       <Flex sx={{alignContent: 'center', flexDirection: 'column'}}>
         <Grid columns={[1, 2, 2, '320px 320px 320px']} sx={{width: 'auto', mx: 'auto'}} {...props}>
-          {nodes &&
-            nodes.map(post => {
-              console.log(post)
-              return <Post key={post.id} {...post} />
-            })}
+          {nodes && nodes.map(post => <Post key={post.id} {...post} />)}
         </Grid>
         <div sx={{textAlign: 'center', pt: 5}}>
           <Button

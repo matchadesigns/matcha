@@ -23,7 +23,8 @@ export const Footer = () => {
         </a>
       </div>
       <div sx={{pt: 3}}>
-        <Link to='/mentions-legales'>Mentions légales</Link> | <Link to='/cgv'>CGV</Link>
+        <Link to='/mentions-legales'>Mentions légales</Link> | <Link to='/cgv'>CGV</Link> |{' '}
+        <Link to='/contact'>Contact</Link>
       </div>
     </footer>
   )
