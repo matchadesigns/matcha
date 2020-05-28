@@ -6,6 +6,7 @@ import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
 import {Main} from '../components/Layout/Main'
 import Seo from '../components/Seo'
+import {ContactForm} from '../components/ContactForm'
 
 const ContactPage = () => {
   const {
@@ -30,6 +31,7 @@ const ContactPage = () => {
         <h1 hidden>{title}</h1>
         <div sx={{maxWidth: '600px', margin: 'auto'}}>
           <BlockContent blocks={body} />
+          <ContactForm />
         </div>
       </Main>
     </Layout>

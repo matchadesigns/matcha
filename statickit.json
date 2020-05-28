@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "contact": {
+      "name": "Contact Form",
+      "fields": {
+        "email": { "type": "email", "required": true },
+        "message": { "type": "text", "required": true }
+      },
+      "actions": [{ "type": "email", "to": "contact@matchadesigns.com" }],
+      "allowExtraFields": false
+    }
+  },
+  "functions": {
+    "sendContactEmail": {
+      "type": "sendNotification",
+      "to": "contact@matchadesigns.com"
+    }
+  }
+}

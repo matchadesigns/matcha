@@ -106,6 +106,12 @@ module.exports = {
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS
       }
+    },
+    {
+      resolve: 'gatsby-plugin-statickit',
+      options: {
+        siteId: '405593a40093'
+      }
     }
   ]
 }
