@@ -11,7 +11,12 @@ export const Thumbs = ({thumbs}) => (
           <Img
             key={i.asset.fluid.src}
             fluid={i.asset.fluid}
-            sx={{boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)'}}
+            sx={{
+              boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)',
+              ':hover': {
+                cursor: 'pointer'
+              }
+            }}
             data-attribute='SRL'
           />
         ))}
