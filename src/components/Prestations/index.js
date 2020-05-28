@@ -41,18 +41,14 @@ export const Prestations = props => {
       <AnimBottom height={['12vmin']} bottom={['12vmin']} left={['50%']} />
       <div sx={{position: 'relative', p: 4}} {...props}>
         <h1>Mâtcha, c'est quoi ?</h1>
-        <Grid
-          columns={[1, 1, 3]}
-          gap={5}
-          sx={{alignItems: 'center', justifyItems: ['start', 'center'], height: 'full'}}
-        >
+        <Grid columns={[1, 1, 3]} gap={5} sx={{alignItems: 'flex-start', justifyItems: ['start'], height: 'full'}}>
           <div sx={{color: colors.design}}>
             <Flex sx={{alignItems: 'center'}}>
               <Nuancier sx={{width: ['15vmin', '10vmin'], pr: 3}} />
               <DesignTitle />
             </Flex>
             <Design />
-            <Button to="/presta_deco.pdf" color={colors.design} target="_blank" rel="noopener noreferrer">
+            <Button to='/presta_deco.pdf' color={colors.design} target='_blank' rel='noopener noreferrer'>
               Voir détails prestations
             </Button>
           </div>
@@ -62,7 +58,7 @@ export const Prestations = props => {
               <GammeProduitTitle />
             </Flex>
             <Graphisme />
-            <Button to="/presta_graphique.pdf" color={colors.graphisme} target="_blank" rel="noopener noreferrer">
+            <Button to='/presta_graphique.pdf' color={colors.graphisme} target='_blank' rel='noopener noreferrer'>
               Voir détails prestations
             </Button>
           </div>
@@ -73,7 +69,7 @@ export const Prestations = props => {
             </Flex>
             <GammeProduit />
             <p>
-              <Button to="/boutique/" color={colors.gammeProduit}>
+              <Button to='/boutique/' color={colors.gammeProduit}>
                 Voir la boutique en ligne
               </Button>
             </p>
@@ -86,7 +82,7 @@ export const Prestations = props => {
 
 const Button = ({to, color, children, ...props}) => (
   <ThemeUiButton
-    as="a"
+    as='a'
     href={to}
     sx={{
       display: 'inline',
