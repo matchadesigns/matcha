@@ -55,7 +55,7 @@ export const Prestations = props => {
           <div sx={{color: colors.graphisme, mt: 3}}>
             <Flex sx={{alignItems: 'center'}}>
               <Crayon sx={{width: ['15vmin', '10vmin'], pr: 3}} />
-              <GammeProduitTitle />
+              <GraphismeTitle />
             </Flex>
             <Graphisme />
             <Button to='/presta_graphique.pdf' color={colors.graphisme} target='_blank' rel='noopener noreferrer'>
@@ -65,7 +65,7 @@ export const Prestations = props => {
           <div sx={{order: [3], color: colors.gammeProduit}}>
             <Flex sx={{alignItems: 'center'}}>
               <Lampe sx={{width: ['15vmin', '10vmin'], pr: 3}} />
-              <GraphismeTitle />
+              <GammeProduitTitle />
             </Flex>
             <GammeProduit />
             <p>
