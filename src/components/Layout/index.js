@@ -25,7 +25,7 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
       <SimpleReactLightbox>
         <MobileMenu />
         <div sx={{display: ['flex', 'flex', 'flex', 'none'], bg: 'red', p: 1, zIndex: 20}}>
-          <Cart sx={{order: 0, pr: 3}} />
+          <Cart className='snipcart-checkout' sx={{order: 0, pr: 3}} />
           <Search />
         </div>
         <motion.div

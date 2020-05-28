@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {IoMdBasket} from 'react-icons/io'
 import {Badge, Box, jsx, Text} from 'theme-ui'
-export const Cart = (props) => (
+export const Cart = props => (
   <button
     className='snipcart-checkout'
     sx={{
