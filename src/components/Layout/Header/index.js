@@ -39,20 +39,19 @@ export const Header = ({isTransparent}) => {
           <Logo sx={{height: '100px', mx: 'auto', mt: '-10px'}} />
         </Flex>
       </Link>
-      <nav>
+      <nav sx={{height: isTransparent && '4em'}}>
         <MobileMenuButton sx={{display: ['flex', 'flex', 'flex', 'none'], order: [1, 1, 1, 0]}} />
         <DesktopMenu sx={{display: ['none', 'none', 'none', 'flex'], order: [0, 0, 0, 1]}} />
 
         <Box
           sx={{
             display: ['none', 'none', 'none', 'flex'],
-            flexDirection: 'column',
-            alignItems: 'start',
+            flexDirection: 'row',
+            alignItems: 'center',
             order: [0, 0, 0, 1],
             border: '0',
             // borderColor: 'brownWhite',
             px: 3,
-            height: '3em'
           }}
         >
           <Search />
