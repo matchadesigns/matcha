@@ -28,6 +28,7 @@ export const Header = ({isTransparent}) => {
         bg: isTransparent ? `rgba(242,233,223,${opacity})` : 'brownWhite',
         position: isTransparent ? 'fixed' : 'sticky',
         top: isTransparent ? ['3em', '3em', '3em', 0] : '',
+        p: 2,
         boxShadow: !isTransparent && '0 5px 8px rgba(0,0,0,.05)',
         width: '100%'
       }}

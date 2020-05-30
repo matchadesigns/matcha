@@ -113,7 +113,6 @@ export default {
     header: {
       // top: 0,
       zIndex: 4,
-      p: 2,
       flexWrap: 'wrap',
       alignItems: 'stretch',
       '#logo': {
