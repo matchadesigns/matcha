@@ -36,13 +36,16 @@ export const Qui = () => {
 
   return (
     <div sx={{position: 'relative', p: 4, maxWidth: ['full', 'full', '75vmin', '75vmin'], margin: 'auto'}}>
-      <Text sx={{textAlign:'center'}}><h2>Qui sommes-nous ?</h2></Text>
+      <Text sx={{textAlign: 'center'}}>
+        <h2 sx={{fontSize: '2.5em', pb: 3}}>Qui sommes-nous ?</h2>
+      </Text>
       <Grid
         sx={{
           textAlign: 'center',
           gridTemplateColumns: '1fr auto 1fr',
           // alignItems: 'center',
-          'h2,h3': {lineHeight: 1, m: 0}
+          'h2,h3': {lineHeight: 1, m: 0},
+          pb: 4
         }}
       >
         <div id='qui' sx={{color: '#D0846A'}}>
