@@ -3,7 +3,8 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/jsx-fragments': [1, 'element'],
-    'object-curly-spacing': ['error', 'never']
+    'object-curly-spacing': ['error', 'never'],
+    'react/jsx-pascal-case': 0
   },
   settings: {
     react: {

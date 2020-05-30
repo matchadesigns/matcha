@@ -26,18 +26,16 @@ const ShopPage = ({data, errors, ...props}) => {
       />
       {errors && <GraphQLErrorList errors={errors} />}
       <Box p={4}>
-        <Grid columns={['auto 1fr']}>
-          {title && <Styled.h1 sx={{p: 0, mr: 3, lineHeight: 1.35}}>{title}</Styled.h1>}
-          <Box>
-            {categoriesNodes &&
-              categoriesNodes.length > 0 &&
-              categoriesNodes.map(category => (
-                <Link key={category.slug.current} to={`/${category.slug.current}/`}>
-                  <Styled.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>{category.title}</Styled.h3>
-                </Link>
-              ))}
-          </Box>
-        </Grid>
+        {title && <Styled.h1 sx={{p: 0, mr: 3}}>{title}</Styled.h1>}
+        <Box>
+          {categoriesNodes &&
+            categoriesNodes.length > 0 &&
+            categoriesNodes.map(category => (
+              <Link key={category.slug.current} to={`/${category.slug.current}/`}>
+                <Styled.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>{category.title}</Styled.h3>
+              </Link>
+            ))}
+        </Box>
         {body && <BlockContent blocks={body} />}
 
         {productNodes && productNodes.length > 0 && <ProductList nodes={productNodes} sx={{mt: 3}} />}

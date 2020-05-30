@@ -111,8 +111,8 @@ export default {
   },
   layout: {
     header: {
-      top: 0,
-      zIndex: 10,
+      // top: 0,
+      zIndex: 4,
       p: 2,
       flexWrap: 'wrap',
       alignItems: 'stretch',

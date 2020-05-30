@@ -27,8 +27,9 @@ export const Header = ({isTransparent}) => {
         variant: 'layout.header',
         bg: isTransparent ? `rgba(242,233,223,${opacity})` : 'brownWhite',
         position: isTransparent ? 'fixed' : 'sticky',
+        top: isTransparent ? ['3em', '3em', '3em', 0] : '',
         boxShadow: !isTransparent && '0 5px 8px rgba(0,0,0,.05)',
-        width: '100vw'
+        width: '100%'
       }}
     >
       <Link to='/' sx={{display: 'flex', alignItems: 'center', opacity: isTransparent ? opacity : 1}}>
@@ -49,7 +50,8 @@ export const Header = ({isTransparent}) => {
             order: [0, 0, 0, 1],
             border: '0',
             // borderColor: 'brownWhite',
-            px: 3
+            px: 3,
+            height: '3em'
           }}
         >
           <Search />

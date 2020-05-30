@@ -5,7 +5,7 @@ import {getCategoryPath} from '../helpers'
 import {Body} from './Body'
 import {Images} from './Images'
 import {Title} from './Title'
-import {Date} from './Date'
+// import {Date} from './Date'
 
 export const Project = project => {
   graphql`
@@ -20,7 +20,14 @@ export const Project = project => {
       publishedAt
     }
   `
-  const {title, subtitle, category, images, _rawBody, publishedAt} = project
+  const {
+    title,
+    subtitle,
+    category,
+    images,
+    _rawBody
+    // publishedAt
+  } = project
   const categoryPath = getCategoryPath({category: category.slug})
   return (
     <article>
@@ -39,7 +46,9 @@ export const Project = project => {
         >
           <Title title={title} subtitle={subtitle} category={{title: category.title, link: categoryPath}} />
           <Body raw={_rawBody} />
+          {/*
           <Date date={publishedAt} />
+          */}
         </Box>
       </Grid>
     </article>
