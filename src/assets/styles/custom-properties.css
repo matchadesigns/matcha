@@ -4,3 +4,7 @@ img {
   -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
   transform: translateZ(0);
 }
+
+#SRLLightbox {
+  z-index: 20;
+}
