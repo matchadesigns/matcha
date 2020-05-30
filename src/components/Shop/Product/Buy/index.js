@@ -13,6 +13,6 @@ export const Buy = ({id, title, path, price, category, cartImage, inStock}) => (
         <AddToCart id={id} title={title} price={price.value} url={path} description={category} image={cartImage} />
       )}
     </div>
-    <Shipping />
+    {inStock && <Shipping />}
   </Box>
 )
