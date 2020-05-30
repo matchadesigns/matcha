@@ -14,6 +14,7 @@ export const Bottom = ({height}) => {
         gridTemplateColumns: ['auto', 'repeat(auto-fit, minmax(128px, 1fr))'],
         height,
         mx: '2vw',
+        mt: ['-3em', '-1em'],
         alignItems: 'center',
         px: [1, 2],
         zIndex: 1
@@ -29,9 +30,6 @@ export const Bottom = ({height}) => {
         <IoIosMail size={32} sx={{color: '#464448'}} />
         contact@matchadesigns.com
       </Flex>
-      <Flex sx={{justifyContent: ['center'], zIndex: 'inherit'}}>
-        <a href='https://matchadesigns.com'>matchadesigns.com</a>
-      </Flex>
       <Flex
         sx={{
           alignItems: 'center',
@@ -39,7 +37,7 @@ export const Bottom = ({height}) => {
           zIndex: 'inherit'
         }}
       >
-        <Text sx={{pr: 2, display: ['none', 'none', 'flex']}}>Suivez-nous sur les réseaux sociaux :</Text>
+        <Text sx={{pr: 2, display: ['none', 'none', 'none', 'flex']}}>Suivez-nous sur les réseaux sociaux :</Text>
         <a
           href={`https://facebook.com/${facebook}`}
           sx={{display: 'flex', pr: 1}}

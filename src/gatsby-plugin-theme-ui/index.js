@@ -61,6 +61,7 @@ export default {
       ...tailwind.styles.h1,
       fontFamily: 'heading',
       fontWeight: 'heading',
+      fontSize: '2em',
       letterSpacing: '4px',
       color: 'primary',
       mt: 0,

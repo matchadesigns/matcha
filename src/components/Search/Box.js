@@ -10,8 +10,8 @@ export const Box = connectSearchBox(({refine, ...opts}) => (
       bg: 'white',
       borderRadius: 4,
       width: 'full',
-      maxWidth: '320px',
-      touchAction: 'none'
+      maxWidth: '320px'
+      // touchAction: 'none'
     }}
   >
     <label
@@ -21,8 +21,8 @@ export const Box = connectSearchBox(({refine, ...opts}) => (
         flexDirection: 'row-reverse',
         alignItems: 'center',
         pl: 2,
-        width: 'full',
-        touchAction: 'none'
+        width: 'full'
+        // touchAction: 'none'
       }}
     >
       <Input
