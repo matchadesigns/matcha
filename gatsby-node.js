@@ -118,9 +118,12 @@ async function createShopProductPages (graphql, actions, reporter) {
           variants
         }
       } = edge
-      const variantGroupsIds = variants.reduce((acc, el) => {
-        return acc === null ? [el.variantGroup.id] : [...acc, el.variantGroup.id]
-      }, null)
+      const variantGroupsIds =
+        variants && variants.length
+          ? variants.reduce((acc, el) => {
+            return acc === null ? [el.variantGroup.id] : [...acc, el.variantGroup.id]
+          }, null)
+          : []
       const path = `/${categorySlug}/${slug}/`
       reporter.info(`Creating product page: ${path}`)
       createPage({
