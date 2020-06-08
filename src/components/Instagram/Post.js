@@ -7,18 +7,13 @@ import {FcLike} from 'react-icons/fc'
 import {Card, Flex, jsx, Text} from 'theme-ui'
 import {truncateString} from '../../lib/helpers'
 
-export const Post = ({id, caption, image, thumbnails, likes, comments}) => {
+export const Post = ({id, caption, image, likes, comments}) => {
   graphql`
     fragment InstagramPostFields on InstaNode {
       id
       caption
       likes
       comments
-      thumbnails {
-        src
-        config_width
-        config_height
-      }
       image: localFile {
         childImageSharp {
           fluid(quality: 100) {
@@ -54,7 +49,6 @@ export const Post = ({id, caption, image, thumbnails, likes, comments}) => {
             ':hover': {
               bg: 'gray.2'
             },
-            maxWidth: thumbnails[2].config_width
           }}
         >
           <Img fluid={image.childImageSharp.fluid} />
