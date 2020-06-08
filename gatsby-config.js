@@ -87,7 +87,11 @@ module.exports = {
     {
       resolve: 'gatsby-source-instagram',
       options: {
-        username: 'matchadesigns_'
+        username: 'matchadesigns_',
+        access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
+        instagram_id: process.env.INSTAGRAM_APP_ID,
+        paginate: 12,
+        maxPosts: 12,
       }
     },
     {
