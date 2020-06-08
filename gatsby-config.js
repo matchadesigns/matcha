@@ -89,7 +89,7 @@ module.exports = {
       options: {
         username: 'matchadesigns_',
         access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
-        instagram_id: process.env.INSTAGRAM_APP_ID,
+        instagram_id: process.env.INSTAGRAM_BUSINESS_ID,
         paginate: 12,
         maxPosts: 12,
       }
