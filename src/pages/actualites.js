@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import {Box, jsx} from 'theme-ui'
-import {Instagram} from '../components/Instagram'
+//import {Instagram} from '../components/Instagram'
 import {Layout} from '../components/Layout'
 import Seo from '../components/Seo'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
@@ -22,7 +22,8 @@ const ActualitesPage = () => {
         keywords={site.keywords}
       />
       <Box p={5}>
-        <Instagram />
+        {/*<Instagram /> */}
+        Suivez l'actualité de Mâtcha Designs sur Instagram : @${site.instagram}
       </Box>
     </Layout>
   )
