@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
-import SearchComponent from '../../Search'
+import SearchComponent from '../../SearchMobile'
 
 const searchIndices = [
   // { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
