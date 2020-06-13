@@ -1,9 +1,9 @@
 export const links = [
-  {url: '/boutique/', text: 'Boutique'},
+  {url: '/#qui', text: 'A propos'},
   {url: '/prestations/', text: 'Prestations'},
   {url: '/realisations/', text: 'Réalisations'},
   {url: '/actualites/', text: 'Actualités'},
-  // {url: '/#qui', text: 'Qui sommes-nous ?'},
+  {url: '/boutique/', text: 'Boutique'},
   {url: '/contact/', text: 'Contact'}
 ]
 

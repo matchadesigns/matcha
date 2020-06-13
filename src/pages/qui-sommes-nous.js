@@ -13,7 +13,7 @@ const QuiPage = () => {
     errors
   } = useStaticQuery(graphql`
     {
-      page: sanityPage(slug: {current: {eq: "qui-sommes-nous"}}) {
+      page: sanityPage(slug: {current: {eq: "a-propos"}}) {
         title
       }
     }
