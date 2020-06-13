@@ -7,7 +7,7 @@ import Logo from '../../../assets/svg/logo.svg'
 import {useSiteMetadata} from '../../../lib/useSiteMetadata'
 import {Desktop as DesktopMenu, MobileButton as MobileMenuButton} from '../Menu'
 import {Cart} from './Cart'
-import {Search} from './Search'
+import {SearchDesktop} from './SearchDesktop'
 
 export const Header = ({isTransparent}) => {
   const {title} = useSiteMetadata()
@@ -54,7 +54,7 @@ export const Header = ({isTransparent}) => {
             px: 3,
           }}
         >
-          <Search />
+          <SearchDesktop />
           <Cart />
         </Box>
       </nav>

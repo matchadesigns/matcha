@@ -32,7 +32,7 @@ export const Box = connectSearchBox(({refine, ...opts}) => (
         placeholder='Rechercher'
         aria-label='Rechercher'
         onChange={e => refine(e.target.value)}
-        autocomplete='nope'
+        autocomplete='off'
         sx={{bg: 'white', border: 0, color: 'text', fontSize: '16px', touchAction: 'none'}}
         {...opts}
       />

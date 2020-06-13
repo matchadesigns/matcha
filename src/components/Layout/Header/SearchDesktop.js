@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
-import SearchComponent from '../../Search'
+import SearchComponent from '../../SearchDesktop'
 
 const searchIndices = [
   // { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
@@ -8,4 +8,4 @@ const searchIndices = [
   {name: 'Projects', title: 'Réalisations', hitComp: 'ProjectHit'}
 ]
 
-export const Search = () => <SearchComponent collapse indices={searchIndices} />
+export const SearchDesktop = () => <SearchComponent collapse indices={searchIndices} />

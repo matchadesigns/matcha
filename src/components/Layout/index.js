@@ -7,7 +7,7 @@ import {Footer} from './Footer'
 import {Header} from './Header'
 import {Mobile as MobileMenu} from './Menu'
 import {Cart} from './Header/Cart'
-import {Search} from './Header/Search'
+import {SearchMobile} from './Header/SearchMobile'
 import SimpleReactLightbox from 'simple-react-lightbox'
 
 export const MenuContext = React.createContext(false)
@@ -36,7 +36,7 @@ export const Layout = ({children, transparentHeader = false, noBranding = false,
           }}
         >
           <Cart className='snipcart-checkout' sx={{order: 0, pr: 3}} />
-          <Search />
+          <SearchMobile />
         </div>
         <motion.div
           id='app'
