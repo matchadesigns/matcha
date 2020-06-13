@@ -22,10 +22,10 @@ export const Cart = props => (
   >
     <Box pr={2}>
       <IoMdBasket size={32} sx={{color: 'primary'}} />
-      <Badge variant='circle' ml={-3} mt={-3} sx={{bg: 'primary'}}>
-        <span className='snipcart-items-count' sx={{color: 'white'}} />
+      <Badge variant='circle' ml={-3} mt={-3} sx={{bg: ['white', 'white', 'white', 'primary']}}>
+        <span className='snipcart-items-count' sx={{color: ['primary', 'primary', 'primary', 'white']}} />
       </Badge>
     </Box>
-    <Text>Panier</Text>
+    <Text sx={{color: ['white', 'white', 'white', 'black']}}>Panier</Text>
   </button>
 )
