@@ -38,6 +38,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
         value
         formatted
       }
+      deliveryTime
       weight
       sku
       barcode {
@@ -63,6 +64,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
     images,
     description,
     price,
+    deliveryTime,
     // weight,
     sku,
     // barcode,
@@ -138,6 +140,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
             title={title}
             path={productPath}
             price={price}
+            deliveryTime={deliveryTime}
             category={category.title}
             cartImage={images[0].asset.fluid.src}
             inStock={inStock}
