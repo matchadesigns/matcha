@@ -21,7 +21,7 @@ export const Cart = props => (
     {...props}
   >
     <Box pr={2}>
-      <IoMdBasket size={32} sx={{color: 'primary'}} />
+      <IoMdBasket size={32} sx={{color: ['white', 'white', 'white', 'primary']}} />
       <Badge variant='circle' ml={-3} mt={-3} sx={{bg: ['white', 'white', 'white', 'primary']}}>
         <span className='snipcart-items-count' sx={{color: ['primary', 'primary', 'primary', 'white']}} />
       </Badge>
