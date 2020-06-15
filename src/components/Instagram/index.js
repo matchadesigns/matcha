@@ -1,5 +1,4 @@
 /** @jsx jsx */
-{/*
 import {graphql, useStaticQuery} from 'gatsby'
 import {Fragment} from 'react'
 import {Button, Flex, Grid, jsx} from 'theme-ui'
@@ -47,4 +46,3 @@ export const Instagram = props => {
     </Fragment>
   )
 }
-*/}

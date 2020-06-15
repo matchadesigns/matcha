@@ -84,18 +84,12 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-offline',
-    /*
     {
       resolve: 'gatsby-source-instagram',
       options: {
-        username: 'matchadesigns_',
-        access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
-        instagram_id: process.env.INSTAGRAM_BUSINESS_ID,
-        paginate: 12,
-        maxPosts: 12,
+        username: '11908072490',
       }
     },
-    */
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
