@@ -1,4 +1,5 @@
 /** @jsx jsx */
+{/*
 import {motion} from 'framer-motion'
 import {graphql} from 'gatsby'
 import Img from 'gatsby-image'
@@ -64,3 +65,4 @@ export const Post = ({id, caption, image, likes, comments}) => {
     </motion.div>
   )
 }
+*/}
