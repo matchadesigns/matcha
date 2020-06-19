@@ -46,7 +46,7 @@ const ShopPage = ({data, errors, ...props}) => {
 
 export const query = graphql`
   query ShopQuery {
-    page: sanityPage(id: {eq: "dac4f700-3a5a-551c-9cd2-d366d84fa14b"}) {
+    page: sanityPage(id: {eq: "-dac4f700-3a5a-551c-9cd2-d366d84fa14b"}) {
       title
       _rawBody
     }
