@@ -20,7 +20,7 @@ const ShopPage = ({data, errors, ...props}) => {
     <Layout {...props}>
       {errors && <Seo title='GraphQL Error' />}
       <Seo
-        title={title}
+        title={title && title}
         description={body && toPlainText(body)}
         // image={product.image}
       />
