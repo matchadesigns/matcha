@@ -21,7 +21,7 @@ const templates = {
     PROJECTS / PROJECT
 */
 
-async function createProjectPages (graphql, actions, reporter) {
+async function createProjectPages(graphql, actions, reporter) {
   const {createPage} = actions
   const result = await graphql(`
     {
@@ -75,7 +75,7 @@ async function createProjectPages (graphql, actions, reporter) {
 /*
     SHOP / PRODUCTS
 */
-async function createShopProductPages (graphql, actions, reporter) {
+async function createShopProductPages(graphql, actions, reporter) {
   const {createPage} = actions
   const result = await graphql(`
     {
@@ -141,7 +141,7 @@ async function createShopProductPages (graphql, actions, reporter) {
 /*
     SHOP / CATEGORIES
 */
-async function createShopCategoryPages (graphql, actions, reporter) {
+async function createShopCategoryPages(graphql, actions, reporter) {
   const {createPage} = actions
   const result = await graphql(`
     {
@@ -190,7 +190,7 @@ exports.createResolvers = ({createResolvers}) => {
       formatted: {
         type: 'String!',
         resolve: source => {
-          return currency(source.value, {decimal: ','}).format() + ' €'
+          return currency(source.value, {decimal: ',', symbol: ''}).format() + ' €'
         }
       }
     }
