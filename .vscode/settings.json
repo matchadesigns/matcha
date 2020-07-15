@@ -6,5 +6,9 @@
     "**/node_modules": true,
     "web/public": true,
     "**/.lock": true
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"]
 }

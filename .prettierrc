@@ -1,4 +1,6 @@
 {
   "printWidth": 120,
-  "prettier.bracketSpacing": false
+  "prettier.bracketSpacing": false,
+  "singleQuote": true,
+  "semi": false
 }

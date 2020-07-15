@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {motion} from 'framer-motion'
+
 import {Link} from 'gatsby'
 import {useEffect, useState} from 'react'
 import {Box, Flex, jsx} from 'theme-ui'
@@ -8,6 +8,7 @@ import {useSiteMetadata} from '../../../lib/useSiteMetadata'
 import {Desktop as DesktopMenu, MobileButton as MobileMenuButton} from '../Menu'
 import {Cart} from './Cart'
 import {SearchDesktop} from './SearchDesktop'
+import {TopMessage} from './TopMessage'
 
 export const Header = ({isTransparent}) => {
   const {title} = useSiteMetadata()
@@ -33,6 +34,7 @@ export const Header = ({isTransparent}) => {
         width: '100%'
       }}
     >
+      <TopMessage />
       <Link to='/' sx={{display: 'flex', alignItems: 'center', opacity: isTransparent ? opacity : 1}}>
         <Flex id='logo' sx={{flexDirection: 'column', px: 3, py: 0}}>
           <h1 hidden>{title}</h1>
@@ -51,7 +53,7 @@ export const Header = ({isTransparent}) => {
             order: [0, 0, 0, 1],
             border: '0',
             // borderColor: 'brownWhite',
-            px: 3,
+            px: 3
           }}
         >
           <SearchDesktop />
