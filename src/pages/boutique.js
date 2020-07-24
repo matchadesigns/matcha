@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Styled, Box, Grid} from 'theme-ui'
+import {jsx, Styled, Box} from 'theme-ui'
 import {Layout} from '../components/Layout'
 import Seo from '../components/Seo'
 import {graphql, Link} from 'gatsby'
@@ -18,11 +18,11 @@ const ShopPage = ({data, errors, ...props}) => {
   const categoriesNodes = mapEdgesToNodes(categories)
   return (
     <Layout {...props}>
-      {errors && <Seo title="GraphQL Error" />}
+      {errors && <Seo title='GraphQL Error' />}
       <Seo
         title={title && title}
         description={body && toPlainText(body)}
-        // image={product.image}
+      // image={product.image}
       />
       {errors && <GraphQLErrorList errors={errors} />}
       <Box p={4}>
