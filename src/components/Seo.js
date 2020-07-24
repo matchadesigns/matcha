@@ -64,7 +64,6 @@ Seo.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,
-  lang: PropTypes.string,
   article: PropTypes.bool,
   product: PropTypes.bool
 }
