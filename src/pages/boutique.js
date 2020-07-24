@@ -58,7 +58,7 @@ export const query = graphql`
       _rawBody
     }
     products: allSanityProduct(
-      sort: {order: [DESC, DESC], fields: [publishedAt, sku]}
+      sort: {order: [DESC, DESC], fields: [sku, publishedAt]}
     ) {
       edges {
         node {
