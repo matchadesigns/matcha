@@ -18,7 +18,7 @@ const ShopPage = ({data, errors, ...props}) => {
   const categoriesNodes = mapEdgesToNodes(categories)
   return (
     <Layout {...props}>
-      {errors && <Seo title='GraphQL Error' />}
+      {errors && <Seo title="GraphQL Error" />}
       <Seo
         title={title && title}
         description={body && toPlainText(body)}
@@ -31,14 +31,21 @@ const ShopPage = ({data, errors, ...props}) => {
           {categoriesNodes &&
             categoriesNodes.length > 0 &&
             categoriesNodes.map(category => (
-              <Link key={category.slug.current} to={`/${category.slug.current}/`}>
-                <Styled.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>{category.title}</Styled.h3>
+              <Link
+                key={category.slug.current}
+                to={`/${category.slug.current}/`}
+              >
+                <Styled.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>
+                  {category.title}
+                </Styled.h3>
               </Link>
             ))}
         </Box>
         {body && <BlockContent blocks={body} />}
 
-        {productNodes && productNodes.length > 0 && <ProductList nodes={productNodes} sx={{mt: 3}} />}
+        {productNodes && productNodes.length > 0 && (
+          <ProductList nodes={productNodes} sx={{mt: 3}} />
+        )}
       </Box>
     </Layout>
   )
@@ -50,14 +57,18 @@ export const query = graphql`
       title
       _rawBody
     }
-    products: allSanityProduct(sort: {order: [ASC, DESC], fields: [title, publishedAt]}) {
+    products: allSanityProduct(
+      sort: {order: [DESC, DESC], fields: [publishedAt, sku]}
+    ) {
       edges {
         node {
           ...productPreviewFields
         }
       }
     }
-    categories: allSanityProductCategory(sort: {order: [ASC], fields: [order]}) {
+    categories: allSanityProductCategory(
+      sort: {order: [ASC], fields: [order]}
+    ) {
       edges {
         node {
           ...productCategoryFields
