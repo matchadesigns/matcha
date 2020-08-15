@@ -8,7 +8,7 @@ import {useSiteMetadata} from '../../../lib/useSiteMetadata'
 import {Desktop as DesktopMenu, MobileButton as MobileMenuButton} from '../Menu'
 import {Cart} from './Cart'
 import {SearchDesktop} from './SearchDesktop'
-import {TopMessage} from './TopMessage'
+// import {TopMessage} from './TopMessage'
 
 export const Header = ({isTransparent}) => {
   const {title} = useSiteMetadata()
@@ -34,7 +34,7 @@ export const Header = ({isTransparent}) => {
         width: '100%'
       }}
     >
-      <TopMessage />
+      {/* <TopMessage /> */}
       <Link to='/' sx={{display: 'flex', alignItems: 'center', opacity: isTransparent ? opacity : 1}}>
         <Flex id='logo' sx={{flexDirection: 'column', px: 3, py: 0}}>
           <h1 hidden>{title}</h1>
