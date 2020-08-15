@@ -35,7 +35,7 @@ export const Qui = () => {
   const Geoffrey = () => <BlockContent blocks={segments[1].body} />
 
   return (
-    <div id='qui' sx={{position: 'relative', p: 4, pt: ['11em', '11em', '11em', '11em', '9em'], maxWidth: ['full', 'full', '75vmin', '75vmin'], margin: 'auto'}}>
+    <div id='qui' sx={{position: 'relative', p: 4, pt: ['4em'], maxWidth: ['full', 'full', '75vmin', '75vmin'], margin: 'auto'}}>
       <Text sx={{textAlign: 'center'}}>
         <h2 sx={{fontSize: '2.5em', pb: 3}}>À propos</h2>
       </Text>
