@@ -67,7 +67,7 @@
     "babel-preset-gatsby": "^0.5.5",
     "dotenv": "8.2.0",
     "eslint": "^7.7.0",
-    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard": "^15.0.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
