@@ -15,8 +15,6 @@ export const TopMessage = () => (
       mb: 1
     }}
   >
-    <span sx={{color: 'white', fontWeight: 'bold'}}>Vacances !</span> Mâtcha
-    prend quelques vacances, du 15 juillet au 15 août. La boutique en ligne
-    reste ouverte, les commandes seront traitées à notre retour. Bel été !
+    Jusqu'au 31 décembre 2020, profitez de la <span sx={{color: 'white', fontWeight: 'bold'}}>livraison offerte</span> avec le code CONFI2
   </Box>
 )
