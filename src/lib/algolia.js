@@ -14,7 +14,6 @@ const productQuery = `
                         current
                     }
                 }
-                tags
                 images {
                     asset {
                         fixed(width: 120) {
