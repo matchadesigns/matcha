@@ -15,6 +15,6 @@ export const TopMessage = () => (
       mb: 1
     }}
   >
-    Jusqu'au 31 décembre 2020, profitez de la <span sx={{color: 'white', fontWeight: 'bold'}}>livraison offerte</span> avec le code CONFI2
+    Nous sommes en vacances du <span sx={{color: 'white', fontWeight: 'bold'}}>22 au 31 décembre</span>. Les commandes pmassées pendant cette période seront traitées dès notre retour. Passez de belles fêtes !
   </Box>
 )
