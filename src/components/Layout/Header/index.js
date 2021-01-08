@@ -34,7 +34,7 @@ export const Header = ({isTransparent}) => {
         width: '100%'
       }}
     >
-      <TopMessage />
+      {/* <TopMessage /> */}
       <Link
         to='/'
         sx={{
