@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import {graphql} from 'gatsby'
-import {Box, jsx, Styled} from 'theme-ui'
+import {Box, jsx, Themed} from 'theme-ui'
 import {GraphQLErrorList} from '../../components/GraphQLErrorList'
 import Seo from '../../components/Seo'
 import {Project} from '../../components/Projects/Project'
@@ -12,11 +12,15 @@ const ProjectPage = ({data, errors, ...props}) => {
   const {project, sameCategoryProjects} = data
   const {title, category, images, _rawBody} = project
   const sameCategoryProjectsNodes = mapEdgesToNodes(sameCategoryProjects)
-  const image = images && images.images && images.images[0] && images.images[0].asset.fluid.src
+  const image =
+    images &&
+    images.images &&
+    images.images[0] &&
+    images.images[0].asset.fluid.src
   const body = _rawBody && toPlainText(_rawBody)
   return (
     <Layout {...props}>
-      {errors && <Seo title='GraphQL Error' />}
+      {errors && <Seo title="GraphQL Error" />}
       {project && <Seo title={title} description={body} image={image} />}
 
       {errors && <GraphQLErrorList errors={errors} />}
@@ -24,7 +28,7 @@ const ProjectPage = ({data, errors, ...props}) => {
       {project && <Project {...project} />}
       {sameCategoryProjectsNodes && sameCategoryProjectsNodes.length > 0 && (
         <Box p={[4, 4, 5]}>
-          <Styled.h3>Dans la catégorie {category.title}</Styled.h3>
+          <Themed.h3>Dans la catégorie {category.title}</Themed.h3>
           <ProjectList nodes={sameCategoryProjectsNodes} />
         </Box>
       )}

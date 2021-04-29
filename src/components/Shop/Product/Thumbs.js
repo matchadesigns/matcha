@@ -1,5 +1,7 @@
 /** @jsx jsx */
-import Img from 'gatsby-image'
+import {sanityConfig} from '../../../../sanity-config'
+import {GatsbyImage} from 'gatsby-plugin-image'
+import {getGatsbyImageData} from 'gatsby-source-sanity'
 import {Grid, jsx} from 'theme-ui'
 import {Fragment} from 'react'
 
@@ -8,16 +10,17 @@ export const Thumbs = ({thumbs}) => (
     {thumbs && (
       <Grid sx={{mb: 2, mr: 2}} columns={[3, 3, 2, 2, 1]}>
         {thumbs.map(i => (
-          <Img
-            key={i.asset.fluid.src}
-            fluid={i.asset.fluid}
+          <GatsbyImage
+            key={i.asset._id}
+            image={getGatsbyImageData(i.asset, {}, sanityConfig)}
+            alt={'Image'}
             sx={{
               boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)',
               ':hover': {
                 cursor: 'pointer'
               }
             }}
-            data-attribute='SRL'
+            data-attribute="SRL"
           />
         ))}
       </Grid>

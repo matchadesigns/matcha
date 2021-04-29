@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Styled, Box} from 'theme-ui'
+import {jsx, Themed, Box} from 'theme-ui'
 import {Layout} from '../../components/Layout'
 import Seo from '../../components/Seo'
 import {graphql} from 'gatsby'
@@ -13,20 +13,26 @@ const CategoryPage = ({data, errors, ...props}) => {
   const productNodes = mapEdgesToNodes(products)
   return (
     <Layout {...props}>
-      {errors && <Seo title='GraphQL Error' />}
+      {errors && <Seo title="GraphQL Error" />}
       {category && (
         <Seo
           title={category.title}
-          description={category.description && toPlainText(category.description)}
+          description={
+            category.description && toPlainText(category.description)
+          }
           // image={product.image}
         />
       )}
       {errors && <GraphQLErrorList errors={errors} />}
       <Box p={4}>
-        {category && <Styled.h1>{category.title}</Styled.h1>}
-        {category && category.description && <BlockContent blocks={category.description} />}
+        {category && <Themed.h1>{category.title}</Themed.h1>}
+        {category && category.description && (
+          <BlockContent blocks={category.description} />
+        )}
 
-        {productNodes && productNodes.length > 0 && <ProductList nodes={productNodes} sx={{mt: 3}} />}
+        {productNodes && productNodes.length > 0 && (
+          <ProductList nodes={productNodes} sx={{mt: 3}} />
+        )}
       </Box>
     </Layout>
   )

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {motion} from 'framer-motion'
 import {graphql} from 'gatsby'
-import Img from 'gatsby-image'
+import {GatsbyImage, getImage} from 'gatsby-plugin-image'
 import {FaComment} from 'react-icons/fa'
 import {FcLike} from 'react-icons/fc'
 import {Card, Flex, jsx, Text} from 'theme-ui'
@@ -16,9 +16,7 @@ export const Post = ({id, caption, image, likes, comments}) => {
       comments
       image: localFile {
         childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
     }
@@ -35,11 +33,11 @@ export const Post = ({id, caption, image, likes, comments}) => {
             color: 'black'
           }
         }}
-        target='_blank'
-        rel='noopener noreferrer'
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Card
-          as='article'
+          as="article"
           sx={{
             bg: 'gray.1',
             display: 'flex',
@@ -48,15 +46,20 @@ export const Post = ({id, caption, image, likes, comments}) => {
             transition: 'background-color 0.5s ease',
             ':hover': {
               bg: 'gray.2'
-            },
+            }
           }}
         >
-          <Img fluid={image.childImageSharp.fluid} />
+          <GatsbyImage image={getImage(image)} alt={id} />
           <Text p={3} pb={1}>
             {truncateString(caption, 140)}
           </Text>
-          <Flex px={3} pb={3} sx={{color: likesCommentsColor, alignItems: 'center'}}>
-            <FcLike sx={{path: {fill: 'gray.4'}}} /> <span sx={{pl: 1, pr: 3}}>{likes}</span>
+          <Flex
+            px={3}
+            pb={3}
+            sx={{color: likesCommentsColor, alignItems: 'center'}}
+          >
+            <FcLike sx={{path: {fill: 'gray.4'}}} />{' '}
+            <span sx={{pl: 1, pr: 3}}>{likes}</span>
             <FaComment /> <span sx={{pl: 1, pr: 3}}>{comments}</span>
           </Flex>
         </Card>

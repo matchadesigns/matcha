@@ -16,14 +16,7 @@ const productQuery = `
                 }
                 images {
                     asset {
-                        fixed(width: 120) {
-                            width
-                            height
-                            src
-                            srcWebp
-                            srcSet
-                            srcSetWebp
-                        }
+                      _id
                     }
                 }
                 price {
@@ -32,7 +25,7 @@ const productQuery = `
             }
         }
     }
-}  
+}
 `
 
 const projectQuery = `
@@ -54,11 +47,7 @@ const projectQuery = `
         }
         images {
           asset {
-            fixed(width: 120) {
-              width
-              height
-              src
-            }
+            _id
           }
         }
       }

@@ -9,7 +9,15 @@ import {Stock} from './Stock'
 import {Title} from './Title'
 import {motion} from 'framer-motion'
 
-export const ProductCard = ({id, title, slug, category, images, price, sku}) => {
+export const ProductCard = ({
+  id,
+  title,
+  slug,
+  category,
+  images,
+  price,
+  sku
+}) => {
   graphql`
     fragment productPreviewFields on SanityProduct {
       id
@@ -25,9 +33,7 @@ export const ProductCard = ({id, title, slug, category, images, price, sku}) => 
       }
       images {
         asset {
-          fluid(maxWidth: 300) {
-            ...GatsbySanityImageFluid
-          }
+          _id
         }
       }
       price {
@@ -40,7 +46,7 @@ export const ProductCard = ({id, title, slug, category, images, price, sku}) => 
   const productPath = `/${category.slug.current}/${slug.current}`
   const inStock = sku > 0
   return (
-    <motion.div layout='product'>
+    <motion.div layout="product">
       <Card
         sx={{
           maxWidth: 300
@@ -48,7 +54,9 @@ export const ProductCard = ({id, title, slug, category, images, price, sku}) => 
       >
         <div>
           <div sx={{boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)'}}>
-            {images && images[0] && images[0].asset && <Image fluid={images[0].asset.fluid} link={productPath} />}
+            {images && images[0] && images[0].asset && (
+              <Image image={images[0].asset} link={productPath} />
+            )}
           </div>
           <Box p={1}>
             <Title title={title} category={category.title} link={productPath} />
@@ -61,8 +69,8 @@ export const ProductCard = ({id, title, slug, category, images, price, sku}) => 
                 price={price.value}
                 url={productPath}
                 description={category.title}
-                image={images && images[0].asset.fluid.src}
-                discrete='true'
+                image={images && images[0].asset.url}
+                discrete="true"
               />
             )}
           </Box>

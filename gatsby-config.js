@@ -21,11 +21,14 @@ module.exports = {
   plugins: [
     'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/assets/images`
+        path: path.join(__dirname, '/src/assets/images')
       }
     },
     {
@@ -50,8 +53,8 @@ module.exports = {
       resolve: 'gatsby-plugin-snipcartv3',
       options: {
         apiKey: process.env.SNIPCART_APIKEY,
-        js: '/snipcart.3.0.24.js',
-        styles: '/snipcart.3.0.24.css'
+        js: '/snipcart.3.1.0.js',
+        styles: '/snipcart.3.1.0.css'
       }
     },
     {
@@ -114,5 +117,6 @@ module.exports = {
         siteId: '405593a40093'
       }
     }
+    // 'gatsby-plugin-webpack-bundle-analyser-v2'
   ]
 }

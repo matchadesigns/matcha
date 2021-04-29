@@ -2,7 +2,7 @@
 import {motion} from 'framer-motion'
 import {shuffle} from 'lodash'
 import {useLayoutEffect, useState} from 'react'
-import {jsx, Styled} from 'theme-ui'
+import {jsx, Themed} from 'theme-ui'
 
 const spring = {
   type: 'spring',
@@ -26,7 +26,12 @@ export const Subtitle = () => {
   return (
     <div sx={{mb: 5, textAlign: 'center', zIndex: 1}}>
       {colors.map(({color, title}) => (
-        <motion.li key={color} layoutTransition={spring} style={{color}} sx={{listStyle: 'none'}}>
+        <motion.li
+          key={color}
+          layoutTransition={spring}
+          style={{color}}
+          sx={{listStyle: 'none'}}
+        >
           <H2>{title}</H2>
         </motion.li>
       ))}
@@ -35,7 +40,7 @@ export const Subtitle = () => {
 }
 
 const H2 = ({children}) => (
-  <Styled.h2
+  <Themed.h2
     sx={{
       m: 0,
       letterSpacing: 5,
@@ -45,5 +50,5 @@ const H2 = ({children}) => (
     }}
   >
     {children}
-  </Styled.h2>
+  </Themed.h2>
 )

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Box, Styled} from 'theme-ui'
+import {jsx, Box, Themed} from 'theme-ui'
 import {Layout} from '../../components/Layout'
 import Seo from '../../components/Seo'
 import {graphql} from 'gatsby'
@@ -12,16 +12,33 @@ import {ProductRichSnippet} from '../../components/Shop/ProductRichSnippet'
 
 const ProductPage = ({data, errors, ...props}) => {
   const {product, sameVariantGroupsProducts, sameCategoryProducts} = data
-  const {title, slug, category, images, description, price, sku, barcode, publishedAt} = product
+  const {
+    title,
+    slug,
+    category,
+    images,
+    description,
+    price,
+    sku,
+    barcode,
+    publishedAt
+  } = product
   const sameCategoryProductsNodes = mapEdgesToNodes(sameCategoryProducts)
-  const sameVariantGroupsProductsNodes = mapEdgesToNodes(sameVariantGroupsProducts)
-  const image = images && images[0] && images[0].asset.fluid.src
+  const sameVariantGroupsProductsNodes = mapEdgesToNodes(
+    sameVariantGroupsProducts
+  )
+  const image = images && images[0] && images[0].asset.url
   const excerpt = description && toPlainText(description)
-  const productPath = getProductPath({category: category.slug.current, product: slug.current})
+  const productPath = getProductPath({
+    category: category.slug.current,
+    product: slug.current
+  })
   return (
     <Layout {...props}>
-      {errors && <Seo title='GraphQL Error' />}
-      {product && <Seo title={title} description={excerpt} image={image} product />}
+      {errors && <Seo title="GraphQL Error" />}
+      {product && (
+        <Seo title={title} description={excerpt} image={image} product />
+      )}
       {product && (
         <ProductRichSnippet
           title={title}
@@ -37,10 +54,15 @@ const ProductPage = ({data, errors, ...props}) => {
       )}
       {errors && <GraphQLErrorList errors={errors} />}
 
-      {product && <Product {...product} sameVariantGroupsProductsNodes={sameVariantGroupsProductsNodes} />}
+      {product && (
+        <Product
+          {...product}
+          sameVariantGroupsProductsNodes={sameVariantGroupsProductsNodes}
+        />
+      )}
       {sameCategoryProductsNodes && sameCategoryProductsNodes.length > 0 && (
         <Box mt={3} p={[4, 4, 4, 5]} sx={{bg: '#f9f9f9'}}>
-          <Styled.h2>Dans la même catégorie</Styled.h2>
+          <Themed.h2>Dans la même catégorie</Themed.h2>
           <ProductList nodes={sameCategoryProductsNodes} />
         </Box>
       )}
@@ -49,7 +71,11 @@ const ProductPage = ({data, errors, ...props}) => {
 }
 
 export const query = graphql`
-  query ProductPage($product: String, $variantGroupsIds: [String], $category: String) {
+  query ProductPage(
+    $product: String
+    $variantGroupsIds: [String]
+    $category: String
+  ) {
     product: sanityProduct(id: {eq: $product}) {
       ...productFields
       variants {
@@ -60,7 +86,9 @@ export const query = graphql`
       }
     }
     sameVariantGroupsProducts: allSanityProduct(
-      filter: {variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}}
+      filter: {
+        variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}
+      }
       sort: {order: [ASC], fields: [title]}
     ) {
       edges {

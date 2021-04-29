@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
 import {motion} from 'framer-motion'
-import Img from 'gatsby-image'
+import {sanityConfig} from '../../../../sanity-config'
+import {GatsbyImage} from 'gatsby-plugin-image'
+import {getGatsbyImageData} from 'gatsby-source-sanity'
 import {wrap} from '@popmotion/popcorn'
 import {useState} from 'react'
 import {graphql} from 'gatsby'
@@ -54,9 +56,7 @@ const Arrow = ({children, ...props}) => (
 export const Images = ({images}) => {
   graphql`
     fragment projectImageFields on SanityImageAsset {
-      fluid {
-        ...GatsbySanityImageFluid
-      }
+      _id
     }
   `
   const [[page, direction], setPage] = useState([0, 0])
@@ -64,20 +64,29 @@ export const Images = ({images}) => {
   const paginate = newDirection => {
     setPage([page + newDirection, newDirection])
   }
+  const image = getGatsbyImageData(images[imageIndex].asset, {}, sanityConfig)
   return (
-    <div sx={{width: '100%', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <div
+      sx={{
+        width: '100%',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
       <motion.div
         key={page}
         custom={direction}
         variants={variants}
-        initial='enter'
-        animate='center'
-        exit='exit'
+        initial="enter"
+        animate="center"
+        exit="exit"
         transition={{
           x: {type: 'spring', stiffness: 300, damping: 200},
           opacity: {duration: 0.1}
         }}
-        drag='x'
+        drag="x"
         dragConstraints={{left: 0, right: 0}}
         dragElastic={1}
         onDragEnd={(e, {offset, velocity}) => {
@@ -90,14 +99,21 @@ export const Images = ({images}) => {
         }}
         sx={{width: '100%'}}
       >
-        <Img fluid={images[imageIndex].asset.fluid} sx={{width: '100%'}} />
+        <GatsbyImage image={image} alt={'Image'} />
       </motion.div>
-      <Arrow onClick={() => paginate(1)} sx={{right: '10px', boxShadow: '0 5px 8px rgba(0,0,0,0.15)'}}>
+      <Arrow
+        onClick={() => paginate(1)}
+        sx={{right: '10px', boxShadow: '0 5px 8px rgba(0,0,0,0.15)'}}
+      >
         ‣
       </Arrow>
       <Arrow
         onClick={() => paginate(-1)}
-        sx={{left: '10px', transform: 'scale(-1)', boxShadow: '0 -5px 8px rgba(0,0,0,0.15)'}}
+        sx={{
+          left: '10px',
+          transform: 'scale(-1)',
+          boxShadow: '0 -5px 8px rgba(0,0,0,0.15)'
+        }}
       >
         ‣
       </Arrow>

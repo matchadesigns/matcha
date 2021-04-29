@@ -1,16 +1,15 @@
 /** @jsx jsx */
-import {jsx, Text} from 'theme-ui'
-import {Fragment} from 'react'
 // import {motion} from 'framer-motion'
 import {Link} from 'gatsby'
+import {Box, jsx} from 'theme-ui'
 
 export const Title = ({title, category, link}) => {
   return (
-    <Fragment>
+    <Box>
       <Link to={link} sx={{variant: 'links.product'}}>
         {title}
       </Link>
-      <Text sx={{color: 'textMuted'}}>{category}</Text>
-    </Fragment>
+      <Box sx={{color: 'textMuted'}}>{category}</Box>
+    </Box>
   )
 }

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Styled, Box} from 'theme-ui'
+import {jsx, Themed, Box} from 'theme-ui'
 import {Fragment} from 'react'
 import {Link} from 'gatsby'
 
@@ -9,10 +9,12 @@ export const Title = ({title, category}) => {
       <Box sx={{lineHeight: 2}}>
         Catégorie :{' '}
         <Link sx={{p: 2, bg: 'light', borderRadius: 8}} to={category.link}>
-          <h2 sx={{display: 'inline-block', fontSize: 3, lineHeight: 1, m: 0}}>{category.title}</h2>
+          <h2 sx={{display: 'inline-block', fontSize: 3, lineHeight: 1, m: 0}}>
+            {category.title}
+          </h2>
         </Link>
       </Box>
-      <Styled.h1 sx={{m: 0, fontSize: [5, 6, 5, 6]}}>{title}</Styled.h1>
+      <Themed.h1 sx={{m: 0, fontSize: [5, 6, 5, 6]}}>{title}</Themed.h1>
     </Fragment>
   )
 }

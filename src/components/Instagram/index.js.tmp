@@ -27,17 +27,21 @@ export const Instagram = props => {
   return (
     <Fragment>
       <Flex sx={{alignContent: 'center', flexDirection: 'column'}}>
-        <Grid columns={[1, 2, 2, '320px 320px 320px']} sx={{width: 'auto', mx: 'auto'}} {...props}>
+        <Grid
+          columns={[1, 2, 2, '320px 320px 320px']}
+          sx={{width: 'auto', mx: 'auto'}}
+          {...props}
+        >
           {nodes && nodes.map(post => <Post key={post.id} {...post} />)}
         </Grid>
         <div sx={{textAlign: 'center', pt: 5}}>
           <Button
-            as='a'
+            as="a"
             href={`https://instagram.com/${instagram}`}
             sx={{display: 'inline'}}
-            target='_blank'
-            rel='noopener noreferrer'
-            noreferrer='true'
+            target="_blank"
+            rel="noopener noreferrer"
+            noreferrer="true"
           >
             Voir plus de posts
           </Button>

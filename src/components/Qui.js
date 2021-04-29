@@ -4,12 +4,12 @@ import {AiOutlinePlus} from 'react-icons/ai'
 import {Text, Grid, jsx} from 'theme-ui'
 import {BlockContent} from '../components/BlockContent'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
-import Img from 'gatsby-image'
+import {GatsbyImage, getImage} from 'gatsby-plugin-image'
 
 export const Qui = () => {
   const {
     page: {_rawBody: body, _rawSegments: segments},
-    image,
+    imageData,
     errors
   } = useStaticQuery(graphql`
     {
@@ -18,11 +18,9 @@ export const Qui = () => {
         _rawBody
         _rawSegments
       }
-      image: file(relativePath: {eq: "quisommesnous.jpg"}) {
+      imageData: file(relativePath: {eq: "quisommesnous.jpg"}) {
         childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
         }
       }
     }
@@ -33,9 +31,18 @@ export const Qui = () => {
 
   const Melo = () => <BlockContent blocks={segments[0].body} />
   const Geoffrey = () => <BlockContent blocks={segments[1].body} />
-
+  const image = getImage(imageData)
   return (
-    <div id='qui' sx={{position: 'relative', p: 4, pt: ['4em'], maxWidth: ['full', 'full', '75vmin', '75vmin'], margin: 'auto'}}>
+    <div
+      id="qui"
+      sx={{
+        position: 'relative',
+        p: 4,
+        pt: ['4em'],
+        maxWidth: ['full', 'full', '75vmin', '75vmin'],
+        margin: 'auto'
+      }}
+    >
       <Text sx={{textAlign: 'center'}}>
         <h2 sx={{fontSize: '2.5em', pb: 3}}>À propos</h2>
       </Text>
@@ -52,13 +59,13 @@ export const Qui = () => {
           <Melo />
         </div>
         <div sx={{pt: 2}}>
-          <AiOutlinePlus color='#D0846A' />
+          <AiOutlinePlus color="#D0846A" />
         </div>
         <div sx={{color: '#BC866E'}}>
           <Geoffrey />
         </div>
       </Grid>
-      {image && image.childImageSharp && <Img fluid={image.childImageSharp.fluid} />}
+      {image && <GatsbyImage image={image} alt="Mélodie et Geoffrey" />}
       <BlockContent blocks={body} />
     </div>
   )

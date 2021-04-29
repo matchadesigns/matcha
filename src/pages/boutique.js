@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx, Styled, Box} from 'theme-ui'
+import {jsx, Themed, Box} from 'theme-ui'
 import {Layout} from '../components/Layout'
 import Seo from '../components/Seo'
 import {graphql, Link} from 'gatsby'
@@ -18,15 +18,15 @@ const ShopPage = ({data, errors, ...props}) => {
   const categoriesNodes = mapEdgesToNodes(categories)
   return (
     <Layout {...props}>
-      {errors && <Seo title='GraphQL Error' />}
+      {errors && <Seo title="GraphQL Error" />}
       <Seo
         title={title && title}
         description={body && toPlainText(body)}
-      // image={product.image}
+        // image={product.image}
       />
       {errors && <GraphQLErrorList errors={errors} />}
       <Box p={4}>
-        {title && <Styled.h1 sx={{p: 0, mr: 3}}>{title}</Styled.h1>}
+        {title && <Themed.h1 sx={{p: 0, mr: 3}}>{title}</Themed.h1>}
         <Box>
           {categoriesNodes &&
             categoriesNodes.length > 0 &&
@@ -35,9 +35,9 @@ const ShopPage = ({data, errors, ...props}) => {
                 key={category.slug.current}
                 to={`/${category.slug.current}/`}
               >
-                <Styled.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>
+                <Themed.h3 sx={{display: 'inline-block', p: 0, mr: 4}}>
                   {category.title}
-                </Styled.h3>
+                </Themed.h3>
               </Link>
             ))}
         </Box>

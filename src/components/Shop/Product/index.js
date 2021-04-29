@@ -121,7 +121,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
   columns.push(isThumb ? 2 : 2) // wide
   columns.push(isThumb ? 2 : 2) // extrawide
   return (
-    <motion.div variants={container} initial='hidden' animate='show'>
+    <motion.div variants={container} initial="hidden" animate="show">
       <Grid gap={2} columns={columns} sx={{p: 4}}>
         <Images item={item} image={image} thumbs={thumbs} />
         <motion.div
@@ -134,7 +134,13 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
             order: 2
           }}
         >
-          <Title title={title} category={{title: category.title, link: `/${category.slug.current}`}} />
+          <Title
+            title={title}
+            category={{
+              title: category.title,
+              link: `/${category.slug.current}`
+            }}
+          />
           <Buy
             id={id}
             title={title}
@@ -142,7 +148,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
             price={price}
             deliveryTime={deliveryTime}
             category={category.title}
-            cartImage={images[0].asset.fluid.src}
+            cartImage={images[0].asset.url}
             inStock={inStock}
           />
           <Variants variants={refactoredVariants} />
