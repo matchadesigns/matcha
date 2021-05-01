@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: simple-react-lightbox
+    versions:
+    - 3.6.3
+  - dependency-name: babel-preset-gatsby
+    versions:
+    - 0.12.2
