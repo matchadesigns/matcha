@@ -16,7 +16,7 @@
     "@babel/types": "^7.12.12",
     "@popmotion/popcorn": "^0.4.4",
     "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/image-url": "^0.140.22",
+    "@sanity/image-url": "^1.0.1",
     "@statickit/functions": "github:unstacked/statickit-functions#cbb937a5-d8b1-49a4-8d0a-ebad40ee5140",
     "@statickit/react": "^2.1.1",
     "@theme-ui/presets": "^0.7.5",
