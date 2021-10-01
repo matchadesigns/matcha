@@ -19,7 +19,7 @@
     "@sanity/image-url": "^0.140.22",
     "@statickit/functions": "github:unstacked/statickit-functions#cbb937a5-d8b1-49a4-8d0a-ebad40ee5140",
     "@statickit/react": "^2.1.1",
-    "@theme-ui/presets": "^0.7.5",
+    "@theme-ui/presets": "^0.11.3",
     "algoliasearch": "^4.9.1",
     "currency.js": "^2.0.3",
     "date-fns": "^2.21.1",
