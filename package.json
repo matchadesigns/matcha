@@ -39,7 +39,7 @@
     "gatsby-plugin-sitemap": "^4.0.0",
     "gatsby-plugin-snipcartv3": "^2.3.3",
     "gatsby-plugin-statickit": "^1.1.1",
-    "gatsby-plugin-theme-ui": "^0.7.5",
+    "gatsby-plugin-theme-ui": "^0.11.3",
     "gatsby-plugin-zeit-now": "^0.3.0",
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-source-instagram": "^0.9.0",
