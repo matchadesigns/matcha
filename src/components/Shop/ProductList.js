@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import {motion} from 'framer-motion'
+// import {motion} from 'framer-motion'
 import {Grid, jsx} from 'theme-ui'
 import {ProductCard} from './ProductCard'
 
+/*
 const container = {
   hidden: {opacity: 0},
   show: {
@@ -29,4 +30,13 @@ export const ProductList = ({nodes, ...props}) => (
         ))}
     </Grid>
   </motion.div>
+)
+
+*/
+
+export const ProductList = ({nodes, ...props}) => (
+  <Grid columns={[2, 3, 4, 4, 4, 6]} {...props}>
+    {nodes &&
+      nodes.map(product => <ProductCard {...product} key={product.id} />)}
+  </Grid>
 )
