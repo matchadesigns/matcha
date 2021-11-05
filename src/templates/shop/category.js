@@ -51,7 +51,7 @@ export const query = graphql`
       ...productCategoryFields
     }
     products: allSanityProduct(
-      filter: {category: {id: {eq: $category}}}
+      filter: {category: {id: {eq: $category}}, displayInShop: {ne: false}}
       sort: {order: [DESC, ASC], fields: [publishedAt, title]}
     ) {
       edges {

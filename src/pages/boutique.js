@@ -59,6 +59,7 @@ export const query = graphql`
     }
     products: allSanityProduct(
       sort: {order: [DESC, ASC, DESC], fields: [sku, title, publishedAt]}
+      filter: {displayInShop: {ne: false}}
     ) {
       edges {
         node {
