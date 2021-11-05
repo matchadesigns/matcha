@@ -29,11 +29,15 @@ export const Project = project => {
     // publishedAt
   } = project
   const categoryPath = getCategoryPath({category: category.slug})
+
+  const thumbs = [...images]
+  const image = thumbs.shift()
+
   return (
     <article>
       <Grid gap={2} columns={[1, 1, 2]}>
         <Box sx={{order: 0}}>
-          <Images images={images} />
+          <Images image={image} thumbs={thumbs} />
         </Box>
         <Box
           sx={{
@@ -44,7 +48,11 @@ export const Project = project => {
             gridColumnEnd: ['auto', 4, 'auto']
           }}
         >
-          <Title title={title} subtitle={subtitle} category={{title: category.title, link: categoryPath}} />
+          <Title
+            title={title}
+            subtitle={subtitle}
+            category={{title: category.title, link: categoryPath}}
+          />
           <Body raw={_rawBody} />
           {/*
           <Date date={publishedAt} />

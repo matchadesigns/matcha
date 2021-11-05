@@ -1,127 +1,34 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui'
 import {motion} from 'framer-motion'
-import {sanityConfig} from '../../../../sanity-config'
-import {GatsbyImage} from 'gatsby-plugin-image'
-import {getGatsbyImageData} from 'gatsby-source-sanity'
-import {wrap} from '@popmotion/popcorn'
-import {useState} from 'react'
 import {graphql} from 'gatsby'
+import {SRLWrapper} from 'simple-react-lightbox'
+import {Grid, jsx} from 'theme-ui'
+import {Image} from './Image'
+import {Thumbs} from './Thumbs'
 
-const variants = {
-  enter: direction => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1
-  },
-  exit: direction => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    }
-  }
-}
-
-const Arrow = ({children, ...props}) => (
-  <div
-    {...props}
-    sx={{
-      top: 'calc(50% - 20px)',
-      position: 'absolute',
-      background: 'white',
-      borderRadius: '30px',
-      width: '40px',
-      height: '40px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      userSelect: 'none',
-      cursor: 'pointer',
-      fontWeight: 'bold',
-      fontSize: '18px',
-      zIndex: 2
-    }}
-  >
-    {children}
-  </div>
-)
-
-export const Images = ({images}) => {
+export const Images = ({thumbs, image}) => {
   graphql`
     fragment projectImageFields on SanityImageAsset {
       _id
     }
   `
-  const [[page, direction], setPage] = useState([0, 0])
-  const imageIndex = wrap(0, images.length, page)
-  const paginate = newDirection => {
-    setPage([page + newDirection, newDirection])
-  }
-  const image = getGatsbyImageData(images[imageIndex].asset, {}, sanityConfig)
-  return (
-    <div
-      sx={{
-        width: '100%',
-        position: 'relative',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
-      <motion.div
-        key={page}
-        custom={direction}
-        variants={variants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        transition={{
-          x: {type: 'spring', stiffness: 300, damping: 200},
-          opacity: {duration: 0.1}
-        }}
-        drag="x"
-        dragConstraints={{left: 0, right: 0}}
-        dragElastic={1}
-        onDragEnd={(e, {offset, velocity}) => {
-          const swipe = swipePower(offset.x, velocity.x)
-          if (swipe < -swipeConfidenceThreshold) {
-            paginate(1)
-          } else if (swipe > swipeConfidenceThreshold) {
-            paginate(-1)
-          }
-        }}
-        sx={{width: '100%'}}
-      >
-        <GatsbyImage image={image} alt={'Image'} />
-      </motion.div>
-      <Arrow
-        onClick={() => paginate(1)}
-        sx={{right: '10px', boxShadow: '0 5px 8px rgba(0,0,0,0.15)'}}
-      >
-        ‣
-      </Arrow>
-      <Arrow
-        onClick={() => paginate(-1)}
-        sx={{
-          left: '10px',
-          transform: 'scale(-1)',
-          boxShadow: '0 -5px 8px rgba(0,0,0,0.15)'
-        }}
-      >
-        ‣
-      </Arrow>
-    </div>
-  )
-}
 
-const swipeConfidenceThreshold = 10000
-const swipePower = (offset, velocity) => {
-  return Math.abs(offset) * velocity
+  const item = {
+    hidden: {opacity: 0},
+    show: {opacity: 1}
+  }
+  return (
+    <SRLWrapper>
+      <Grid columns={1}>
+        <motion.div variants={item}>
+          {image && <Image image={image} />}
+        </motion.div>
+        {thumbs.length > 0 && (
+          <motion.div variants={item}>
+            <Thumbs thumbs={thumbs} />
+          </motion.div>
+        )}
+      </Grid>
+    </SRLWrapper>
+  )
 }
