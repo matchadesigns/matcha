@@ -1,15 +1,16 @@
 /** @jsx jsx */
 import {graphql, useStaticQuery} from 'gatsby'
+import {GatsbyImage} from 'gatsby-plugin-image'
+import {getGatsbyImageData} from 'gatsby-source-sanity'
 import {AiOutlinePlus} from 'react-icons/ai'
-import {Text, Grid, jsx} from 'theme-ui'
+import {Grid, jsx, Text} from 'theme-ui'
 import {BlockContent} from '../components/BlockContent'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
-import {GatsbyImage, getImage} from 'gatsby-plugin-image'
+import {sanityConfig} from '../../sanity-config'
 
 export const Qui = () => {
   const {
-    page: {_rawBody: body, _rawSegments: segments},
-    imageData,
+    page: {_rawBody: body, _rawSegments: segments, images},
     errors
   } = useStaticQuery(graphql`
     {
@@ -17,10 +18,11 @@ export const Qui = () => {
         title
         _rawBody
         _rawSegments
-      }
-      imageData: file(relativePath: {eq: "quisommesnous.jpg"}) {
-        childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+        images {
+          asset {
+            _id
+            url
+          }
         }
       }
     }
@@ -31,7 +33,7 @@ export const Qui = () => {
 
   const Melo = () => <BlockContent blocks={segments[0].body} />
   const Geoffrey = () => <BlockContent blocks={segments[1].body} />
-  const image = getImage(imageData)
+
   return (
     <div
       id="qui"
@@ -65,7 +67,20 @@ export const Qui = () => {
           <Geoffrey />
         </div>
       </Grid>
-      {image && <GatsbyImage image={image} alt="Mélodie et Geoffrey" />}
+      {images &&
+        images.map(image => (
+          <GatsbyImage
+            image={getGatsbyImageData(
+              image,
+              {
+                maxWidth: 300
+              },
+              sanityConfig
+            )}
+            alt={'Mélodie et Geoffrey'}
+            key={image.asset._id}
+          />
+        ))}
       <BlockContent blocks={body} />
     </div>
   )

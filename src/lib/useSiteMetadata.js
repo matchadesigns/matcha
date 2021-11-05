@@ -11,6 +11,7 @@ export const useSiteMetadata = () => {
           keywords
           instagram
           facebook
+          topMessage
         }
       }
     `
