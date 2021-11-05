@@ -118,7 +118,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
   columns.push(isThumb ? 2 : 2) // desktop
   columns.push(isThumb ? 2 : 2) // wide
   columns.push(isThumb ? 2 : 2) // extrawide
-  console.log(columns)
+
   return (
     <motion.div variants={container} initial="hidden" animate="show">
       <Grid gap={2} columns={columns} sx={{p: 4}}>
