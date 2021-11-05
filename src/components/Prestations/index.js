@@ -1,18 +1,18 @@
 /** @jsx jsx */
 import {graphql, useStaticQuery} from 'gatsby'
-import {Flex, Button as ThemeUiButton, Grid, jsx} from 'theme-ui'
-import Crayon from '../../assets/svg/ICONE_IDENTITE_VISU.svg'
-import Lampe from '../../assets/svg/ICONE_GAMME_PRODUITS.svg'
+import {Fragment} from 'react'
+import {Button as ThemeUiButton, Grid, jsx} from 'theme-ui'
 import Nuancier from '../../assets/svg/ICONE_DESIGN_INT.svg'
+import Lampe from '../../assets/svg/ICONE_GAMME_PRODUITS.svg'
+import Crayon from '../../assets/svg/ICONE_IDENTITE_VISU.svg'
 import {GraphQLErrorList} from '../../components/GraphQLErrorList'
 import {BlockContent} from '../BlockContent'
 import {AnimBottom} from './AnimBottom'
 import {AnimTop} from './AnimTop'
-import {Fragment} from 'react'
 
 export const Prestations = props => {
   const {
-    page: {title, _rawSegments: segments},
+    page: {_rawSegments: segments}, // {title, _rawSegments: segments},
     errors
   } = useStaticQuery(graphql`
     {
@@ -33,26 +33,48 @@ export const Prestations = props => {
   // const GraphismeTitle = () => <h2>{segments[2].title}</h2>
   const Graphisme = () => <BlockContent blocks={segments[2].body} />
 
-  const colors = {design: '#BC866E', gammeProduit: '#D1A969', graphisme: '#8A8985'}
+  const colors = {
+    design: '#BC866E',
+    gammeProduit: '#D1A969',
+    graphisme: '#8A8985'
+  }
 
   return (
     <Fragment>
       <AnimTop height={['12vmin']} top={['0']} right={['20%']} />
       <AnimBottom height={['12vmin']} bottom={['12vmin']} left={['50%']} />
       <div sx={{position: 'relative', p: 4}} {...props}>
-        <h1>Mâtcha, c'est quoi ?</h1>
-        <Grid columns={[1, 1, 3]} gap={5} sx={{alignItems: 'flex-start', justifyItems: ['start'], height: 'full'}}>
+        <h1>{"Mâtcha, c'est quoi ?"}</h1>
+        <Grid
+          columns={[1, 1, 3]}
+          gap={5}
+          sx={{
+            alignItems: 'flex-start',
+            justifyItems: ['start'],
+            height: 'full'
+          }}
+        >
           <div sx={{color: colors.design}}>
             <Nuancier />
             <Design />
-            <Button to='/presta_deco.pdf' color={colors.design} target='_blank' rel='noopener noreferrer'>
+            <Button
+              to="https://drive.google.com/file/d/1KH8NShJZiCTyw8uh0ul_O9RGVQzx_iWP/view?usp=sharing"
+              color={colors.design}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Voir détails prestations
             </Button>
           </div>
           <div sx={{color: colors.graphisme, mt: 3}}>
             <Crayon />
             <Graphisme />
-            <Button to='/presta_graphique.pdf' color={colors.graphisme} target='_blank' rel='noopener noreferrer'>
+            <Button
+              to="https://drive.google.com/file/d/1IxGjkcRVESSEijpdDTbAeyFsmpqua_m5/view?usp=sharing"
+              color={colors.graphisme}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Voir détails prestations
             </Button>
           </div>
@@ -60,7 +82,7 @@ export const Prestations = props => {
             <Lampe />
             <GammeProduit />
             <p>
-              <Button to='/boutique/' color={colors.gammeProduit}>
+              <Button to="/boutique/" color={colors.gammeProduit}>
                 Voir la boutique en ligne
               </Button>
             </p>
@@ -73,7 +95,7 @@ export const Prestations = props => {
 
 const Button = ({to, color, children, ...props}) => (
   <ThemeUiButton
-    as='a'
+    as="a"
     href={to}
     sx={{
       display: 'inline',
