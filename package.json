@@ -28,7 +28,7 @@
     "deepmerge": "^4.2.2",
     "framer-motion": "^5.2.1",
     "gatsby": "^4.1.0",
-    "gatsby-plugin-algolia": "^0.23.0",
+    "gatsby-plugin-algolia": "^0.25.0",
     "gatsby-plugin-google-analytics": "^4.1.0",
     "gatsby-plugin-image": "^2.1.0",
     "gatsby-plugin-manifest": "^4.1.0",
