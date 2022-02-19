@@ -33,7 +33,7 @@ export const ProductCard = ({
       }
       images {
         asset {
-          _id
+          ...productImageFields
         }
       }
       price {
