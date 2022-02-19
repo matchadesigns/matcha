@@ -105,12 +105,13 @@ module.exports = {
         trackingId: process.env.GOOGLE_ANALYTICS
       }
     },
-    {
+    /*{
       resolve: 'gatsby-plugin-statickit',
       options: {
         siteId: '405593a40093'
       }
     }
+    */
     // 'gatsby-plugin-webpack-bundle-analyser-v2'
   ]
 }
