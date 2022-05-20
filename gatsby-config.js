@@ -100,18 +100,10 @@ module.exports = {
     'gatsby-plugin-zeit-now',
     'gatsby-plugin-sitemap',
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS
-      }
-    },
-    /*{
-      resolve: 'gatsby-plugin-statickit',
-      options: {
-        siteId: '405593a40093'
+        trackingIds: [process.env.GOOGLE_ANALYTICS]
       }
     }
-    */
-    // 'gatsby-plugin-webpack-bundle-analyser-v2'
   ]
 }
