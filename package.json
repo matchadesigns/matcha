@@ -59,7 +59,7 @@
     "react-onclickoutside": "^6.12.1",
     "react-schemaorg": "^2.0.0",
     "simple-react-lightbox": "3.6.9-0",
-    "theme-ui": "^0.14.5"
+    "theme-ui": "^0.15.1"
   },
   "devDependencies": {
     "babel-plugin-emotion": "^11.0.0",
