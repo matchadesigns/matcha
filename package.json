@@ -21,7 +21,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
-    "@theme-ui/presets": "^0.14.5",
+    "@theme-ui/presets": "^0.15.1",
     "@vercel/node": "^1.15.3",
     "algoliasearch": "^4.13.1",
     "currency.js": "^2.0.4",
