@@ -54,7 +54,6 @@ module.exports = {
         apiKey: process.env.SNIPCART_APIKEY,
         js: '/snipcart.3.4.0.js',
         styles: '/snipcart.3.4.0.css',
-        //https://cdn.snipcart.com/themes/v3.4.0/default/snipcart.js
       },
     },
     {

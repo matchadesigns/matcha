@@ -15,17 +15,16 @@ export default {
     black: '#1B171C',
     text: '#000',
     green: '#39B54A',
-    red: '#D48464'
+    red: '#D48464',
   },
   fonts: {
     ...tailwind.fonts,
-    body:
-      '"Sulphur Point", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: 'SimplePrint'
+    body: '"Sulphur Point", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    heading: 'SimplePrint',
   },
   fontWeights: {
     ...tailwind.fontWeights,
-    body: 300
+    body: 300,
   },
   buttons: {
     ...tailwind.buttons,
@@ -39,8 +38,8 @@ export default {
       ':hover': {
         cursor: 'pointer',
         bg: 'primary',
-        color: 'white'
-      }
+        color: 'white',
+      },
     },
     discrete: {
       borderRadius: 4,
@@ -51,9 +50,9 @@ export default {
       ':hover': {
         cursor: 'pointer',
         bg: 'primary',
-        color: 'white'
-      }
-    }
+        color: 'white',
+      },
+    },
   },
   styles: {
     ...tailwind.styles,
@@ -65,7 +64,7 @@ export default {
       letterSpacing: '4px',
       color: 'primary',
       mt: 0,
-      pt: 2
+      pt: 2,
     },
     root: {
       maxWidth: '100vw',
@@ -77,22 +76,22 @@ export default {
       fontFamily: 'body',
       letterSpacing: '1px',
       h1: {
-        variant: 'styles.h1'
+        variant: 'styles.h1',
       },
       h2: {
-        variant: 'styles.h2'
+        variant: 'styles.h2',
       },
       h3: {
-        variant: 'styles.h3'
+        variant: 'styles.h3',
       },
       h4: {
-        variant: 'styles.h4'
+        variant: 'styles.h4',
       },
       h5: {
-        variant: 'styles.h5'
+        variant: 'styles.h5',
       },
       strong: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
       },
       a: {
         ...tailwind.styles.a,
@@ -101,13 +100,13 @@ export default {
         fontWeight: 'bold',
         ':hover': {
           // textDecoration: 'underline'
-          color: 'gray.7'
-        }
+          color: 'gray.7',
+        },
       },
       'a,button': {
-        ':focus': {outline: 0}
-      }
-    }
+        ':focus': {outline: 0},
+      },
+    },
   },
   layout: {
     header: {
@@ -119,7 +118,7 @@ export default {
         flexGrow: 1,
         flexBasis: 'sidebar',
         pl: 3,
-        py: 2
+        py: 2,
       },
       nav: {
         display: 'flex',
@@ -129,19 +128,19 @@ export default {
         flexBasis: 0,
         minWidth: '50%',
         a: {
-          fontWeight: 'light'
-        }
-      }
+          fontWeight: 'light',
+        },
+      },
     },
     content: {
       bg: 'white',
       minHeight: '60vh',
-      position: 'relative'
+      position: 'relative',
     },
     main: {
       bg: 'white',
       position: 'relative',
-      zIndex: 1
+      zIndex: 1,
     },
     mobileMenu: {
       bg: 'primary',
@@ -154,8 +153,8 @@ export default {
         color: 'white',
         py: 3,
         borderBottom: '1px solid',
-        borderColor: 'rgba(255,255,255,0.125)'
-      }
+        borderColor: 'rgba(255,255,255,0.125)',
+      },
     },
     footer: {
       gridRowStart: 3,
@@ -164,7 +163,7 @@ export default {
       color: 'white',
       a: {color: 'white'},
       p: 4,
-      textAlign: 'center'
-    }
-  }
+      textAlign: 'center',
+    },
+  },
 }

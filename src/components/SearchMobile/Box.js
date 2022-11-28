@@ -5,35 +5,41 @@ import {IoMdSearch} from 'react-icons/io'
 
 export const Box = connectSearchBox(({refine, ...opts}) => (
   <Flex
-    as='form'
+    as="form"
     sx={{
       bg: 'white',
       borderRadius: 4,
       // width: 'full',
       maxWidth: '320px',
-      touchAction: 'none'
+      touchAction: 'none',
     }}
   >
     <label
-      htmlFor='search'
+      htmlFor="search"
       sx={{
         display: 'flex',
         flexDirection: 'row-reverse',
         alignItems: 'center',
         pl: 2,
         // width: 'full'
-        touchAction: 'none'
+        touchAction: 'none',
       }}
     >
       <Input
-        name='search'
-        id='search'
-        type='text'
-        placeholder='Rechercher'
-        aria-label='Rechercher'
+        name="search"
+        id="search"
+        type="text"
+        placeholder="Rechercher"
+        aria-label="Rechercher"
         onChange={e => refine(e.target.value)}
-        autocomplete='off'
-        sx={{bg: 'white', border: 0, color: 'text', fontSize: '16px', touchAction: 'none'}}
+        autocomplete="off"
+        sx={{
+          bg: 'white',
+          border: 0,
+          color: 'text',
+          fontSize: '16px',
+          touchAction: 'none',
+        }}
         {...opts}
       />
       <IoMdSearch size={32} sx={{color: 'text'}} />

@@ -1,5 +1,5 @@
 const serializers = {
-  types: {}
+  types: {},
 }
 
 export default serializers

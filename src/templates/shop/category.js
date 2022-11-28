@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import {jsx, Themed, Box} from 'theme-ui'
+import {jsx, Box} from 'theme-ui'
+import {Themed} from '@theme-ui/mdx'
 import {Layout} from '../../components/Layout'
 import Seo from '../../components/Seo'
 import {graphql} from 'gatsby'
@@ -46,13 +47,14 @@ export const query = graphql`
       current
     }
   }
+
   query Category($category: String) {
     category: sanityProductCategory(id: {eq: $category}) {
       ...productCategoryFields
     }
     products: allSanityProduct(
       filter: {category: {id: {eq: $category}}, displayInShop: {ne: false}}
-      sort: {order: [DESC, ASC], fields: [publishedAt, title]}
+      sort: [{publishedAt: DESC}, {title: ASC}]
     ) {
       edges {
         node {

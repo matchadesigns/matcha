@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import {graphql} from 'gatsby'
-import {Box, jsx, Themed} from 'theme-ui'
+import {Box, jsx} from 'theme-ui'
+import {Themed} from '@theme-ui/mdx'
 import {GraphQLErrorList} from '../../components/GraphQLErrorList'
 import Seo from '../../components/Seo'
 import {Project} from '../../components/Projects/Project'
@@ -43,7 +44,7 @@ export const query = graphql`
     }
     sameCategoryProjects: allSanityProject(
       filter: {id: {ne: $project}, category: {id: {eq: $category}}}
-      sort: {order: [DESC], fields: [publishedAt]}
+      sort: {publishedAt: DESC}
       limit: 6
     ) {
       edges {

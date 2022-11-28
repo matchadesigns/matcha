@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import {jsx, Themed, Box} from 'theme-ui'
+import {jsx, Box} from 'theme-ui'
 import {Fragment} from 'react'
 import {Link} from 'gatsby'
+import {Themed} from '@theme-ui/mdx'
 
 export const Title = ({title, category}) => {
   return (

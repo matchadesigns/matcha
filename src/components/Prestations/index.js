@@ -13,7 +13,7 @@ import {AnimTop} from './AnimTop'
 export const Prestations = props => {
   const {
     page: {_rawSegments: segments}, // {title, _rawSegments: segments},
-    errors
+    errors,
   } = useStaticQuery(graphql`
     {
       page: sanityPage(slug: {current: {eq: "prestations"}}) {
@@ -36,7 +36,7 @@ export const Prestations = props => {
   const colors = {
     design: '#BC866E',
     gammeProduit: '#D1A969',
-    graphisme: '#8A8985'
+    graphisme: '#8A8985',
   }
 
   return (
@@ -51,7 +51,7 @@ export const Prestations = props => {
           sx={{
             alignItems: 'flex-start',
             justifyItems: ['start'],
-            height: 'full'
+            height: 'full',
           }}
         >
           <div sx={{color: colors.design}}>
@@ -103,7 +103,7 @@ const Button = ({to, color, children, ...props}) => (
       bg: color,
       color: 'white',
       mt: 3,
-      ':hover': {textDecoration: 'none'}
+      ':hover': {textDecoration: 'none'},
     }}
     {...props}
   >

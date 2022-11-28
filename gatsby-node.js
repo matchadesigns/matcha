@@ -8,13 +8,13 @@ const templates = {
   projects: {
     // index: 'projects/index.js', added as a gatsby page
     project: 'projects/project.js',
-    category: 'projects/category.js'
+    category: 'projects/category.js',
   },
   shop: {
     // index: 'shop/index.js', added as a gatsby page
     product: 'shop/product.js',
-    category: 'shop/category.js'
-  }
+    category: 'shop/category.js',
+  },
 }
 
 /*
@@ -25,7 +25,9 @@ async function createProjectPages(graphql, actions, reporter) {
   const {createPage} = actions
   const result = await graphql(`
     {
-      query: allSanityProject(filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}) {
+      query: allSanityProject(
+        filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+      ) {
         edges {
           node {
             id
@@ -55,19 +57,21 @@ async function createProjectPages(graphql, actions, reporter) {
           slug: {current: slug},
           category: {
             id: category,
-            slug: {current: categorySlug}
-          }
-        }
+            slug: {current: categorySlug},
+          },
+        },
       } = edge
       const path = `/${categorySlug}/${slug}/`
       reporter.info(`Creating project page: ${path}`)
       createPage({
         path,
-        component: pth.resolve(pth.join(templates.baseDir, templates.projects.project)),
+        component: pth.resolve(
+          pth.join(templates.baseDir, templates.projects.project)
+        ),
         context: {
           project,
-          category
-        }
+          category,
+        },
       })
     })
 }
@@ -113,27 +117,31 @@ async function createShopProductPages(graphql, actions, reporter) {
           slug: {current: slug},
           category: {
             id: category,
-            slug: {current: categorySlug}
+            slug: {current: categorySlug},
           },
-          variants
-        }
+          variants,
+        },
       } = edge
       const variantGroupsIds =
         variants && variants.length
           ? variants.reduce((acc, el) => {
-            return acc === null ? [el.variantGroup.id] : [...acc, el.variantGroup.id]
-          }, null)
+              return acc === null
+                ? [el.variantGroup.id]
+                : [...acc, el.variantGroup.id]
+            }, null)
           : []
       const path = `/${categorySlug}/${slug}/`
       reporter.info(`Creating product page: ${path}`)
       createPage({
         path,
-        component: pth.resolve(pth.join(templates.baseDir, templates.shop.product)),
+        component: pth.resolve(
+          pth.join(templates.baseDir, templates.shop.product)
+        ),
         context: {
           product,
           category,
-          variantGroupsIds
-        }
+          variantGroupsIds,
+        },
       })
     })
 }
@@ -163,17 +171,19 @@ async function createShopCategoryPages(graphql, actions, reporter) {
     const {
       node: {
         id: category,
-        slug: {current: slug}
-      }
+        slug: {current: slug},
+      },
     } = edge
     const path = `/${slug}/`
     reporter.info(`Creating category page: ${path}`)
     createPage({
       path,
-      component: pth.resolve(pth.join(templates.baseDir, templates.shop.category)),
+      component: pth.resolve(
+        pth.join(templates.baseDir, templates.shop.category)
+      ),
       context: {
-        category
-      }
+        category,
+      },
     })
   })
 }
@@ -190,9 +200,11 @@ exports.createResolvers = ({createResolvers}) => {
       formatted: {
         type: 'String!',
         resolve: source => {
-          return currency(source.value, {decimal: ',', symbol: ''}).format() + ' €'
-        }
-      }
-    }
+          return (
+            currency(source.value, {decimal: ',', symbol: ''}).format() + ' €'
+          )
+        },
+      },
+    },
   })
 }

@@ -121,7 +121,7 @@ const profileQuery = `
 const flatten = arr =>
   arr.map(({node: {frontmatter, ...rest}}) => ({
     ...frontmatter,
-    ...rest
+    ...rest,
   }))
 const settings = {attributesToSnippet: ['excerpt:20']}
 const queries = [
@@ -129,14 +129,14 @@ const queries = [
     query: productQuery,
     transformer: ({data}) => flatten(data.products.edges),
     indexName: 'Products',
-    settings
+    settings,
   },
   {
     query: projectQuery,
     transformer: ({data}) => flatten(data.projects.edges),
     indexName: 'Projects',
-    settings
-  }
+    settings,
+  },
   /*
   {
     query: blogPostQuery,

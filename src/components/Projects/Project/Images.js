@@ -15,7 +15,7 @@ export const Images = ({thumbs, image}) => {
 
   const item = {
     hidden: {opacity: 0},
-    show: {opacity: 1}
+    show: {opacity: 1},
   }
   return (
     <SRLWrapper>

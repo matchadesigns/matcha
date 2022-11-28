@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <footer
       sx={{
-        variant: 'layout.footer'
+        variant: 'layout.footer',
       }}
     >
       © {new Date().getFullYear()} <a href={url}>{title}</a>
@@ -41,7 +41,7 @@ export const Footer = () => {
           pt: 3,
           alignItems: 'center',
           justifyContent: 'center',
-          zIndex: 'inherit'
+          zIndex: 'inherit',
         }}
       >
         <a

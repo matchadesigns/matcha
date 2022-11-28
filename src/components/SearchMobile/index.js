@@ -2,16 +2,24 @@
 import {jsx} from 'theme-ui'
 import {useState, useEffect, useCallback, useRef} from 'react'
 import algoliasearch from 'algoliasearch/lite'
-import {InstantSearch, Configure, Index, InfiniteHits, connectStateResults} from 'react-instantsearch-dom'
+import {
+  InstantSearch,
+  Configure,
+  Index,
+  InfiniteHits,
+  connectStateResults,
+} from 'react-instantsearch-dom'
 import {Box} from './Box'
 import * as hitComps from './Hits'
 import onClickOutside from 'react-onclickoutside'
 
 const Results = connectStateResults(
-  ({searchState: state, searchResults: res, children}) => (res && res.nbHits > 0 ? children : null) // state.query ? `Pas de résultat pour '${state.query}'` : null
+  ({searchState: state, searchResults: res, children}) =>
+    res && res.nbHits > 0 ? children : null // state.query ? `Pas de résultat pour '${state.query}'` : null
 )
 const Stats = connectStateResults(
-  ({searchResults: res}) => res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? 's' : ''}`
+  ({searchResults: res}) =>
+    res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? 's' : ''}`
 )
 const useEscKey = handler => {
   const detectEscKey = useCallback(
@@ -27,32 +35,37 @@ const useEscKey = handler => {
 
 const useListenerOn = (events, detection) => {
   useEffect(() => {
-    for (const event of events) document.addEventListener(event, detection, false)
+    for (const event of events)
+      document.addEventListener(event, detection, false)
     return () => {
-      for (const event of events) document.removeEventListener(event, detection, false)
+      for (const event of events)
+        document.removeEventListener(event, detection, false)
     }
   })
 }
 
-function Search ({indices, collapse}) {
+function Search({indices, collapse}) {
   const ref = useRef()
   const [query, setQuery] = useState('')
   const [focus, setFocus] = useState(false)
-  const algoliaClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
+  const algoliaClient = algoliasearch(
+    process.env.GATSBY_ALGOLIA_APP_ID,
+    process.env.GATSBY_ALGOLIA_SEARCH_KEY
+  )
   const searchClient = {
-    search (requests) {
+    search(requests) {
       if (requests.every(({params}) => !params.query)) {
         return Promise.resolve({
           results: requests.map(() => ({
             hits: [],
             nbHits: 0,
             nbPages: 0,
-            processingTimeMS: 0
-          }))
+            processingTimeMS: 0,
+          })),
         })
       }
       return algoliaClient.search(requests)
-    }
+    },
   }
   Search.handleClickOutside = () => setFocus(false)
   useEscKey(() => setFocus(false))
@@ -87,17 +100,17 @@ function Search ({indices, collapse}) {
             bg: 'white',
             ul: {
               listStyle: 'none',
-              padding: 0
+              padding: 0,
             },
             mark: {
               color: 'primary',
-              bg: 'brownWhite'
+              bg: 'brownWhite',
             },
             header: {
               display: 'flex',
               justifyContent: 'space-between',
-              mb: 1
-            }
+              mb: 1,
+            },
           }}
         >
           {indices.map(({name, title, hitComp}) => (
@@ -107,7 +120,7 @@ function Search ({indices, collapse}) {
                   hitComponent={hitComps[hitComp](() => setFocus(false))}
                   translations={{
                     loadPrevious: 'Résultats précédents',
-                    loadMore: 'Résultats suivants'
+                    loadMore: 'Résultats suivants',
                   }}
                 />
               </Results>
@@ -122,12 +135,12 @@ function Search ({indices, collapse}) {
 
 const PoweredBy = () => (
   <span sx={{display: 'inline-block', textAlign: 'right'}}>
-    Recherche propulsée par <a href='https://algolia.com'>Algolia</a>
+    Recherche propulsée par <a href="https://algolia.com">Algolia</a>
   </span>
 )
 
 const clickOutsideConfig = {
-  handleClickOutside: () => Search.handleClickOutside
+  handleClickOutside: () => Search.handleClickOutside,
 }
 
 export default onClickOutside(Search, clickOutsideConfig)

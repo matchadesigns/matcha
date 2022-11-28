@@ -17,7 +17,7 @@ const PrestationsPage = () => {
   }
   const {
     page: {title},
-    errors
+    errors,
   } = useStaticQuery(graphql`
     {
       page: sanityPage(slug: {current: {eq: "prestations"}}) {
@@ -30,7 +30,11 @@ const PrestationsPage = () => {
   }
   return (
     <Layout>
-      <Seo title={title} description={site.description} keywords={site.keywords} />
+      <Seo
+        title={title}
+        description={site.description}
+        keywords={site.keywords}
+      />
       <Prestations />
     </Layout>
   )

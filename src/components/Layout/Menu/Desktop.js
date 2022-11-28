@@ -33,9 +33,9 @@ const Li = styled.li`
 `
 
 export const Desktop = props => (
-  <Flex as='ul' {...props}>
+  <Flex as="ul" {...props}>
     {links.map(({url, text}) => (
-      <MenuLink key={url} to={url} activeClassName='active'>
+      <MenuLink key={url} to={url} activeClassName="active">
         <Li sx={{fontSize: [0, 0, 0, '0.8em', 1]}}>{text}</Li>
       </MenuLink>
     ))}

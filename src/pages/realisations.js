@@ -8,7 +8,7 @@ import {
   filterOutDocsPublishedInTheFuture,
   filterOutDocsWithoutSlugs,
   mapEdgesToNodes,
-  toPlainText
+  toPlainText,
 } from '../lib/helpers'
 import Seo from '../components/Seo'
 import {BlockContent} from '../components/BlockContent'
@@ -23,12 +23,12 @@ const ProjectsPage = ({data, errors}) => {
   }
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
     : []
 
   const {
-    page: {title, _rawBody}
+    page: {title, _rawBody},
   } = data
 
   return (
@@ -43,7 +43,7 @@ const ProjectsPage = ({data, errors}) => {
 export const query = graphql`
   query ProjectsPageQuery {
     projects: allSanityProject(
-      sort: {fields: [publishedAt], order: DESC}
+      sort: {publishedAt: DESC}
       filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
       edges {

@@ -5,18 +5,18 @@ module.exports = {
     'standard',
     'standard-react',
     'plugin:import/errors',
-    'plugin:import/warnings'
+    'plugin:import/warnings',
   ],
   rules: {
     'react/prop-types': 0,
     'react/jsx-fragments': [1, 'element'],
     'object-curly-spacing': ['error', 'never'],
-    'react/jsx-pascal-case': 0
+    'react/jsx-pascal-case': 0,
   },
   settings: {
     react: {
       pragma: 'React',
-      version: '16.8.4'
-    }
-  }
+      version: '18.1.0',
+    },
+  },
 }

@@ -17,7 +17,7 @@ export const Homepage = () => {
     <div
       sx={{
         height: '100vh',
-        zIndex: 0
+        zIndex: 0,
       }}
     >
       <div
@@ -28,15 +28,23 @@ export const Homepage = () => {
           justifyContent: 'center',
           flexDirection: 'column',
           position: 'relative',
-          zIndex: 'inherit'
+          zIndex: 'inherit',
         }}
       >
         <Title />
         <Subtitle />
         <AnimTopLeft width={['55vmin']} top={['-10vmin']} left={['-5vmin']} />
         <AnimBottomLeft height={['40vmin']} bottom={['20vmin']} left={['0']} />
-        <AnimBottomCenter height={['55vmin']} bottom={['35vmin']} right={['33%']} />
-        <AnimBottomRight height={['55vmin']} bottom={['55vmin']} right={['30vmin']} />
+        <AnimBottomCenter
+          height={['55vmin']}
+          bottom={['35vmin']}
+          right={['33%']}
+        />
+        <AnimBottomRight
+          height={['55vmin']}
+          bottom={['55vmin']}
+          right={['30vmin']}
+        />
         <Arrow />
       </div>
       <Bottom height={bottomHeight} />

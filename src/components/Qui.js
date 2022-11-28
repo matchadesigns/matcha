@@ -11,7 +11,7 @@ import {sanityConfig} from '../../sanity-config'
 export const Qui = () => {
   const {
     page: {_rawBody: body, _rawSegments: segments, images},
-    errors
+    errors,
   } = useStaticQuery(graphql`
     {
       page: sanityPage(slug: {current: {eq: "a-propos"}}) {
@@ -42,7 +42,7 @@ export const Qui = () => {
         p: 4,
         pt: ['4em'],
         maxWidth: ['full', 'full', '75vmin', '75vmin'],
-        margin: 'auto'
+        margin: 'auto',
       }}
     >
       <Text sx={{textAlign: 'center'}}>
@@ -54,7 +54,7 @@ export const Qui = () => {
           gridTemplateColumns: '1fr auto 1fr',
           // alignItems: 'center',
           'h2,h3': {lineHeight: 1, m: 0},
-          pb: 4
+          pb: 4,
         }}
       >
         <div sx={{color: '#D0846A'}}>
@@ -73,7 +73,7 @@ export const Qui = () => {
             image={getGatsbyImageData(
               image,
               {
-                maxWidth: 300
+                maxWidth: 300,
               },
               sanityConfig
             )}

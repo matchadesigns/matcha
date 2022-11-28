@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import {jsx, Box, Themed} from 'theme-ui'
+import {jsx, Box} from 'theme-ui'
+import {Themed} from '@theme-ui/mdx'
 import {Layout} from '../../components/Layout'
 import Seo from '../../components/Seo'
 import {graphql} from 'gatsby'
@@ -21,7 +22,7 @@ const ProductPage = ({data, errors, ...props}) => {
     price,
     sku,
     barcode,
-    publishedAt
+    publishedAt,
   } = product
   const sameCategoryProductsNodes = mapEdgesToNodes(sameCategoryProducts)
   const sameVariantGroupsProductsNodes = mapEdgesToNodes(
@@ -31,7 +32,7 @@ const ProductPage = ({data, errors, ...props}) => {
   const excerpt = description && toPlainText(description)
   const productPath = getProductPath({
     category: category.slug.current,
-    product: slug.current
+    product: slug.current,
   })
   return (
     <Layout {...props}>
@@ -89,7 +90,7 @@ export const query = graphql`
       filter: {
         variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}
       }
-      sort: {order: [ASC], fields: [title]}
+      sort: {title: ASC}
     ) {
       edges {
         node {
@@ -113,7 +114,7 @@ export const query = graphql`
     }
     sameCategoryProducts: allSanityProduct(
       filter: {id: {ne: $product}, category: {id: {eq: $category}}}
-      sort: {order: [DESC], fields: [publishedAt]}
+      sort: {publishedAt: DESC}
       limit: 6
     ) {
       edges {

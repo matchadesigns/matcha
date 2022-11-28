@@ -3,7 +3,7 @@ export const links = [
   {url: '/prestations/', text: 'Prestations'},
   {url: '/realisations/', text: 'Réalisations'},
   {url: '/boutique/', text: 'Boutique'},
-  {url: '/contact/', text: 'Contact'}
+  {url: '/contact/', text: 'Contact'},
 ]
 
 export {Desktop} from './Desktop'

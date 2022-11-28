@@ -27,7 +27,7 @@ export const Variants = ({variants}) => {
 const Link = ({active, children, ...props}) => (
   <GatsbyLink
     {...props}
-    activeClassName='variantActive'
+    activeClassName="variantActive"
     sx={{
       px: 2,
       mr: 2,
@@ -37,13 +37,13 @@ const Link = ({active, children, ...props}) => (
       border: '1px solid black',
       display: 'inline-block',
       ':hover': {
-        textDecoration: 'none'
+        textDecoration: 'none',
       },
       '&.variantActive': {
         ':hover': {
-          color: 'gray.2'
-        }
-      }
+          color: 'gray.2',
+        },
+      },
     }}
   >
     {children}

@@ -13,7 +13,7 @@ export const Image = ({image, link}) => {
       image={getGatsbyImageData(
         image,
         {
-          maxWidth: 300
+          maxWidth: 300,
         },
         sanityConfig
       )}

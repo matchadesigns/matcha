@@ -12,7 +12,7 @@ import {Qui} from '../components/Qui'
 const IndexPage = props => {
   const {
     // data,
-    errors
+    errors,
   } = props
   const site = useSiteMetadata()
 
@@ -32,7 +32,11 @@ const IndexPage = props => {
 
   return (
     <Layout transparentHeader noBranding>
-      <Seo title={site.title} description={site.description} keywords={site.keywords} />
+      <Seo
+        title={site.title}
+        description={site.description}
+        keywords={site.keywords}
+      />
       <Homepage />
       <Main>
         <h1 hidden>{site.title}</h1>

@@ -10,7 +10,7 @@ import Seo from '../components/Seo'
 const ContactPage = () => {
   const {
     page: {title, _rawBody: body},
-    errors
+    errors,
   } = useStaticQuery(graphql`
     {
       page: sanityPage(slug: {current: {eq: "contact"}}) {

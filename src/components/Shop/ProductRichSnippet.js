@@ -3,9 +3,19 @@ import {graphql, useStaticQuery} from 'gatsby'
 import React from 'react'
 import {JsonLd} from 'react-schemaorg'
 
-export const ProductRichSnippet = ({title, path, image, description, barcode, category, publishedAt, price, sku}) => {
+export const ProductRichSnippet = ({
+  title,
+  path,
+  image,
+  description,
+  barcode,
+  category,
+  publishedAt,
+  price,
+  sku,
+}) => {
   const {
-    site: {siteTitle, siteUrl}
+    site: {siteTitle, siteUrl},
   } = useStaticQuery(graphql`
     {
       site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
@@ -33,14 +43,16 @@ export const ProductRichSnippet = ({title, path, image, description, barcode, ca
           priceValidUntil: format(add(new Date(), {years: 1}), 'yyyy-MM-dd'),
           price: price.value,
           itemCondition: 'https://schema.org/NewCondition',
-          availability: inStock ? 'http://schema.org/InStock' : 'https://schema.org/OutOfStock',
-          url: siteUrl + path
+          availability: inStock
+            ? 'http://schema.org/InStock'
+            : 'https://schema.org/OutOfStock',
+          url: siteUrl + path,
         },
         brand: {
           '@type': 'Brand',
-          name: siteTitle
+          name: siteTitle,
         },
-        sku
+        sku,
       }}
     />
   )

@@ -16,7 +16,7 @@ export const TopMessage = () => {
           color: 'white',
           fontSize: [0, 1, 1],
           p: [1],
-          mb: 1
+          mb: 1,
         }}
       >
         {topMessage}

@@ -4,5 +4,11 @@ import clientConfig from '../../client-config'
 import serializers from './serializers'
 
 export const BlockContent = ({blocks}) => {
-  return <BaseBlockContent blocks={blocks} serializers={serializers} {...clientConfig.sanity} />
+  return (
+    <BaseBlockContent
+      blocks={blocks}
+      serializers={serializers}
+      {...clientConfig.sanity}
+    />
+  )
 }

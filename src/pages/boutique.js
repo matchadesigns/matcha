@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import {jsx, Themed, Box} from 'theme-ui'
+import {jsx, Box} from 'theme-ui'
+import {Themed} from '@theme-ui/mdx'
 import {Layout} from '../components/Layout'
 import Seo from '../components/Seo'
 import {graphql, Link} from 'gatsby'
@@ -12,7 +13,7 @@ const ShopPage = ({data, errors, ...props}) => {
   const {
     page: {title, _rawBody: body},
     products,
-    categories
+    categories,
   } = data
   const productNodes = mapEdgesToNodes(products)
   const categoriesNodes = mapEdgesToNodes(categories)
@@ -58,7 +59,7 @@ export const query = graphql`
       _rawBody
     }
     products: allSanityProduct(
-      sort: {order: [DESC, ASC, DESC], fields: [sku, title, publishedAt]}
+      sort: [{sku: DESC}, {title: ASC}, {publishedAt: DESC}]
       filter: {displayInShop: {ne: false}}
     ) {
       edges {
@@ -67,9 +68,7 @@ export const query = graphql`
         }
       }
     }
-    categories: allSanityProductCategory(
-      sort: {order: [ASC], fields: [order]}
-    ) {
+    categories: allSanityProductCategory(sort: {order: ASC}) {
       edges {
         node {
           ...productCategoryFields

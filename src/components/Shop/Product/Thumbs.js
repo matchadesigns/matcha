@@ -17,8 +17,8 @@ export const Thumbs = ({thumbs}) => (
             sx={{
               boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)',
               ':hover': {
-                cursor: 'pointer'
-              }
+                cursor: 'pointer',
+              },
             }}
             data-attribute="SRL"
           />

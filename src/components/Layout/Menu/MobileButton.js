@@ -6,8 +6,14 @@ import {MenuContext} from '../../Layout'
 export const MobileButton = props => {
   const ctx = useContext(MenuContext)
   return (
-    <div sx={{display: ['flex'], justifyContent: 'end', alignItems: 'center'}} {...props}>
-      <MenuButton onClick={ctx.handleToggleMenu} sx={{height: '2rem', width: '6rem'}} />
+    <div
+      sx={{display: ['flex'], justifyContent: 'end', alignItems: 'center'}}
+      {...props}
+    >
+      <MenuButton
+        onClick={ctx.handleToggleMenu}
+        sx={{height: '2rem', width: '6rem'}}
+      />
     </div>
   )
 }

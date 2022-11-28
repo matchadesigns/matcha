@@ -22,8 +22,8 @@ export const Image = ({image}) => {
         sx={{
           boxShadow: '0px 0px 20px rgba(0, 0, 0, .05)',
           ':hover': {
-            cursor: 'pointer'
-          }
+            cursor: 'pointer',
+          },
         }}
         data-attribute="SRL"
       />

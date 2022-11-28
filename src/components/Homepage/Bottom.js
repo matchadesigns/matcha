@@ -17,14 +17,14 @@ export const Bottom = ({height}) => {
         mt: ['-3em', '-1em'],
         alignItems: 'center',
         px: [1, 2],
-        zIndex: 1
+        zIndex: 1,
       }}
     >
       <Flex
         sx={{
           alignItems: 'center',
           justifyContent: ['center', 'center', 'flex-start'],
-          zIndex: 'inherit'
+          zIndex: 'inherit',
         }}
       >
         <IoIosMail size={32} sx={{color: '#464448'}} />
@@ -34,19 +34,26 @@ export const Bottom = ({height}) => {
         sx={{
           alignItems: 'center',
           justifyContent: ['center', 'center', 'flex-end'],
-          zIndex: 'inherit'
+          zIndex: 'inherit',
         }}
       >
-        <Text sx={{pr: 2, display: ['none', 'none', 'none', 'flex']}}>Suivez-nous sur les réseaux sociaux :</Text>
+        <Text sx={{pr: 2, display: ['none', 'none', 'none', 'flex']}}>
+          Suivez-nous sur les réseaux sociaux :
+        </Text>
         <a
           href={`https://facebook.com/${facebook}`}
           sx={{display: 'flex', pr: 1}}
-          target='_blank'
-          rel='noopener noreferrer'
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <Facebook sx={{width: '32px', mr: 1}} />
         </a>
-        <a href={`https://instagram.com/${instagram}`} sx={{display: 'flex'}} target='_blank' rel='noopener noreferrer'>
+        <a
+          href={`https://instagram.com/${instagram}`}
+          sx={{display: 'flex'}}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Instagram sx={{width: '32px'}} />
         </a>
       </Flex>

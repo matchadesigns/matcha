@@ -31,7 +31,7 @@ export const Header = ({isTransparent}) => {
         top: isTransparent ? ['3em', '3em', '3em', 0] : '',
         p: 2,
         boxShadow: !isTransparent && '0 5px 8px rgba(0,0,0,.05)',
-        width: '100%'
+        width: '100%',
       }}
     >
       <TopMessage />
@@ -40,7 +40,7 @@ export const Header = ({isTransparent}) => {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          opacity: isTransparent ? opacity : 1
+          opacity: isTransparent ? opacity : 1,
         }}
       >
         <Flex id="logo" sx={{flexDirection: 'column', px: 3, py: 0}}>
@@ -63,7 +63,7 @@ export const Header = ({isTransparent}) => {
             order: [0, 0, 0, 1],
             border: '0',
             // borderColor: 'brownWhite',
-            px: 3
+            px: 3,
           }}
         >
           <SearchDesktop />

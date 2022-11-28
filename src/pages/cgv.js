@@ -10,7 +10,7 @@ import {BlockContent} from '../components/BlockContent'
 const CgvPage = () => {
   const {
     page: {title, _rawBody},
-    errors
+    errors,
   } = useStaticQuery(graphql`
     {
       page: sanityPage(slug: {current: {eq: "cgv"}}) {

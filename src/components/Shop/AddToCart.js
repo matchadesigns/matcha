@@ -2,10 +2,19 @@
 import {jsx, Button} from 'theme-ui'
 import {IoIosCart} from 'react-icons/io'
 
-export const AddToCart = ({id, title, price, url, description, image, discrete = false, ...props}) => {
+export const AddToCart = ({
+  id,
+  title,
+  price,
+  url,
+  description,
+  image,
+  discrete = false,
+  ...props
+}) => {
   return (
     <Button
-      className='snipcart-add-item'
+      className="snipcart-add-item"
       data-item-id={id}
       data-item-name={title}
       data-item-price={price}

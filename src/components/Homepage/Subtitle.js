@@ -2,17 +2,18 @@
 import {motion} from 'framer-motion'
 import {shuffle} from 'lodash'
 import {useLayoutEffect, useState} from 'react'
-import {jsx, Themed} from 'theme-ui'
+import {jsx} from 'theme-ui'
+import {Themed} from '@theme-ui/mdx'
 
 const spring = {
   type: 'spring',
   damping: 20,
-  stiffness: 300
+  stiffness: 300,
 }
 const initialColors = [
   {color: '#6A6765', title: 'design'},
   {color: '#BC866E', title: 'décoration'},
-  {color: '#D1A969', title: 'graphisme'}
+  {color: '#D1A969', title: 'graphisme'},
 ]
 
 export const Subtitle = () => {
@@ -46,7 +47,7 @@ const H2 = ({children}) => (
       letterSpacing: 5,
       lineHeight: ['8vmin', '6vmin', '4vmin'],
       fontWeight: '700',
-      fontSize: ['10vmin', '6vmin', '4vmin']
+      fontSize: ['10vmin', '6vmin', '4vmin'],
     }}
   >
     {children}

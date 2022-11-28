@@ -68,7 +68,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
     // barcode,
     variants,
     // publishedAt,
-    tags
+    tags,
   } = product
   const inStock = sku > 0
 
@@ -79,7 +79,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
   const refactoredVariants = variants.map(variant => {
     const {
       value,
-      variantGroup: {id: variantGroupId, option}
+      variantGroup: {id: variantGroupId, option},
     } = variant
     const refactoredVariantItems = []
     sameVariantGroupsProductsNodes.forEach(product => {
@@ -89,7 +89,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
           refactoredVariantItems.push({
             title: variant.value,
             path: `/${product.category.slug.current}/${product.slug.current}`,
-            isActive: variant.value === value
+            isActive: variant.value === value,
           })
       )
     })
@@ -101,14 +101,14 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   }
 
   const item = {
     hidden: {opacity: 0},
-    show: {opacity: 1}
+    show: {opacity: 1},
   }
 
   const isThumb = thumbs.length > 0
@@ -130,14 +130,14 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
             mb: 2,
             gridColumnStart: ['auto', 1, 'auto'],
             gridColumnEnd: ['auto', 4, 'auto'],
-            order: 2
+            order: 2,
           }}
         >
           <Title
             title={title}
             category={{
               title: category.title,
-              link: `/${category.slug.current}`
+              link: `/${category.slug.current}`,
             }}
           />
           <Buy

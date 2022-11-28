@@ -25,7 +25,7 @@ export const Project = project => {
     subtitle,
     category,
     images,
-    _rawBody
+    _rawBody,
     // publishedAt
   } = project
   const categoryPath = getCategoryPath({category: category.slug})
@@ -45,7 +45,7 @@ export const Project = project => {
             mb: 2,
             order: [1, 2, 1],
             gridColumnStart: ['auto', 1, 'auto'],
-            gridColumnEnd: ['auto', 4, 'auto']
+            gridColumnEnd: ['auto', 4, 'auto'],
           }}
         >
           <Title

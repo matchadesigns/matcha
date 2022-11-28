@@ -10,7 +10,7 @@ import Seo from '../components/Seo'
 const QuiPage = () => {
   const {
     page: {title},
-    errors
+    errors,
   } = useStaticQuery(graphql`
     {
       page: sanityPage(slug: {current: {eq: "a-propos"}}) {

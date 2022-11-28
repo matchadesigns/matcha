@@ -28,10 +28,10 @@ export const Image = ({image, link}) => {
               ':-webkit-filter': 'grayscale(100%)',
               '&:hover': {
                 filter: 'none',
-                ':-webkit-filter': 'none'
+                ':-webkit-filter': 'none',
               },
               height: 'full',
-              width: 'full'
+              width: 'full',
             }}
           />
         </Link>

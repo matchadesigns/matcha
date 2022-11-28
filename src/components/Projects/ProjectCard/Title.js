@@ -11,7 +11,7 @@ export const Title = ({title, subtitle, category, link}) => {
         to={link}
         sx={{
           borderBottom: '1px solid transparent',
-          ':hover': {textDecoration: 'none', borderColor: 'rgba(0,0,0,0.08)'}
+          ':hover': {textDecoration: 'none', borderColor: 'rgba(0,0,0,0.08)'},
         }}
       >
         <h2 sx={{m: 0}}>{title}</h2>

@@ -16,7 +16,7 @@ export const ProductCard = ({
   category,
   images,
   price,
-  sku
+  sku,
 }) => {
   graphql`
     fragment productPreviewFields on SanityProduct {
@@ -49,7 +49,7 @@ export const ProductCard = ({
     <motion.div layout="product">
       <Card
         sx={{
-          maxWidth: 300
+          maxWidth: 300,
         }}
       >
         <div>
