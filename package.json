@@ -27,7 +27,7 @@
     "currency.js": "^2.0.4",
     "date-fns": "^2.28.0",
     "deepmerge": "^4.2.2",
-    "framer-motion": "^6.3.3",
+    "framer-motion": "^8.0.2",
     "gatsby": "^4.14.1",
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-google-gtag": "^4.14.0",
