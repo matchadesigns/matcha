@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "babel-plugin-emotion": "^11.0.0",
-    "babel-preset-gatsby": "^2.14.0",
+    "babel-preset-gatsby": "^3.5.0",
     "dotenv": "16.0.1",
     "eslint": "^8.15.0",
     "eslint-config-standard": "^17.0.0",
