@@ -41,7 +41,7 @@
     "gatsby-plugin-sitemap": "^5.14.0",
     "gatsby-plugin-snipcartv3": "^2.3.3",
     "gatsby-plugin-statickit": "^1.1.1",
-    "gatsby-plugin-theme-ui": "^0.14.5",
+    "gatsby-plugin-theme-ui": "^0.15.5",
     "gatsby-plugin-zeit-now": "^0.5.0",
     "gatsby-source-filesystem": "^4.14.0",
     "gatsby-source-sanity": "7.5.1",
