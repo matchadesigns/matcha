@@ -40,23 +40,21 @@ const ProjectsPage = ({data, errors}) => {
   )
 }
 
-export const query = graphql`
-  query ProjectsPageQuery {
-    projects: allSanityProject(
-      sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
-    ) {
-      edges {
-        node {
-          ...projectCardFields
-        }
+export const query = graphql`query ProjectsPageQuery {
+  projects: allSanityProject(
+    sort: {publishedAt: DESC}
+    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+  ) {
+    edges {
+      node {
+        ...projectCardFields
       }
     }
-    page: sanityPage(slug: {current: {eq: "realisations"}}) {
-      title
-      _rawBody
-    }
   }
-`
+  page: sanityPage(slug: {current: {eq: "realisations"}}) {
+    title
+    _rawBody
+  }
+}`
 
 export default ProjectsPage

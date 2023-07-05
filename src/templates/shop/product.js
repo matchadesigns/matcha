@@ -70,59 +70,51 @@ const ProductPage = ({data, errors, ...props}) => {
   )
 }
 
-export const query = graphql`
-  query ProductPage(
-    $product: String
-    $variantGroupsIds: [String]
-    $category: String
-  ) {
-    product: sanityProduct(id: {eq: $product}) {
-      ...productFields
-      variants {
-        variantGroup {
-          id
-          option
-        }
+export const query = graphql`query ProductPage($product: String, $variantGroupsIds: [String], $category: String) {
+  product: sanityProduct(id: {eq: $product}) {
+    ...productFields
+    variants {
+      variantGroup {
+        id
+        option
       }
     }
-    sameVariantGroupsProducts: allSanityProduct(
-      filter: {
-        variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}
-      }
-      sort: {order: [ASC], fields: [title]}
-    ) {
-      edges {
-        node {
-          title
+  }
+  sameVariantGroupsProducts: allSanityProduct(
+    filter: {variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}}
+    sort: {title: ASC}
+  ) {
+    edges {
+      node {
+        title
+        slug {
+          current
+        }
+        category {
           slug {
             current
           }
-          category {
-            slug {
-              current
-            }
-          }
-          variants {
-            variantGroup {
-              id
-            }
-            value
-          }
         }
-      }
-    }
-    sameCategoryProducts: allSanityProduct(
-      filter: {id: {ne: $product}, category: {id: {eq: $category}}}
-      sort: {order: [DESC], fields: [publishedAt]}
-      limit: 6
-    ) {
-      edges {
-        node {
-          ...productPreviewFields
+        variants {
+          variantGroup {
+            id
+          }
+          value
         }
       }
     }
   }
-`
+  sameCategoryProducts: allSanityProduct(
+    filter: {id: {ne: $product}, category: {id: {eq: $category}}}
+    sort: {publishedAt: DESC}
+    limit: 6
+  ) {
+    edges {
+      node {
+        ...productPreviewFields
+      }
+    }
+  }
+}`
 
 export default ProductPage

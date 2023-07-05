@@ -51,32 +51,28 @@ const ShopPage = ({data, errors, ...props}) => {
   )
 }
 
-export const query = graphql`
-  query ShopQuery {
-    page: sanityPage(id: {eq: "-dac4f700-3a5a-551c-9cd2-d366d84fa14b"}) {
-      title
-      _rawBody
-    }
-    products: allSanityProduct(
-      sort: {order: [DESC, ASC, DESC], fields: [sku, title, publishedAt]}
-      filter: {displayInShop: {ne: false}}
-    ) {
-      edges {
-        node {
-          ...productPreviewFields
-        }
-      }
-    }
-    categories: allSanityProductCategory(
-      sort: {order: [ASC], fields: [order]}
-    ) {
-      edges {
-        node {
-          ...productCategoryFields
-        }
+export const query = graphql`query ShopQuery {
+  page: sanityPage(id: {eq: "-dac4f700-3a5a-551c-9cd2-d366d84fa14b"}) {
+    title
+    _rawBody
+  }
+  products: allSanityProduct(
+    sort: [{sku: DESC}, {title: ASC}, {publishedAt: DESC}]
+    filter: {displayInShop: {ne: false}}
+  ) {
+    edges {
+      node {
+        ...productPreviewFields
       }
     }
   }
-`
+  categories: allSanityProductCategory(sort: {order: ASC}) {
+    edges {
+      node {
+        ...productCategoryFields
+      }
+    }
+  }
+}`
 
 export default ShopPage
