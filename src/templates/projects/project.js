@@ -36,23 +36,21 @@ const ProjectPage = ({data, errors, ...props}) => {
   )
 }
 
-export const query = graphql`
-  query ProjectPage($project: String, $category: String) {
-    project: sanityProject(id: {eq: $project}) {
-      ...projectFields
-    }
-    sameCategoryProjects: allSanityProject(
-      filter: {id: {ne: $project}, category: {id: {eq: $category}}}
-      sort: {order: [DESC], fields: [publishedAt]}
-      limit: 6
-    ) {
-      edges {
-        node {
-          ...projectCardFields
-        }
+export const query = graphql`query ProjectPage($project: String, $category: String) {
+  project: sanityProject(id: {eq: $project}) {
+    ...projectFields
+  }
+  sameCategoryProjects: allSanityProject(
+    filter: {id: {ne: $project}, category: {id: {eq: $category}}}
+    sort: {publishedAt: DESC}
+    limit: 6
+  ) {
+    edges {
+      node {
+        ...projectCardFields
       }
     }
   }
-`
+}`
 
 export default ProjectPage

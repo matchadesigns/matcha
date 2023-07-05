@@ -38,29 +38,28 @@ const CategoryPage = ({data, errors, ...props}) => {
   )
 }
 
-export const query = graphql`
-  fragment productCategoryFields on SanityProductCategory {
-    id
-    title
-    slug {
-      current
-    }
+export const query = graphql`fragment productCategoryFields on SanityProductCategory {
+  id
+  title
+  slug {
+    current
   }
-  query Category($category: String) {
-    category: sanityProductCategory(id: {eq: $category}) {
-      ...productCategoryFields
-    }
-    products: allSanityProduct(
-      filter: {category: {id: {eq: $category}}, displayInShop: {ne: false}}
-      sort: {order: [DESC, ASC], fields: [publishedAt, title]}
-    ) {
-      edges {
-        node {
-          ...productPreviewFields
-        }
+}
+
+query Category($category: String) {
+  category: sanityProductCategory(id: {eq: $category}) {
+    ...productCategoryFields
+  }
+  products: allSanityProduct(
+    filter: {category: {id: {eq: $category}}, displayInShop: {ne: false}}
+    sort: [{publishedAt: DESC}, {title: ASC}]
+  ) {
+    edges {
+      node {
+        ...productPreviewFields
       }
     }
   }
-`
+}`
 
 export default CategoryPage
