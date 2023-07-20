@@ -76,7 +76,7 @@ export const Product = ({sameVariantGroupsProductsNodes, ...product}) => {
   const image = thumbs.shift()
 
   const productPath = getProductPath({category: category.slug, product: slug})
-  const refactoredVariants = variants.map(variant => {
+  const refactoredVariants = variants && variants.map(variant => {
     const {
       value,
       variantGroup: {id: variantGroupId, option}
