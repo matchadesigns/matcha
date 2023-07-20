@@ -4,7 +4,7 @@ import {Link as GatsbyLink} from 'gatsby'
 // import {motion} from 'framer-motion'
 
 export const Variants = ({variants}) => {
-  return (
+  return variants ? (
     <div sx={{mt: 3}}>
       {variants.map(({option, items}) => (
         <p key={option}>
@@ -21,7 +21,7 @@ export const Variants = ({variants}) => {
         </p>
       ))}
     </div>
-  )
+  ) : null
 }
 
 const Link = ({active, children, ...props}) => (
