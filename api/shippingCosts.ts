@@ -1,4 +1,4 @@
-import sanityClient from '@sanity/client'
+import {createClient} from '@sanity/client'
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import { sanity } from '../client-config'
 
@@ -29,7 +29,7 @@ export default (req: VercelRequest, res: VercelResponse) => {
   } else if (totalPrice >= 100) {
     shippingCosts = 0
   }
-  const client = sanityClient({
+  const client = createClient({
     projectId: sanity.projectId,
     dataset: sanity.dataset,
     apiVersion: '2021-03-25', // use current UTC date - see "specifying API version"!
