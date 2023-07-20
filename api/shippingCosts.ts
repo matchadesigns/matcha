@@ -36,7 +36,7 @@ export default (req: VercelRequest, res: VercelResponse) => {
   })
 
 client.getDocument('siteSettings').then((settings) => {
-  if(settings.isFreeShipping === true) {
+  if(settings?.isFreeShipping === true) {
     res.status(200).json({
       rates: [
         {
