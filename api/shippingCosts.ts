@@ -2,11 +2,10 @@ import {createClient} from '@sanity/client'
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import { sanity } from '../client-config'
 
-export const config = {
-  runtime: 'edge',
-};
-
-export default (req: VercelRequest, res: VercelResponse) => {
+export default function handler(
+  req: VercelRequest,
+  res: VercelResponse,
+) {
 
   if (!(req && req.body && req.body.content && req.body.content.items)) {
     res.status(200).json({
