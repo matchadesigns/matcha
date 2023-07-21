@@ -15,6 +15,7 @@ export default (req: VercelRequest, res: VercelResponse) => {
     })
     return false
   }
+
   const totalPrice =
     req.body.content.items.length > 0
       ? req.body.content.items
@@ -29,10 +30,11 @@ export default (req: VercelRequest, res: VercelResponse) => {
   } else if (totalPrice >= 100) {
     shippingCosts = 0
   }
+
   const client = createClient({
     projectId: sanity.projectId,
     dataset: sanity.dataset,
-    apiVersion: '2021-03-25', // use current UTC date - see "specifying API version"!
+    apiVersion: '2023-05-03', // 2021-03-25
   })
 
 client.getDocument('siteSettings').then((settings) => {
