@@ -1,11 +1,17 @@
 module.exports = {
   extends: [
     'eslint:recommended',
+    "plugin:prettier/recommended",
     'plugin:react/recommended',
     'standard',
     'standard-react',
     'plugin:import/errors',
-    'plugin:import/warnings'
+    'plugin:import/warnings',
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "@typescript-eslint"
   ],
   rules: {
     'react/prop-types': 0,
@@ -16,7 +22,7 @@ module.exports = {
   settings: {
     react: {
       pragma: 'React',
-      version: '16.8.4'
+      version: '18'
     }
   }
 }

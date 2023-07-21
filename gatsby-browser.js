@@ -5,10 +5,10 @@
  */
 
 import React from 'react'
-import {AnimateSharedLayout} from 'framer-motion'
+import {LayoutGroup} from 'framer-motion'
 
 export const wrapPageElement = ({element, props}) => {
-  return <AnimateSharedLayout {...props}>{element}</AnimateSharedLayout>
+  return <LayoutGroup {...props}>{element}</LayoutGroup>
 }
 
 /*

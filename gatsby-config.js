@@ -49,15 +49,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-snipcartv3',
-      options: {
-        apiKey: process.env.SNIPCART_APIKEY,
-        js: '/snipcart.3.6.0.js',
-        styles: '/snipcart.3.6.0.css',
-        //https://cdn.snipcart.com/themes/v3.6.0/default/snipcart.js
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Mâtcha Designs',
