@@ -1,6 +1,6 @@
 import {createClient} from '@sanity/client'
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { sanity } from '../client-config'
+import { sanity } from '../../client-config'
 
 export default (req: VercelRequest, res: VercelResponse) => {
 
