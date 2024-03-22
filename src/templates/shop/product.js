@@ -1,17 +1,18 @@
 /** @jsx jsx */
-import {jsx, Box, Themed} from 'theme-ui'
-import {Layout} from '../../components/Layout'
-import Seo from '../../components/Seo'
-import {graphql} from 'gatsby'
-import {GraphQLErrorList} from '../../components/GraphQLErrorList'
-import {Product} from '../../components/Shop/Product'
-import {ProductList} from '../../components/Shop/ProductList'
-import {mapEdgesToNodes, toPlainText} from '../../lib/helpers'
-import {getProductPath} from '../../components/Shop/helpers'
-import {ProductRichSnippet} from '../../components/Shop/ProductRichSnippet'
+import { jsx, Box } from "theme-ui";
+import { Themed } from "@theme-ui/mdx";
+import { Layout } from "../../components/Layout";
+import Seo from "../../components/Seo";
+import { graphql } from "gatsby";
+import { GraphQLErrorList } from "../../components/GraphQLErrorList";
+import { Product } from "../../components/Shop/Product";
+import { ProductList } from "../../components/Shop/ProductList";
+import { mapEdgesToNodes, toPlainText } from "../../lib/helpers";
+import { getProductPath } from "../../components/Shop/helpers";
+import { ProductRichSnippet } from "../../components/Shop/ProductRichSnippet";
 
-const ProductPage = ({data, errors, ...props}) => {
-  const {product, sameVariantGroupsProducts, sameCategoryProducts} = data
+const ProductPage = ({ data, errors, ...props }) => {
+  const { product, sameVariantGroupsProducts, sameCategoryProducts } = data;
   const {
     title,
     slug,
@@ -21,18 +22,18 @@ const ProductPage = ({data, errors, ...props}) => {
     price,
     sku,
     barcode,
-    publishedAt
-  } = product
-  const sameCategoryProductsNodes = mapEdgesToNodes(sameCategoryProducts)
+    publishedAt,
+  } = product;
+  const sameCategoryProductsNodes = mapEdgesToNodes(sameCategoryProducts);
   const sameVariantGroupsProductsNodes = mapEdgesToNodes(
     sameVariantGroupsProducts
-  )
-  const image = images && images[0] && images[0].asset.url
-  const excerpt = description && toPlainText(description)
+  );
+  const image = images && images[0] && images[0].asset.url;
+  const excerpt = description && toPlainText(description);
   const productPath = getProductPath({
     category: category.slug.current,
-    product: slug.current
-  })
+    product: slug.current,
+  });
   return (
     <Layout {...props}>
       {errors && <Seo title="GraphQL Error" />}
@@ -61,60 +62,70 @@ const ProductPage = ({data, errors, ...props}) => {
         />
       )}
       {sameCategoryProductsNodes && sameCategoryProductsNodes.length > 0 && (
-        <Box mt={3} p={[4, 4, 4, 5]} sx={{bg: '#f9f9f9'}}>
+        <Box mt={3} p={[4, 4, 4, 5]} sx={{ bg: "#f9f9f9" }}>
           <Themed.h2>Dans la même catégorie</Themed.h2>
           <ProductList nodes={sameCategoryProductsNodes} />
         </Box>
       )}
     </Layout>
-  )
-}
+  );
+};
 
-export const query = graphql`query ProductPage($product: String, $variantGroupsIds: [String], $category: String) {
-  product: sanityProduct(id: {eq: $product}) {
-    ...productFields
-    variants {
-      variantGroup {
-        id
-        option
+export const query = graphql`
+  query ProductPage(
+    $product: String
+    $variantGroupsIds: [String]
+    $category: String
+  ) {
+    product: sanityProduct(id: { eq: $product }) {
+      ...productFields
+      variants {
+        variantGroup {
+          id
+          option
+        }
       }
     }
-  }
-  sameVariantGroupsProducts: allSanityProduct(
-    filter: {variants: {elemMatch: {variantGroup: {id: {in: $variantGroupsIds}}}}}
-    sort: {title: ASC}
-  ) {
-    edges {
-      node {
-        title
-        slug {
-          current
+    sameVariantGroupsProducts: allSanityProduct(
+      filter: {
+        variants: {
+          elemMatch: { variantGroup: { id: { in: $variantGroupsIds } } }
         }
-        category {
+      }
+      sort: { title: ASC }
+    ) {
+      edges {
+        node {
+          title
           slug {
             current
           }
-        }
-        variants {
-          variantGroup {
-            id
+          category {
+            slug {
+              current
+            }
           }
-          value
+          variants {
+            variantGroup {
+              id
+            }
+            value
+          }
+        }
+      }
+    }
+    sameCategoryProducts: allSanityProduct(
+      filter: { id: { ne: $product }, category: { id: { eq: $category } } }
+      sort: { publishedAt: DESC }
+      limit: 6
+    ) {
+      edges {
+        node {
+          ...productPreviewFields
         }
       }
     }
   }
-  sameCategoryProducts: allSanityProduct(
-    filter: {id: {ne: $product}, category: {id: {eq: $category}}}
-    sort: {publishedAt: DESC}
-    limit: 6
-  ) {
-    edges {
-      node {
-        ...productPreviewFields
-      }
-    }
-  }
-}`
+`;
 
-export default ProductPage
+export default ProductPage;

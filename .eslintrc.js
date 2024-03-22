@@ -1,28 +1,24 @@
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    "plugin:prettier/recommended",
-    'plugin:react/recommended',
-    'standard',
-    'standard-react',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  env: {
+    browser: true,
+    es2021: true,
+    node: true
+  },
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended', 'prettier'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
+    ecmaVersion: 12,
+    sourceType: 'module'
+  },
+  plugins: ['react', 'jsx-a11y', 'prettier'],
   rules: {
-    'react/prop-types': 0,
-    'react/jsx-fragments': [1, 'element'],
-    'object-curly-spacing': ['error', 'never'],
-    'react/jsx-pascal-case': 0
+    // Additional rules or overrides can be added here
   },
   settings: {
     react: {
-      pragma: 'React',
-      version: '18'
+      version: 'detect'
     }
   }
-}
+};

@@ -4,12 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import React from 'react'
-import {LayoutGroup} from 'framer-motion'
+import React from "react";
+import { LayoutGroup } from "framer-motion";
 
-export const wrapPageElement = ({element, props}) => {
-  return <LayoutGroup {...props}>{element}</LayoutGroup>
-}
+export const wrapPageElement = ({ element, props }) => {
+  return <LayoutGroup {...props}>{element}</LayoutGroup>;
+};
 
 /*
 export const shouldUpdateScroll = ({routerProps: {location}, getSavedScrollPosition}) => {

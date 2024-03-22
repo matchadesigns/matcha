@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import styled from '@emotion/styled'
-import {Link} from 'gatsby'
-import {Flex, jsx} from 'theme-ui'
-import {links} from './'
+import styled from "@emotion/styled";
+import { Link } from "gatsby";
+import { Flex, jsx } from "theme-ui";
+import { links } from "./";
 
 const MenuLink = styled(Link)`
   padding-right: 0.5em;
@@ -11,7 +11,7 @@ const MenuLink = styled(Link)`
       background-image: url(/svg/li_bullet_hover.svg);
     }
   }
-`
+`;
 const Li = styled.li`
   flex-direction: row;
   display: flex;
@@ -30,14 +30,20 @@ const Li = styled.li`
   &:hover:before {
     background-image: url(/svg/li_bullet_hover.svg);
   }
-`
+`;
 
-export const Desktop = props => (
-  <Flex as='ul' {...props}>
-    {links.map(({url, text}) => (
-      <MenuLink key={url} to={url} activeClassName='active'>
-        <Li sx={{fontSize: [0, 0, 0, '0.8em', 1]}}>{text}</Li>
+export const Desktop = (props) => (
+  <Flex as="ul" {...props}>
+    {links.map(({ url, text }) => (
+      <MenuLink key={url} to={url} activeClassName="active">
+        <Li
+          sx={{
+            fontSize: [0, 0, 0, "0.8em", 1],
+          }}
+        >
+          {text}
+        </Li>
       </MenuLink>
     ))}
   </Flex>
-)
+);
