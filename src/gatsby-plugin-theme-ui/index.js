@@ -9,7 +9,7 @@ export default {
     ...tailwind.colors,
     primary: "#B1834D",
     secondary: "#F2E9DF",
-    brownWhite: "#F2E9DF",
+    brownWhite: "#F0E9DC", //"#F2E9DF",
     white: "#ffffff",
     black: "#1B171C",
     text: "#000",
