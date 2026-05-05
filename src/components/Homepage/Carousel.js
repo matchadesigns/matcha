@@ -7,7 +7,7 @@ import { StaticImage } from "gatsby-plugin-image";
 const slides = [
   {
     title: "Découvrez nos dernières affiches sur Paris",
-    subtitle: "Louvre, Montmartre, Tour Eiffel, ...",
+    subtitle: "Louvre, Montmartre, ...",
     image: (
       <StaticImage
         src="../../assets/images/IMAGE 2-HD.jpg"
