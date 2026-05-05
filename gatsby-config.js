@@ -55,7 +55,7 @@ module.exports = {
         short_name: "matcha",
         start_url: "/",
         background_color: "#3A3419",
-        theme_color: "#3A3419",
+        theme_color: "#EDE6D9",
         display: "minimal-ui",
         icon: "src/assets/images/icon.png", // This path is relative to the root of the site.
       },
