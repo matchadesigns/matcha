@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import { Flex, jsx } from "theme-ui";
-import { links } from "./";
+import { links } from "./links";
 
 const MenuLink = styled(Link)`
   padding-right: 0.5em;

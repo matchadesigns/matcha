@@ -191,6 +191,19 @@ async function createShopCategoryPages(graphql, actions, reporter) {
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createRedirect } = actions;
+  createRedirect({
+    fromPath: "/boutique",
+    toPath: "/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+  createRedirect({
+    fromPath: "/boutique/",
+    toPath: "/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
   await createProjectPages(graphql, actions, reporter);
   await createShopProductPages(graphql, actions, reporter);
   await createShopCategoryPages(graphql, actions, reporter);

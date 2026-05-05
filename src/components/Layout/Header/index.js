@@ -17,12 +17,14 @@ export const Header = ({ isTransparent }) => {
   // const {title} = useSiteMetadata()
   const [opacity, setOpacity] = useState(0);
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
-
-  const handleScroll = () => {
-    setOpacity(pageYOffset * 0.002);
-  };
+    if (!isTransparent) return;
+    const handleScroll = () => {
+      setOpacity(window.pageYOffset * 0.002);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isTransparent]);
   return (
     <Flex
       as="header"

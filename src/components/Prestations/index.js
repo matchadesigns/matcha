@@ -82,7 +82,7 @@ export const Prestations = props => {
             <Lampe />
             <GammeProduit />
             <p>
-              <Button to="/boutique/" color={colors.gammeProduit}>
+              <Button to="/" color={colors.gammeProduit}>
                 Voir la boutique en ligne
               </Button>
             </p>

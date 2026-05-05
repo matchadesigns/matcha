@@ -11,7 +11,7 @@ import { LocationProvider } from "./src/lib/location";
 export const wrapPageElement = ({ element, props }) => {
   return (
     <LocationProvider location={props.location}>
-      <LayoutGroup {...props}>{element}</LayoutGroup>
+      <LayoutGroup>{element}</LayoutGroup>
     </LocationProvider>
   );
 };

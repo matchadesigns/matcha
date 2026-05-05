@@ -1,19 +1,11 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
 import {motion} from 'framer-motion'
-import {sanityConfig} from '../../../../sanity-config'
-import {GatsbyImage} from 'gatsby-plugin-image'
-import {getGatsbyImageData} from 'gatsby-source-sanity'
-import {graphql} from 'gatsby'
+import {GatsbyImage, getImage} from 'gatsby-plugin-image'
 
 export const Image = ({image}) => {
-  graphql`
-    fragment productImageFields on SanityImageAsset {
-      _id
-      url
-    }
-  `
-  const imageData = getGatsbyImageData(image.asset, {}, sanityConfig)
+  const imageData = getImage(image.asset)
+  if (!imageData) return null
   return (
     <motion.div whileHover={{scale: 1.02}} whileTap={{scale: 0.9}}>
       <GatsbyImage

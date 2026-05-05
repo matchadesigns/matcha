@@ -4,7 +4,7 @@ import {slide as Menu} from 'react-burger-menu'
 import {jsx} from 'theme-ui'
 import {MenuContext} from '..'
 import {Link as GatsbyLink} from 'gatsby'
-import {links} from '.'
+import {links} from './links'
 
 export const Mobile = () => {
   const ctx = useContext(MenuContext)
