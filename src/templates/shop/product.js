@@ -36,10 +36,6 @@ const ProductPage = ({ data, errors, ...props }) => {
   });
   return (
     <Layout {...props}>
-      {errors && <Seo title="GraphQL Error" />}
-      {product && (
-        <Seo title={title} description={excerpt} image={image} product />
-      )}
       {product && (
         <ProductRichSnippet
           title={title}
@@ -70,6 +66,13 @@ const ProductPage = ({ data, errors, ...props }) => {
     </Layout>
   );
 };
+
+export function Head({data, location}) {
+  const {product} = data
+  const image = product?.images?.[0]?.asset?.url
+  const excerpt = product?.description && toPlainText(product.description)
+  return <Seo title={product?.title} description={excerpt} image={image} product location={location} />
+}
 
 export const query = graphql`
   query ProductPage(

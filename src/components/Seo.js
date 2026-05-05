@@ -1,20 +1,11 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import {useLocation} from '../lib/location'
 import PropTypes from 'prop-types'
 import React from 'react'
-import {Helmet} from 'react-helmet'
 import {truncateString} from '../lib/helpers'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
 
-const Seo = ({title, description, image, product, article, noIndex = false}) => {
+const Seo = ({title, description, image, product, article, noIndex = false, location}) => {
   const site = useSiteMetadata()
-  const {pathname} = useLocation()
+  const pathname = location?.pathname
 
   const seo = {
     title: title && (title.length <= 60 ? (title.includes(site.title) ? title : `${title} — ${site.title}`) : title),
@@ -24,7 +15,7 @@ const Seo = ({title, description, image, product, article, noIndex = false}) => 
   }
 
   return (
-    <Helmet>
+    <>
       <html lang='fr-FR' amp />
       <link rel='dns-prefetch' href='//cdn.sanity.io/' />
       {seo.title && (
@@ -49,7 +40,7 @@ const Seo = ({title, description, image, product, article, noIndex = false}) => 
       {!product && !article && <meta property='og:type' content='website' />}
       {site.author && <meta name='twitter:creator' content={site.author} />}
       {noIndex && <meta name='robots' content='noindex' />}
-    </Helmet>
+    </>
   )
 }
 
@@ -58,7 +49,8 @@ Seo.defaultProps = {
   description: null,
   image: null,
   article: false,
-  product: false
+  product: false,
+  location: null
 }
 
 Seo.propTypes = {
@@ -66,7 +58,8 @@ Seo.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   article: PropTypes.bool,
-  product: PropTypes.bool
+  product: PropTypes.bool,
+  location: PropTypes.object
 }
 
 export default Seo

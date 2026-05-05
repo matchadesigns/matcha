@@ -20,12 +20,6 @@ const ShopPage = ({ data, errors, ...props }) => {
   const categoriesNodes = mapEdgesToNodes(categories);
   return (
     <Layout {...props}>
-      {errors && <Seo title="GraphQL Error" />}
-      <Seo
-        title={title && title}
-        description={body && toPlainText(body)}
-        // image={product.image}
-      />
       {errors && <GraphQLErrorList errors={errors} />}
       <Carousel />
       <Box p={4}>
@@ -60,6 +54,11 @@ const ShopPage = ({ data, errors, ...props }) => {
     </Layout>
   );
 };
+
+export function Head({data, location}) {
+  const {page: {title, _rawBody: body}} = data
+  return <Seo title={title} description={body && toPlainText(body)} location={location} />
+}
 
 export const query = graphql`
   query ShopQuery {

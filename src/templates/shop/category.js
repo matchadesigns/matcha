@@ -14,16 +14,6 @@ const CategoryPage = ({ data, errors, ...props }) => {
   const productNodes = mapEdgesToNodes(products);
   return (
     <Layout {...props}>
-      {errors && <Seo title="GraphQL Error" />}
-      {category && (
-        <Seo
-          title={category.title}
-          description={
-            category.description && toPlainText(category.description)
-          }
-          // image={product.image}
-        />
-      )}
       {errors && <GraphQLErrorList errors={errors} />}
       <Box p={4}>
         {category && <Themed.h1>{category.title}</Themed.h1>}
@@ -38,6 +28,17 @@ const CategoryPage = ({ data, errors, ...props }) => {
     </Layout>
   );
 };
+
+export function Head({data, location}) {
+  const {category} = data
+  return (
+    <Seo
+      title={category?.title}
+      description={category?.description && toPlainText(category.description)}
+      location={location}
+    />
+  )
+}
 
 export const query = graphql`
   fragment productCategoryFields on SanityProductCategory {

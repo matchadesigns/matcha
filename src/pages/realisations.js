@@ -33,11 +33,15 @@ const ProjectsPage = ({data, errors}) => {
 
   return (
     <Layout>
-      <Seo title={title} description={toPlainText(_rawBody)} />
       {_rawBody && <BlockContent blocks={_rawBody} />}
       <Main>{projectNodes && <ProjectList nodes={projectNodes} />}</Main>
     </Layout>
   )
+}
+
+export function Head({data, location}) {
+  const {page: {title, _rawBody}} = data
+  return <Seo title={title} description={toPlainText(_rawBody)} location={location} />
 }
 
 export const query = graphql`query ProjectsPageQuery {

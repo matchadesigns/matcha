@@ -21,9 +21,6 @@ const ProjectPage = ({ data, errors, ...props }) => {
   const body = _rawBody && toPlainText(_rawBody);
   return (
     <Layout {...props}>
-      {errors && <Seo title="GraphQL Error" />}
-      {project && <Seo title={title} description={body} image={image} />}
-
       {errors && <GraphQLErrorList errors={errors} />}
 
       {project && <Project {...project} />}
@@ -36,6 +33,13 @@ const ProjectPage = ({ data, errors, ...props }) => {
     </Layout>
   );
 };
+
+export function Head({data, location}) {
+  const {project} = data
+  const image = project?.images?.images?.[0]?.asset?.fluid?.src
+  const body = project?._rawBody && toPlainText(project._rawBody)
+  return <Seo title={project?.title} description={body} image={image} location={location} />
+}
 
 export const query = graphql`
   query ProjectPage($project: String, $category: String) {

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {graphql, useStaticQuery} from 'gatsby'
+import {graphql} from 'gatsby'
 import {jsx} from 'theme-ui'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
@@ -7,27 +7,29 @@ import {Layout} from '../components/Layout'
 import {Qui} from '../components/Qui'
 import Seo from '../components/Seo'
 
-const QuiPage = () => {
-  const {
-    page: {title},
-    errors
-  } = useStaticQuery(graphql`
-    {
-      page: sanityPage(slug: {current: {eq: "a-propos"}}) {
-        title
-      }
-    }
-  `)
+const QuiPage = ({data, errors}) => {
   if (errors) {
     return <GraphQLErrorList errors={errors} />
   }
-
+  const {page: {title}} = data
   return (
     <Layout>
-      <Seo title={title} />
       <h1>{title}</h1>
       <Qui />
     </Layout>
   )
 }
+
+export function Head({data, location}) {
+  return <Seo title={data.page.title} location={location} />
+}
+
+export const query = graphql`
+  {
+    page: sanityPage(slug: {current: {eq: "a-propos"}}) {
+      title
+    }
+  }
+`
+
 export default QuiPage

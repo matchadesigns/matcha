@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {graphql, useStaticQuery} from 'gatsby'
+import {graphql} from 'gatsby'
 import {Card, jsx} from 'theme-ui'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
@@ -7,25 +7,13 @@ import {Layout} from '../components/Layout'
 import Seo from '../components/Seo'
 import {BlockContent} from '../components/BlockContent'
 
-const MentionsLegalesPage = () => {
-  const {
-    page: {title, _rawBody},
-    errors
-  } = useStaticQuery(graphql`
-    {
-      page: sanityPage(slug: {current: {eq: "mentions-legales"}}) {
-        title
-        _rawBody
-      }
-    }
-  `)
+const MentionsLegalesPage = ({data, errors}) => {
   if (errors) {
     return <GraphQLErrorList errors={errors} />
   }
-
+  const {page: {title, _rawBody}} = data
   return (
     <Layout>
-      <Seo title={title} />
       <Card p={4}>
         <h1>{title}</h1>
         <BlockContent blocks={_rawBody} />
@@ -33,4 +21,18 @@ const MentionsLegalesPage = () => {
     </Layout>
   )
 }
+
+export function Head({data, location}) {
+  return <Seo title={data.page.title} location={location} />
+}
+
+export const query = graphql`
+  {
+    page: sanityPage(slug: {current: {eq: "mentions-legales"}}) {
+      title
+      _rawBody
+    }
+  }
+`
+
 export default MentionsLegalesPage
