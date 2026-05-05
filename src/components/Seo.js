@@ -41,6 +41,7 @@ const Seo = ({title, description, image, product, article, noIndex = false}) => 
       {seo.image && <meta property='og:image' content={seo.image} />}
       {seo.image && <meta name='twitter:image' content={seo.image} />}
       <meta name='twitter:card' content='summary_large_image' />
+      <meta name='theme-color' content='#3A3419' />
       {seo.url && <meta property='og:url' content={seo.url} />}
       {seo.url && <link rel='canonical' href={seo.url} />}
       {(article ? true : null) && <meta property='og:type' content='article' />}

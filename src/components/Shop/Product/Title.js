@@ -11,13 +11,13 @@ export const Title = ({ title, category }) => {
         Catégorie :{" "}
         <Link sx={{ p: 2, bg: "light", borderRadius: 8 }} to={category.link}>
           <h2
-            sx={{ display: "inline-block", fontSize: 3, lineHeight: 1, m: 0 }}
+            sx={{ display: "inline-block", fontSize: 2, lineHeight: 1, m: 0 }}
           >
             {category.title}
           </h2>
         </Link>
       </Box>
-      <Themed.h1 sx={{ m: 0, fontSize: [5, 6, 5, 6] }}>{title}</Themed.h1>
+      <Themed.h1 sx={{ my: 10, fontSize: [3, 4, 4, 5] }}>{title}</Themed.h1>
     </Fragment>
   );
 };

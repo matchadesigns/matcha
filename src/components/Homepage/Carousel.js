@@ -19,8 +19,8 @@ const slides = [
     ),
   },
   {
-    title: "Une collection unique pour votre intérieur",
-    subtitle: "Design moderne et minimaliste",
+    title: "Les boîtes à biscuits en collaboration avec Maison DV",
+    subtitle: "Nouveautés du mois de mars",
     image: (
       <StaticImage
         src="../../assets/images/IMAGE 1.jpg"
@@ -84,7 +84,7 @@ export const Carousel = () => {
                         fontFamily: "heading",
                         fontWeight: "heading",
                         color: "brownWhite",
-                        fontSize: [4, 5, 5, 6],
+                        fontSize: [4, 5, 5, 5],
                         lineHeight: "1.1",
                         mb: 4,
                       }}
@@ -94,7 +94,7 @@ export const Carousel = () => {
                     <p
                       sx={{
                         fontFamily: "body",
-                        fontSize: [2, 3, 3, 4],
+                        fontSize: [2, 3, 3],
                         lineHeight: "1.4",
                         opacity: 0.9,
                       }}

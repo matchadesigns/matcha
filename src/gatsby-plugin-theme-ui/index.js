@@ -7,7 +7,7 @@ export default {
   breakpoints: ["640px", "768px", "1024px", "1216px", "1600px"],
   colors: {
     ...tailwind.colors,
-    primary: "#B1834D",
+    primary: "#3A3419",
     secondary: "#F2E9DF",
     brownWhite: "#EDE6D9", //"#F2E9DF",
     white: "#ffffff",
