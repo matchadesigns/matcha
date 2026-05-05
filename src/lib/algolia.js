@@ -4,6 +4,9 @@ const productQuery = `
         edges {
             node {
                 objectID: id
+                internal {
+                    contentDigest
+                }
                 title
                 slug {
                     current
@@ -34,6 +37,9 @@ const projectQuery = `
     edges {
       node {
         objectID: id
+        internal {
+          contentDigest
+        }
         title
         subtitle
         slug {
