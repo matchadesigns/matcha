@@ -46,7 +46,7 @@ const H2 = ({ children }) => (
       m: 0,
       letterSpacing: 5,
       lineHeight: ["8vmin", "6vmin", "4vmin"],
-      fontWeight: "700",
+      fontWeight: "heading",
       fontSize: ["10vmin", "6vmin", "4vmin"],
     }}
   >

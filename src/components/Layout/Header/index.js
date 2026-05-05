@@ -31,7 +31,7 @@ export const Header = ({ isTransparent }) => {
       sx={{
         display: "flex",
         variant: "layout.header",
-        bg: isTransparent ? `rgba(242,233,223,${opacity})` : "brownWhite",
+        bg: isTransparent ? `#EDE6D9` : "brownWhite",
         position: isTransparent ? "fixed" : "sticky",
         top: isTransparent ? ["3em", "3em", "3em", 0] : "",
         p: 0,

@@ -17,6 +17,8 @@ const Li = styled.li`
   display: flex;
   align-items: center;
   :padding-right: 1vw;
+  font-family: Fraunces, serif;
+  font-weight: 600;
   &:before {
     content: '';
     height: 1em;

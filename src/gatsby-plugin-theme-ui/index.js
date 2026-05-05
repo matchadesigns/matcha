@@ -9,23 +9,30 @@ export default {
     ...tailwind.colors,
     primary: "#B1834D",
     secondary: "#F2E9DF",
-    brownWhite: "#F0E9DC", //"#F2E9DF",
+    brownWhite: "#EDE6D9", //"#F2E9DF",
     white: "#ffffff",
     black: "#1B171C",
     text: "#000",
-    green: "#39B54A",
+    green: "#3A3419",
     red: "#D48464",
   },
   fonts: {
     ...tailwind.fonts,
-    body: '"Sulphur Point", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: "SimplePrint",
+    body: '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    heading: '"Fraunces", serif',
   },
 
   fontSizes: [14, 16, 18, 24, 30, 36, 64, 72],
   fontWeights: {
     ...tailwind.fontWeights,
     body: 300,
+    heading: 600,
+  },
+  links: {
+    header: {
+      fontFamily: "heading",
+      fontWeight: "heading",
+    },
   },
   buttons: {
     ...tailwind.buttons,
@@ -129,7 +136,8 @@ export default {
         flexBasis: 0,
         minWidth: "50%",
         a: {
-          fontWeight: "light",
+          fontFamily: "heading",
+          fontWeight: "heading",
         },
       },
     },
@@ -151,6 +159,8 @@ export default {
       p: 4,
       color: "white",
       a: {
+        fontFamily: "heading",
+        fontWeight: "heading",
         color: "white",
         py: 3,
         borderBottom: "1px solid",
