@@ -170,9 +170,9 @@ export default {
     footer: {
       gridRowStart: 3,
       gridRowEnd: 4,
-      bg: "black",
-      color: "white",
-      a: { color: "white" },
+      bg: "green",
+      color: "brownWhite",
+      a: { color: "brownWhite" },
       p: 4,
       textAlign: "center",
     },
