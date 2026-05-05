@@ -54,8 +54,8 @@ module.exports = {
         name: "Mâtcha Designs",
         short_name: "matcha",
         start_url: "/",
-        background_color: "#B67D20",
-        theme_color: "#B67D20",
+        background_color: "#3A3419",
+        theme_color: "#3A3419",
         display: "minimal-ui",
         icon: "src/assets/images/icon.png", // This path is relative to the root of the site.
       },
@@ -64,7 +64,7 @@ module.exports = {
       resolve: "gatsby-plugin-nprogress",
       options: {
         // Setting a color is optional.
-        color: "#B67D20",
+        color: "#3A3419",
         // Disable the loading spinner.
         showSpinner: false,
       },

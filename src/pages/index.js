@@ -8,6 +8,7 @@ import { GraphQLErrorList } from "../components/GraphQLErrorList";
 import { toPlainText, mapEdgesToNodes } from "../lib/helpers";
 import { BlockContent } from "../components/BlockContent";
 import { ProductList } from "../components/Shop/ProductList";
+import { Carousel } from "../components/Homepage/Carousel";
 
 const ShopPage = ({ data, errors, ...props }) => {
   const {
@@ -26,6 +27,7 @@ const ShopPage = ({ data, errors, ...props }) => {
         // image={product.image}
       />
       {errors && <GraphQLErrorList errors={errors} />}
+      <Carousel />
       <Box p={4}>
         {title && <Themed.h1 sx={{ p: 0, mr: 3 }}>{title}</Themed.h1>}
         <Box>
@@ -36,7 +38,14 @@ const ShopPage = ({ data, errors, ...props }) => {
                 key={category.slug.current}
                 to={`/${category.slug.current}/`}
               >
-                <Themed.h3 sx={{ display: "inline-block", p: 0, mr: 4 }}>
+                <Themed.h3
+                  sx={{
+                    display: "inline-block",
+                    p: 0,
+                    mr: 4,
+                    fontSize: [2],
+                  }}
+                >
                   {category.title}
                 </Themed.h3>
               </Link>

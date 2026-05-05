@@ -172,7 +172,13 @@ export default {
       gridRowEnd: 4,
       bg: "green",
       color: "brownWhite",
-      a: { color: "brownWhite" },
+      a: {
+        color: "brownWhite",
+        ":hover": {
+          color: "brownWhite",
+          opacity: 1,
+        },
+      },
       p: 4,
       textAlign: "center",
     },
