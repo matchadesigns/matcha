@@ -64,7 +64,7 @@ export const CategoryNav = ({ activeSlug }) => {
     <Box
       sx={{
         position: "sticky",
-        top: `${topOffset}px`,
+        top: `0`,
         zIndex: 3,
         bg: "white",
         borderBottom: "1px solid",
@@ -136,7 +136,8 @@ const CategoryPill = ({ to, label, active }) => (
       fontSize: ["12px", "12px", "13px", 1],
       letterSpacing: "0.5px",
       textDecoration: "none",
-      transition: "background 0.2s ease, color 0.2s ease, border-color 0.2s ease",
+      transition:
+        "background 0.2s ease, color 0.2s ease, border-color 0.2s ease",
       bg: active ? "#C2945F" : "transparent",
       color: active ? "#fff !important" : "#3A3419",
       border: "1.5px solid",
