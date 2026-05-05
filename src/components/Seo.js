@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import {useLocation} from '@reach/router'
+import {useLocation} from '../lib/location'
 import PropTypes from 'prop-types'
 import React from 'react'
 import {Helmet} from 'react-helmet'

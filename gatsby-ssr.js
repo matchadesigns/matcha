@@ -4,4 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-// You can delete this file if you're not using it
+import React from "react";
+import { LocationProvider } from "./src/lib/location";
+
+export const wrapPageElement = ({ element, props }) => (
+  <LocationProvider location={props.location}>{element}</LocationProvider>
+);

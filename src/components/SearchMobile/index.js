@@ -5,7 +5,21 @@ import algoliasearch from 'algoliasearch/lite'
 import {InstantSearch, Configure, Index, InfiniteHits, connectStateResults} from 'react-instantsearch-dom'
 import {Box} from './Box'
 import * as hitComps from './Hits'
-import onClickOutside from 'react-onclickoutside'
+
+const useClickOutside = (ref, handler) => {
+  useEffect(() => {
+    const listener = event => {
+      if (!ref.current || ref.current.contains(event.target)) return
+      handler(event)
+    }
+    document.addEventListener('mousedown', listener)
+    document.addEventListener('touchstart', listener)
+    return () => {
+      document.removeEventListener('mousedown', listener)
+      document.removeEventListener('touchstart', listener)
+    }
+  }, [ref, handler])
+}
 
 const Results = connectStateResults(
   ({searchState: state, searchResults: res, children}) => (res && res.nbHits > 0 ? children : null) // state.query ? `Pas de résultat pour '${state.query}'` : null
@@ -54,7 +68,7 @@ function Search ({indices, collapse}) {
       return algoliaClient.search(requests)
     }
   }
-  Search.handleClickOutside = () => setFocus(false)
+  useClickOutside(ref, () => setFocus(false))
   useEscKey(() => setFocus(false))
   return (
     <div ref={ref} sx={{mt: 0}}>
@@ -126,8 +140,4 @@ const PoweredBy = () => (
   </span>
 )
 
-const clickOutsideConfig = {
-  handleClickOutside: () => Search.handleClickOutside
-}
-
-export default onClickOutside(Search, clickOutsideConfig)
+export default Search

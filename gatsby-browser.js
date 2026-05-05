@@ -6,9 +6,14 @@
 
 import React from "react";
 import { LayoutGroup } from "framer-motion";
+import { LocationProvider } from "./src/lib/location";
 
 export const wrapPageElement = ({ element, props }) => {
-  return <LayoutGroup {...props}>{element}</LayoutGroup>;
+  return (
+    <LocationProvider location={props.location}>
+      <LayoutGroup {...props}>{element}</LayoutGroup>
+    </LocationProvider>
+  );
 };
 
 /*
