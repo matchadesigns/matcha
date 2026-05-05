@@ -108,7 +108,7 @@ export default {
         fontWeight: "bold",
         ":hover": {
           // textDecoration: 'underline'
-          color: "gray.7",
+          color: "#C2945F",
         },
       },
       "a,button": {
