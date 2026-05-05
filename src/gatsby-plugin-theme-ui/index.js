@@ -134,7 +134,7 @@ export default {
         justifyContent: "flex-end",
         flexGrow: 99999,
         flexBasis: 0,
-        minWidth: "50%",
+        //minWidth: "50%",
         a: {
           fontFamily: "heading",
           fontWeight: "heading",
