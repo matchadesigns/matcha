@@ -51,9 +51,6 @@ export const Layout = ({
             minHeight: "full",
             display: "grid",
             gridTemplateRows: "auto auto auto",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "wrap",
           }}
         >
           <Header isTransparent={transparentHeader} />

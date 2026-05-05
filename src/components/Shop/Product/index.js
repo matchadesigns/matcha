@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { graphql } from "gatsby";
 import { uniqBy } from "lodash";
-import { Grid, jsx } from "theme-ui";
+import { Grid, Box, jsx } from "theme-ui";
 import { BlockContent } from "../../BlockContent";
 import { getProductPath } from "../helpers";
 import { Buy } from "./Buy";
@@ -11,6 +11,7 @@ import { Tags } from "./Tags";
 import { Title } from "./Title";
 import { Variants } from "./Variants";
 import { Social } from "./Social";
+import { Category } from "./Category";
 
 export const Product = ({ sameVariantGroupsProductsNodes, ...product }) => {
   graphql`
@@ -123,9 +124,15 @@ export const Product = ({ sameVariantGroupsProductsNodes, ...product }) => {
   columns.push(isThumb ? 2 : 2); // desktop
   columns.push(isThumb ? 2 : 2); // wide
   columns.push(isThumb ? 2 : 2); // extrawide
-
+  const categoryObject = {
+    title: category.title,
+    link: `/${category.slug.current}`,
+  };
   return (
     <motion.div variants={container} initial="hidden" animate="show">
+      <Box sx={{ p: 4 }}>
+        <Category category={categoryObject} />
+      </Box>
       <Grid gap={2} columns={columns} sx={{ p: 4 }}>
         <Images item={item} image={image} thumbs={thumbs} />
         <motion.div
@@ -138,13 +145,7 @@ export const Product = ({ sameVariantGroupsProductsNodes, ...product }) => {
             order: 2,
           }}
         >
-          <Title
-            title={title}
-            category={{
-              title: category.title,
-              link: `/${category.slug.current}`,
-            }}
-          />
+          <Title title={title} />
           <Buy
             id={id}
             title={title}

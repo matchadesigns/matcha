@@ -8,6 +8,7 @@ import { GraphQLErrorList } from "../../components/GraphQLErrorList";
 import { toPlainText, mapEdgesToNodes } from "../../lib/helpers";
 import { BlockContent } from "../../components/BlockContent";
 import { ProductList } from "../../components/Shop/ProductList";
+import { CategoryNav } from "../../components/Shop/CategoryNav";
 
 const CategoryPage = ({ data, errors, ...props }) => {
   const { products, category } = data;
@@ -15,6 +16,7 @@ const CategoryPage = ({ data, errors, ...props }) => {
   return (
     <Layout {...props}>
       {errors && <GraphQLErrorList errors={errors} />}
+      <CategoryNav activeSlug={category?.slug?.current} />
       <Box p={4}>
         {category && <Themed.h1>{category.title}</Themed.h1>}
         {category && category.description && (
