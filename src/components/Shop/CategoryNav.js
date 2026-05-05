@@ -63,59 +63,52 @@ export const CategoryNav = ({ activeSlug }) => {
   return (
     <Box
       sx={{
+        position: "sticky",
+        top: `${topOffset}px`,
+        zIndex: 3,
         bg: "white",
-        width: "100%",
         borderBottom: "1px solid",
         borderColor: "rgba(58,52,25,0.12)",
         boxShadow: "0 2px 12px rgba(58,52,25,0.07)",
       }}
     >
-      {/*
-        Two-layer scroll pattern:
-        - outer (scrollRef): block-level, constrained to parent width, overflow-x: auto
-        - inner: inline-flex, grows to intrinsic width, min-width 100% to fill container
-        This ensures scroll activates correctly on all browsers.
-      */}
       <Box
         ref={scrollRef}
         sx={{
-          overflowX: "auto",
+          display: "flex",
+          // Mobile/tablet: wrap so every category is visible, no overflow
+          // Desktop: single row, scrollable if many categories
+          flexWrap: ["wrap", "wrap", "wrap", "nowrap"],
+          gap: 2,
+          overflowX: ["visible", "visible", "visible", "auto"],
           scrollbarWidth: "none",
           "&::-webkit-scrollbar": { display: "none" },
-          position: "relative",
+          px: [3, 3, 4],
+          py: ["10px", "10px", "10px", "12px"],
         }}
       >
-        <Box
-          sx={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: [2, 2, 2, 2],
-            px: [3, 3, 4],
-            py: ["8px", "8px", "10px", "12px"],
-            minWidth: "100%",
-          }}
-        >
-          <CategoryPill to="/" label="Tout voir" active={isHome} />
+        <CategoryPill to="/" label="Tout voir" active={isHome} />
 
-          {categories.map((cat) => (
-            <CategoryPill
-              key={cat.id}
-              to={`/${cat.slug.current}/`}
-              label={cat.title}
-              active={activeSlug === cat.slug.current}
-            />
-          ))}
-        </Box>
+        {categories.map((cat) => (
+          <CategoryPill
+            key={cat.id}
+            to={`/${cat.slug.current}/`}
+            label={cat.title}
+            active={activeSlug === cat.slug.current}
+          />
+        ))}
       </Box>
 
+      {/* Fade gradient only on desktop where pills may scroll off-screen */}
       {showFade && (
         <Box
           sx={{
+            display: ["none", "none", "none", "block"],
             position: "absolute",
             right: 0,
             top: 0,
             bottom: 0,
-            width: "40px",
+            width: "48px",
             background: "linear-gradient(to left, white 30%, transparent)",
             pointerEvents: "none",
           }}
@@ -134,17 +127,16 @@ const CategoryPill = ({ to, label, active }) => (
       justifyContent: "center",
       whiteSpace: "nowrap",
       flexShrink: 0,
-      minHeight: ["44px", "44px", "44px", "unset"],
-      px: ["12px", "12px", "14px"],
-      py: ["0", "0", "0", "7px"],
+      // On mobile pills wrap to 2 rows — comfortable tap size without min-height bloat
+      px: ["10px", "10px", "12px", "14px"],
+      py: ["8px", "8px", "8px", "7px"],
       borderRadius: "20px",
       fontFamily: "heading",
       fontWeight: "heading",
-      fontSize: ["13px", "13px", "14px", 1],
+      fontSize: ["12px", "12px", "13px", 1],
       letterSpacing: "0.5px",
       textDecoration: "none",
-      transition:
-        "background 0.2s ease, color 0.2s ease, border-color 0.2s ease",
+      transition: "background 0.2s ease, color 0.2s ease, border-color 0.2s ease",
       bg: active ? "#C2945F" : "transparent",
       color: active ? "#fff !important" : "#3A3419",
       border: "1.5px solid",
