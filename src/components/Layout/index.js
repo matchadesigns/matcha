@@ -15,8 +15,6 @@ export const MenuContext = React.createContext(false);
 export const Layout = ({
   children,
   transparentHeader = false,
-  noBranding = false,
-  ...props
 }) => {
   const [menuOpenState, setMenuOpenState] = useState(false);
   return (

@@ -22,10 +22,7 @@ const useClickOutside = (ref, handler) => {
 }
 
 const Results = connectStateResults(
-  ({searchState: state, searchResults: res, children}) => (res && res.nbHits > 0 ? children : null) // state.query ? `Pas de résultat pour '${state.query}'` : null
-)
-const Stats = connectStateResults(
-  ({searchResults: res}) => res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? 's' : ''}`
+  ({searchResults: res, children}) => (res && res.nbHits > 0 ? children : null) // state.query ? `Pas de résultat pour '${state.query}'` : null
 )
 const useEscKey = handler => {
   const detectEscKey = useCallback(
@@ -114,7 +111,7 @@ function Search ({indices, collapse}) {
             }
           }}
         >
-          {indices.map(({name, title, hitComp}) => (
+          {indices.map(({name, hitComp}) => (
             <Index key={name} indexName={name}>
               <Results>
                 <InfiniteHits

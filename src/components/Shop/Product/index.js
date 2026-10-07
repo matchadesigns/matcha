@@ -10,7 +10,6 @@ import { Images } from "./Images";
 import { Tags } from "./Tags";
 import { Title } from "./Title";
 import { Variants } from "./Variants";
-import { Social } from "./Social";
 import { Category } from "./Category";
 
 export const Product = ({ sameVariantGroupsProductsNodes, ...product }) => {

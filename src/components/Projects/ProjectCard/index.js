@@ -7,7 +7,7 @@ import {Title} from './Title'
 import {getProjectPath} from '../helpers'
 import ProjectPlus from '../../../assets/svg/ProjectPlus.svg'
 
-export const ProjectCard = ({title, subtitle, slug, category, previewImages, cardBgColor, width = 300}) => {
+export const ProjectCard = ({title, subtitle, slug, category, previewImages, cardBgColor}) => {
   graphql`
     fragment projectCardFields on SanityProject {
       id

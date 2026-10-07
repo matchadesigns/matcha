@@ -12,7 +12,7 @@ const ContactPage = ({data, errors}) => {
   if (errors) {
     return <GraphQLErrorList errors={errors} />
   }
-  const {page: {title, _rawBody: body}} = data
+  const {page: {_rawBody: body}} = data
   return (
     <Layout>
       <Main sx={{p: 4}}>

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Box } from "theme-ui";
+import { jsx } from "theme-ui";
 import { Themed } from "@theme-ui/mdx";
 import { Fragment } from "react";
 

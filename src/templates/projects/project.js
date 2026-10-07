@@ -11,14 +11,8 @@ import { mapEdgesToNodes, toPlainText } from "../../lib/helpers";
 
 const ProjectPage = ({ data, errors, ...props }) => {
   const { project, sameCategoryProjects } = data;
-  const { title, category, images, _rawBody } = project;
+  const { category } = project;
   const sameCategoryProjectsNodes = mapEdgesToNodes(sameCategoryProjects);
-  const image =
-    images &&
-    images.images &&
-    images.images[0] &&
-    images.images[0].asset.fluid.src;
-  const body = _rawBody && toPlainText(_rawBody);
   return (
     <Layout {...props}>
       {errors && <GraphQLErrorList errors={errors} />}

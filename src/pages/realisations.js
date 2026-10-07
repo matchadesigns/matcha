@@ -28,7 +28,7 @@ const ProjectsPage = ({data, errors}) => {
     : []
 
   const {
-    page: {title, _rawBody}
+    page: {_rawBody}
   } = data
 
   return (

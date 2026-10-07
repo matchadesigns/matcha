@@ -3,12 +3,11 @@ import {graphql} from 'gatsby'
 import {jsx} from 'theme-ui'
 import {GraphQLErrorList} from '../components/GraphQLErrorList'
 import {Layout} from '../components/Layout'
-import {Main} from '../components/Layout/Main'
 import {Prestations} from '../components/Prestations'
 import Seo from '../components/Seo'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
 
-const PrestationsPage = ({data, errors}) => {
+const PrestationsPage = ({errors}) => {
   if (errors) {
     return <GraphQLErrorList errors={errors} />
   }

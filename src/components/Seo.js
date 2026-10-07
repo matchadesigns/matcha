@@ -16,6 +16,7 @@ const Seo = ({title, description, image, product, article, noIndex = false, loca
 
   return (
     <>
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <html lang='fr-FR' amp />
       <link rel='dns-prefetch' href='//cdn.sanity.io/' />
       {seo.title && (

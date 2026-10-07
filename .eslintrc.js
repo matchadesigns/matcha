@@ -14,7 +14,12 @@ module.exports = {
   },
   plugins: ['react', 'jsx-a11y', 'prettier'],
   rules: {
-    // Additional rules or overrides can be added here
+    // Props are not typed in this codebase
+    "react/prop-types": "off",
+    // Allow omitting props from a ...rest spread
+    "no-unused-vars": ["error", { ignoreRestSiblings: true }],
+    // theme-ui sx prop
+    "react/no-unknown-property": ["error", { ignore: ["sx"] }],
   },
   settings: {
     react: {

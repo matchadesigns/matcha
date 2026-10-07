@@ -21,32 +21,8 @@ export const CategoryNav = ({ activeSlug }) => {
   `);
 
   const categories = data.categories.edges.map((e) => e.node);
-  const [topOffset, setTopOffset] = useState(0);
   const scrollRef = useRef(null);
   const [showFade, setShowFade] = useState(true);
-
-  useEffect(() => {
-    const updateOffset = () => {
-      if (window.innerWidth >= 1024) {
-        const header = document.querySelector("header");
-        setTopOffset(header ? header.offsetHeight : 0);
-      } else {
-        setTopOffset(0);
-      }
-    };
-
-    updateOffset();
-
-    const header = document.querySelector("header");
-    const ro = header ? new ResizeObserver(updateOffset) : null;
-    if (ro) ro.observe(header);
-    window.addEventListener("resize", updateOffset);
-
-    return () => {
-      ro?.disconnect();
-      window.removeEventListener("resize", updateOffset);
-    };
-  }, []);
 
   useEffect(() => {
     const el = scrollRef.current;

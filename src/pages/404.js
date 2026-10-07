@@ -7,7 +7,7 @@ const NotFoundPage = () => (
   <Layout>
     <Box sx={{ p: 6, width: "40vw", margin: "auto", textAlign: "center" }}>
       <h1>Erreur 404</h1>
-      <p>Désolé ! Cette page n'existe plus :(</p>
+      <p>Désolé ! Cette page n&apos;existe plus :(</p>
     </Box>
   </Layout>
 );
