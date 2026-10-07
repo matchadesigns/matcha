@@ -1,0 +1,14 @@
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: false
+  core-js-pure: false
+  es5-ext: false
+  esbuild: true
+  gatsby: true
+  gatsby-cli: true
+  lmdb: true
+  msgpackr-extract: true
+  sharp: true
+
+overrides:
+  svg-react-loader>loader-utils: ^1.4.2
