@@ -2,6 +2,8 @@
 import { graphql } from 'gatsby';
 import { Box, Card, jsx } from 'theme-ui';
 import { AddToCart } from '../AddToCart';
+import { isPromo } from '../helpers';
+import { PromoBadge } from '../PromoBadge';
 import { Image } from './Image';
 import { Price } from './Price';
 import { Stock } from './Stock';
@@ -42,7 +44,10 @@ export const ProductCard = ({ id, title, slug, category, images, price, sku }) =
       }}
     >
       <div>
-        <div sx={{ boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)' }}>
+        <div sx={{ position: 'relative', boxShadow: '0px 10px 10px rgba(0, 0, 0, .035)' }}>
+          {isPromo(category) && (
+            <PromoBadge sx={{ position: 'absolute', top: 2, left: 2, zIndex: 1, pointerEvents: 'none' }} />
+          )}
           {images && images[0] && images[0].asset && <Image image={images[0].asset} link={productPath} />}
         </div>
         <Box p={1}>

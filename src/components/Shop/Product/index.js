@@ -7,6 +7,8 @@ import { BlockContent } from "../../BlockContent";
 import { getProductPath } from "../helpers";
 import { Buy } from "./Buy";
 import { Images } from "./Images";
+import { isPromo } from "../helpers";
+import { PromoBadge } from "../PromoBadge";
 import { Tags } from "./Tags";
 import { Title } from "./Title";
 import { Variants } from "./Variants";
@@ -144,6 +146,7 @@ export const Product = ({ sameVariantGroupsProductsNodes, ...product }) => {
             order: 2,
           }}
         >
+          {isPromo(category) && <PromoBadge sx={{ mt: 2 }} />}
           <Title title={title} />
           <Buy
             id={id}
