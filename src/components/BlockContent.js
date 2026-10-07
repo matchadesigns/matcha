@@ -1,8 +1,12 @@
-import BaseBlockContent from '@sanity/block-content-to-react'
+import {PortableText} from '@portabletext/react'
 import React from 'react'
-import clientConfig from '../../client-config'
-import serializers from './serializers'
+import components from './serializers'
 
 export const BlockContent = ({blocks}) => {
-  return <BaseBlockContent blocks={blocks} serializers={serializers} {...clientConfig.sanity} />
+  if (!blocks) return null
+  return (
+    <div>
+      <PortableText value={blocks} components={components} />
+    </div>
+  )
 }

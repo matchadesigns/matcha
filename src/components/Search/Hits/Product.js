@@ -3,7 +3,7 @@
 import {Link} from 'gatsby'
 import {GatsbyImage} from 'gatsby-plugin-image'
 import {getGatsbyImageData} from 'gatsby-source-sanity'
-import {Highlight} from 'react-instantsearch-dom'
+import {Highlight} from 'react-instantsearch'
 import {Box, Grid, jsx} from 'theme-ui'
 import {sanityConfig} from '../../../../sanity-config'
 
@@ -18,7 +18,7 @@ export const Product = clickHandler => ({hit}) => {
   const categoryPath = `/${category.slug.current}`
   const imageData = getGatsbyImageData(
     hit.images[0].asset,
-    {maxWidth: 120},
+    {width: 120},
     sanityConfig
   )
   return (
@@ -29,7 +29,7 @@ export const Product = clickHandler => ({hit}) => {
     >
       <Box>
         <Link to={productPath} onClick={clickHandler}>
-          <GatsbyImage image={imageData} sx={{variant: 'images.card'}} />
+          <GatsbyImage image={imageData} alt={hit.title} sx={{variant: 'images.card'}} />
         </Link>
       </Box>
       <Box sx={{fontSize: 1}}>
@@ -37,17 +37,17 @@ export const Product = clickHandler => ({hit}) => {
           <Highlight
             attribute="title"
             hit={hit}
-            tagName="mark"
+            highlightedTagName="mark"
             sx={{fontSize: 2}}
           />
         </Link>
         <Box>
           <Link to={categoryPath} onClick={clickHandler}>
-            <Highlight attribute="category.title" hit={hit} tagName="mark" />
+            <Highlight attribute="category.title" hit={hit} highlightedTagName="mark" />
           </Link>
         </Box>
         <Box sx={{fontSize: 0}}>
-          <Highlight attribute="tags" hit={hit} tagName="mark" />
+          <Highlight attribute="tags" hit={hit} highlightedTagName="mark" />
         </Box>
         <Box sx={{fontSize: 2}}>{price}</Box>
       </Box>

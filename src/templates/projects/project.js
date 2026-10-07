@@ -30,7 +30,7 @@ const ProjectPage = ({ data, errors, ...props }) => {
 
 export function Head({data, location}) {
   const {project} = data
-  const image = project?.images?.images?.[0]?.asset?.fluid?.src
+  const image = project?.images?.[0]?.asset?.url
   const body = project?._rawBody && toPlainText(project._rawBody)
   return <Seo title={project?.title} description={body} image={image} location={location} />
 }

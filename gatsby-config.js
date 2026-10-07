@@ -1,3 +1,8 @@
+// Load env vars before anything reads process.env
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const path = require("path");
 const clientConfig = require("./client-config");
 const token = process.env.SANITY_READ_TOKEN;
@@ -5,10 +10,6 @@ const token = process.env.SANITY_READ_TOKEN;
 const isProd = process.env.NODE_ENV === "production";
 
 const queries = require("./src/lib/algolia");
-
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
 
 module.exports = {
   siteMetadata: {
@@ -68,31 +69,26 @@ module.exports = {
         showSpinner: false,
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: path.join(__dirname, "src", "assets", "images"),
-      },
-    },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
+    // Only index when the admin key is available (Vercel), so local builds don't fail
+    process.env.ALGOLIA_API_KEY && {
       resolve: "gatsby-plugin-algolia",
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_API_KEY,
         queries,
-        // chunkSize: 1000, // default: 1000
       },
     },
-    //'gatsby-plugin-zeit-now',
-    "gatsby-plugin-sitemap",
     {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        excludes: ["/404", "/404.html", "/dev-404-page"],
+      },
+    },
+    process.env.GOOGLE_ANALYTICS && {
       resolve: "gatsby-plugin-google-gtag",
       options: {
         trackingIds: [process.env.GOOGLE_ANALYTICS],
       },
     },
-  ],
+  ].filter(Boolean),
 };

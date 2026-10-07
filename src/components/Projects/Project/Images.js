@@ -1,15 +1,17 @@
 /** @jsx jsx */
 import {motion} from 'framer-motion'
 import {graphql} from 'gatsby'
-import {SRLWrapper} from 'simple-react-lightbox'
 import {Grid, jsx} from 'theme-ui'
+import {useLightbox} from '../../Lightbox'
 import {Image} from './Image'
 import {Thumbs} from './Thumbs'
 
-export const Images = ({thumbs, image}) => {
+export const Images = ({thumbs, image, title}) => {
   graphql`
     fragment projectImageFields on SanityImageAsset {
       _id
+      url
+      gatsbyImageData(width: 1200, placeholder: BLURRED)
     }
   `
 
@@ -17,18 +19,18 @@ export const Images = ({thumbs, image}) => {
     hidden: {opacity: 0},
     show: {opacity: 1}
   }
+  const [lightbox, openAt] = useLightbox([image, ...thumbs])
   return (
-    <SRLWrapper>
-      <Grid columns={1}>
+    <Grid columns={1}>
+      <motion.div variants={item}>
+        {image && <Image image={image} alt={title} onClick={openAt(0)} />}
+      </motion.div>
+      {thumbs.length > 0 && (
         <motion.div variants={item}>
-          {image && <Image image={image} />}
+          <Thumbs thumbs={thumbs} alt={title} onOpen={i => openAt(i + 1)} />
         </motion.div>
-        {thumbs.length > 0 && (
-          <motion.div variants={item}>
-            <Thumbs thumbs={thumbs} />
-          </motion.div>
-        )}
-      </Grid>
-    </SRLWrapper>
+      )}
+      {lightbox}
+    </Grid>
   )
 }

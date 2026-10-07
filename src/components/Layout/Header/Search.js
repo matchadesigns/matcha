@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
-import SearchComponent from '../../SearchMobile'
+import SearchComponent from '../../Search'
 
 const searchIndices = [
-  // { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
   {name: 'Products', title: 'Produits', hitComp: 'ProductHit'},
   {name: 'Projects', title: 'Réalisations', hitComp: 'ProjectHit'}
 ]
 
-export const SearchMobile = () => <SearchComponent collapse indices={searchIndices} />
+export const Search = () => <SearchComponent indices={searchIndices} />

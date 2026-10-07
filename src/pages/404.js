@@ -13,7 +13,7 @@ const NotFoundPage = () => (
 );
 
 export function Head({location}) {
-  return <Seo title="404: Not found" location={location} />
+  return <Seo title="Page introuvable" location={location} noIndex />
 }
 
 export default NotFoundPage;

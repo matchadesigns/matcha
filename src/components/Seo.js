@@ -3,24 +3,26 @@ import React from 'react'
 import {truncateString} from '../lib/helpers'
 import {useSiteMetadata} from '../lib/useSiteMetadata'
 
-const Seo = ({title, description, image, product, article, noIndex = false, location}) => {
+// Social networks expect ~1200px wide images: let the Sanity CDN resize them
+const socialImage = url => (url && url.startsWith('https://cdn.sanity.io/') ? `${url}?w=1200&h=630&fit=crop&auto=format` : url)
+
+const Seo = ({title = null, description = null, image = null, product = false, article = false, noIndex = false, location = null}) => {
   const site = useSiteMetadata()
   const pathname = location?.pathname
 
   const seo = {
     title: title && (title.length <= 60 ? (title.includes(site.title) ? title : `${title} — ${site.title}`) : title),
     description: truncateString(description || site.description, 147),
-    image: image || `${site.url}/matcha.jpg`,
+    image: socialImage(image) || `${site.url}/matcha.jpg`,
     url: pathname && `${site.url}${pathname}`
   }
 
   return (
     <>
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <html lang='fr-FR' amp />
+      <html lang='fr-FR' />
       <link rel='dns-prefetch' href='//cdn.sanity.io/' />
       {seo.title && (
-        <title itemProp='name' lang='fr-FR'>
+        <title>
           {seo.title}
         </title>
       )}
@@ -33,6 +35,8 @@ const Seo = ({title, description, image, product, article, noIndex = false, loca
       {seo.image && <meta property='og:image' content={seo.image} />}
       {seo.image && <meta name='twitter:image' content={seo.image} />}
       <meta name='twitter:card' content='summary_large_image' />
+      <meta property='og:site_name' content={site.title} />
+      <meta property='og:locale' content='fr_FR' />
       <meta name='theme-color' content='#3A3419' />
       {seo.url && <meta property='og:url' content={seo.url} />}
       {seo.url && <link rel='canonical' href={seo.url} />}
@@ -43,15 +47,6 @@ const Seo = ({title, description, image, product, article, noIndex = false, loca
       {noIndex && <meta name='robots' content='noindex' />}
     </>
   )
-}
-
-Seo.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  article: false,
-  product: false,
-  location: null
 }
 
 Seo.propTypes = {

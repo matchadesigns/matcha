@@ -10,7 +10,7 @@ import {
   MobileButton as MobileMenuButton,
 } from "../Menu";
 import { Cart } from "./Cart";
-import { SearchDesktop } from "./SearchDesktop";
+import { Search } from "./Search";
 import { TopMessage } from "./TopMessage";
 
 export const Header = ({ isTransparent }) => {
@@ -77,7 +77,7 @@ export const Header = ({ isTransparent }) => {
             px: 3,
           }}
         >
-          <SearchDesktop />
+          <Search />
           <Cart />
         </Box>
       </nav>

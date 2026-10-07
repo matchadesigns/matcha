@@ -1,5 +1,6 @@
-const serializers = {
+// Custom renderers for @portabletext/react (types, marks, block styles...)
+const components = {
   types: {}
 }
 
-export default serializers
+export default components

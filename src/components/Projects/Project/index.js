@@ -37,7 +37,7 @@ export const Project = project => {
     <article>
       <Grid gap={2} columns={[1, 1, 2]}>
         <Box sx={{order: 0}}>
-          <Images image={image} thumbs={thumbs} />
+          <Images image={image} thumbs={thumbs} title={title} />
         </Box>
         <Box
           sx={{

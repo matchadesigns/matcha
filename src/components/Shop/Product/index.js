@@ -133,7 +133,7 @@ export const Product = ({ sameVariantGroupsProductsNodes, ...product }) => {
         <Category category={categoryObject} />
       </Box>
       <Grid gap={2} columns={columns} sx={{ p: 4 }}>
-        <Images item={item} image={image} thumbs={thumbs} />
+        <Images item={item} image={image} thumbs={thumbs} title={title} />
         <motion.div
           variants={item}
           sx={{

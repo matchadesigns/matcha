@@ -6,8 +6,7 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Mobile as MobileMenu } from "./Menu";
 import { Cart } from "./Header/Cart";
-import { SearchMobile } from "./Header/SearchMobile";
-import SimpleReactLightbox from "simple-react-lightbox";
+import { Search } from "./Header/Search";
 import { Script } from "gatsby";
 
 export const MenuContext = React.createContext(false);
@@ -25,7 +24,6 @@ export const Layout = ({
         stateChangeHandler: (newState) => setMenuOpenState(newState.isOpen),
       }}
     >
-      <SimpleReactLightbox>
         <MobileMenu />
         <div
           sx={{
@@ -40,7 +38,7 @@ export const Layout = ({
           }}
         >
           <Cart className="snipcart-checkout" sx={{ order: 0, pr: 3 }} />
-          <SearchMobile />
+          <Search />
         </div>
         <div
           id="app"
@@ -75,7 +73,6 @@ export const Layout = ({
             }}
           />
         </div>
-      </SimpleReactLightbox>
     </MenuContext.Provider>
   );
 };
