@@ -2,38 +2,48 @@
 import { jsx, Box, Flex, Grid } from "theme-ui";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { StaticImage } from "gatsby-plugin-image";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-const slides = [
-  {
-    title: "Découvrez nos dernières affiches sur Paris",
-    subtitle: "Louvre, Montmartre, ...",
-    image: (
-      <StaticImage
-        src="../../assets/images/IMAGE 2-HD.jpg"
-        alt="Paris Affiche 1"
-        layout="fullWidth"
-        style={{ height: "100%" }}
-        imgStyle={{ objectFit: "cover" }}
-      />
-    ),
-  },
-  {
-    title: "Les boîtes à biscuits en collaboration avec Maison DV",
-    subtitle: "Nouveautés du mois de mars",
-    image: (
-      <StaticImage
-        src="../../assets/images/IMAGE 1.jpg"
-        alt="Paris Affiche 2"
-        layout="fullWidth"
-        style={{ height: "100%" }}
-        imgStyle={{ objectFit: "cover" }}
-      />
-    ),
-  },
-];
+// Internal paths use Gatsby's Link, anything else a plain anchor
+const SlideLink = ({ to, children }) => {
+  if (!to) return children;
+  const linkSx = { color: "inherit", textDecoration: "none" };
+  return to.startsWith("/") ? (
+    <Link to={to} sx={linkSx}>
+      {children}
+    </Link>
+  ) : (
+    <a href={to} sx={linkSx}>
+      {children}
+    </a>
+  );
+};
 
 export const Carousel = () => {
+  const { homepage } = useStaticQuery(graphql`
+    query HomepageCarouselQuery {
+      homepage: sanityHomepage(_id: { eq: "homepage" }) {
+        slides {
+          _key
+          title
+          subtitle
+          link
+          image {
+            alt
+            hotspot {
+              x
+              y
+            }
+            asset {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  `);
+  const slides = homepage?.slides?.filter((slide) => slide?.image?.asset) ?? [];
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -53,13 +63,15 @@ export const Carousel = () => {
     [emblaApi],
   );
 
+  if (slides.length === 0) return null;
+
   return (
     <Box sx={{ position: "relative", overflow: "hidden" }}>
       <Box ref={emblaRef}>
         <Flex sx={{ display: "flex" }}>
-          {slides.map((slide, index) => (
+          {slides.map((slide) => (
             <Box
-              key={index}
+              key={slide._key}
               sx={{
                 flex: "0 0 100%",
                 minWidth: 0,
@@ -89,7 +101,7 @@ export const Carousel = () => {
                         mb: 4,
                       }}
                     >
-                      {slide.title}
+                      <SlideLink to={slide.link}>{slide.title}</SlideLink>
                     </h1>
                     <p
                       sx={{
@@ -134,7 +146,16 @@ export const Carousel = () => {
                   </Flex>
                 </Box>
                 <Box sx={{ height: ["300px", "400px", "100%"] }}>
-                  {slide.image}
+                  <GatsbyImage
+                    image={getImage(slide.image.asset)}
+                    alt={slide.image.alt || slide.title}
+                    style={{ height: "100%" }}
+                    objectPosition={
+                      slide.image.hotspot
+                        ? `${slide.image.hotspot.x * 100}% ${slide.image.hotspot.y * 100}%`
+                        : "50% 50%"
+                    }
+                  />
                 </Box>
               </Grid>
             </Box>
