@@ -21,7 +21,7 @@
     "@sanity/image-url": "^1.2.0",
     "@theme-ui/mdx": "^0.17.4",
     "@theme-ui/presets": "^0.17.4",
-    "@vercel/node": "^21.0.0",
+    "@vercel/node": "^28.0.1",
     "algoliasearch": "^4.27.0",
     "currency.js": "^2.0.4",
     "date-fns": "^3.6.0",
