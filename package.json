@@ -18,7 +18,7 @@
     "@mdx-js/react": "3.1.1",
     "@portabletext/react": "^3.2.4",
     "@sanity/client": "^6.29.1",
-    "@sanity/image-url": "^1.2.0",
+    "@sanity/image-url": "^2.1.1",
     "@theme-ui/mdx": "^0.17.4",
     "@theme-ui/presets": "^0.17.4",
     "@vercel/node": "^21.0.0",
